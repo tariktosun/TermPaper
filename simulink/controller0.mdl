@@ -1,6 +1,6 @@
 Model {
   Name			  "controller0"
-  Version		  7.6
+  Version		  7.7
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
@@ -35,9 +35,9 @@ Model {
   Creator		  "tarik"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "tarik"
+  LastModifiedBy	  "ttosun"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat May 12 03:34:37 2012"
+  LastModifiedDate	  "Sat May 12 12:59:35 2012"
   RTWModifiedTimeStamp	  0
   ModelVersionFormat	  "1.%<AutoIncrement:13>"
   ConfigurationManager	  "None"
@@ -114,13 +114,13 @@ Model {
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      2
-      Version		      "1.10.0"
+      Version		      "1.11.0"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
 	  $ObjectID		  3
-	  Version		  "1.10.0"
+	  Version		  "1.11.0"
 	  StartTime		  "0.0"
 	  StopTime		  "2"
 	  AbsTol		  "auto"
@@ -154,7 +154,7 @@ Model {
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  4
-	  Version		  "1.10.0"
+	  Version		  "1.11.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -166,6 +166,7 @@ Model {
 	  SaveFinalState	  off
 	  SaveCompleteFinalSimState off
 	  SaveFormat		  "Array"
+	  SignalLoggingSaveFormat "ModelDataLogs"
 	  SaveOutput		  on
 	  SaveState		  off
 	  SignalLogging		  on
@@ -185,7 +186,7 @@ Model {
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  5
-	  Version		  "1.10.0"
+	  Version		  "1.11.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -236,10 +237,11 @@ Model {
 	  BufferReusableBoundary  on
 	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
+	  AccelParallelForEachSubsystem	on
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  6
-	  Version		  "1.10.0"
+	  Version		  "1.11.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -310,6 +312,7 @@ Model {
 	  ModelReferenceExtraNoncontSigs "error"
 	  StateNameClashWarn	  "warning"
 	  SimStateInterfaceChecksumMismatchMsg "warning"
+	  SimStateOlderReleaseMsg "error"
 	  InitInArrayFormatMsg	  "warning"
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
@@ -324,7 +327,7 @@ Model {
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  7
-	  Version		  "1.10.0"
+	  Version		  "1.11.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -361,7 +364,7 @@ Model {
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  8
-	  Version		  "1.10.0"
+	  Version		  "1.11.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
@@ -376,7 +379,7 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  9
-	  Version		  "1.10.0"
+	  Version		  "1.11.0"
 	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
@@ -391,7 +394,7 @@ Model {
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  10
-	  Version		  "1.10.0"
+	  Version		  "1.11.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    7
@@ -434,6 +437,7 @@ Model {
 	  GenerateTraceReportEml  off
 	  GenerateCodeInfo	  off
 	  GenerateSLWebview	  off
+	  GenerateCodeMetricsReport off
 	  RTWCompilerOptimization "Off"
 	  CheckMdlBeforeBuild	  "Off"
 	  CustomRebuildMode	  "OnUpdate"
@@ -442,7 +446,7 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      11
-	      Version		      "1.10.0"
+	      Version		      "1.11.0"
 	      Array {
 		Type			"Cell"
 		Dimension		21
@@ -507,7 +511,7 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      12
-	      Version		      "1.10.0"
+	      Version		      "1.11.0"
 	      Array {
 		Type			"Cell"
 		Dimension		16
@@ -535,6 +539,8 @@ Model {
 	      TargetFunctionLibrary   "ANSI_C"
 	      UtilityFuncGeneration   "Auto"
 	      ERTMultiwordTypeDef     "System defined"
+	      FunctionExecutionProfile off
+	      CodeExecutionProfiling  off
 	      ERTCodeCoverageTool     "None"
 	      ERTMultiwordLength      256
 	      MultiwordLength	      2048
@@ -580,6 +586,7 @@ Model {
 	      RTWCAPISignals	      off
 	      RTWCAPIParams	      off
 	      RTWCAPIStates	      off
+	      RTWCAPIRootIO	      off
 	      GenerateASAP2	      off
 	    }
 	    PropName		    "Components"
@@ -587,22 +594,15 @@ Model {
 	}
 	hdlcoderui.hdlcc {
 	  $ObjectID		  13
-	  Version		  "1.10.0"
+	  Version		  "1.11.0"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
-	  Array {
-	    Type		    "Cell"
-	    Dimension		    1
-	    Cell		    ""
-	    PropName		    "HDLConfigFile"
-	  }
-	  HDLCActiveTab		  "0"
 	}
 	PropName		"Components"
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    " [ 250, 24, 1190, 829 ] "
+      ConfigPrmDlgPosition     [ 250, 24, 1190, 829 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -669,6 +669,7 @@ Model {
     Block {
       BlockType		      Inport
       Port		      "1"
+      OutputFunctionCall      off
       OutMin		      "[]"
       OutMax		      "[]"
       OutDataTypeStr	      "Inherit: auto"
@@ -1247,7 +1248,7 @@ Model {
       Position		      [695, 24, 725, 56]
       Floating		      off
       Location		      [390, 89, 973, 385]
-      Open		      on
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1266,7 +1267,7 @@ Model {
       Position		      [755, 24, 785, 56]
       Floating		      off
       Location		      [953, 518, 1277, 757]
-      Open		      on
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1286,7 +1287,7 @@ Model {
       Position		      [405, 44, 435, 76]
       Floating		      off
       Location		      [585, 470, 1168, 766]
-      Open		      on
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
