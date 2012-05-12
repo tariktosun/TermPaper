@@ -1,0 +1,546 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+%% You can modify the fonts used in the document be using the
+%% following macros. They take one parameter which is the font
+%% changing command.
+%% \headerfont: the font used in both headers.
+%%              Defaults to sans serif.
+%% \titlefont:  the font used for the title.
+%%              Defaults to \LARGE sans-serif semi bold condensed.
+%% \sectionfont: the font used by \section when beginning a new topic.
+%%              Defaults to sans-serif semi bold condensed.
+%% \itemfont:   the font used in descriptions of items.
+%%              Defaults to sans-serif slanted.
+% to make your name even bigger, uncomment the following line:
+% \titlefont{\Huge}
+%%
+%% You can modify the following parameters using \renewcommand:
+%% \topicmargin: the left margin inside topics.
+%%               Defaults to 20% of the column width (0.20\columnwidth).
+% To get more room for left column of Topic layouts, uncomment following line:
+% \renewcommand{\topicmargin}{0.3\columnwidth}
+\end_preamble
+\use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding default
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25in
+\topmargin 1.25in
+\rightmargin 1.25in
+\bottommargin 1.25in
+\secnumdepth 3
+\tocdepth 5
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Implementation and Analysis of a Genetic Algorithm
+\end_layout
+
+\begin_layout Author
+Tarik Tosun, MAE 345 Assignment 5
+\end_layout
+
+\begin_layout Date
+12/1/2011
+\end_layout
+
+\begin_layout Abstract
+In this assignment, we implement and analyze a genetic algorithm in MatLab
+ to determine the unknown parameters of a dynamic system.
+ Cost function convergence and noise effects are explored.
+ The effectiveness of the algorithm is then compared with MatLab's gradient-base
+d 
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+fminsearch
+\end_layout
+
+\end_inset
+
+ function.
+\end_layout
+
+\begin_layout Section
+Algorithm Implementation
+\end_layout
+
+\begin_layout Subsection
+Roulette-Wheel Selection
+\end_layout
+
+\begin_layout Standard
+The program roulette.m was written as a roulette-wheel selection function
+ for gene strings.
+ The effectiveness of this function was tested by calling the function 1000
+ times with a given probability distribution.
+ This test can be seen in the first cell of a5script.m, 
+\begin_inset Quotes eld
+\end_inset
+
+Roulette Wheel Test
+\begin_inset Quotes erd
+\end_inset
+
+.
+ As the number of roulette spins was increased, the distribution was found
+ to converge to the intended distribution, confirming the effectiveness
+ of the function
+\end_layout
+
+\begin_layout Subsection
+Binary String Crossover
+\end_layout
+
+\begin_layout Standard
+A random crossover function was implemented in randomCross.m.
+ This function takes any even number of binary strings, randomly pairs them,
+ randomly selects crossover points, and then performs simple crossover.
+ Simple crossover is implemented in cross.m.
+ This function is tested in the second cell of a5script.m, 
+\begin_inset Quotes eld
+\end_inset
+
+Crossover Test.
+\begin_inset Quotes erd
+\end_inset
+
+ In this script, both randomCross.m and cross.m are tested using the four
+ strings given in the assignment specification.
+ Running this script several times with different parameters resulted in
+ tests of many arbitrary pairings and crossover points, and from the results
+ it was determined that the crossing functions worked properly.
+\end_layout
+
+\begin_layout Subsection
+Cost Function
+\end_layout
+
+\begin_layout Standard
+A quadratic cost function was defined as suggested in the assignment specificati
+on.
+ This cost function is implemented in fitness.m, which returns the fitness
+ of a system state trajectory when given the trajectory and nominal trajectory
+ as arguments.
+ As indicated in the assignment specification, the function is made positive-def
+inite by taking the negative exponential of the computed quadratic cost
+ function.
+\end_layout
+
+\begin_layout Subsection
+Iterative Solution script
+\end_layout
+
+\begin_layout Standard
+The iterative genetic algorithm solution script is found in genetic.m.
+ We define two genes per chromosome, with one representing 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ and the other representing 
+\begin_inset Formula $\omega_{n}$
+\end_inset
+
+.
+ Given the step response plot for the dynamic system, a reasonable range
+ both of these values is (0,2).
+ To reflect this range, the least significant bit in the genes was scaled
+ to represent 
+\begin_inset Formula $2/4096=0.000488$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The genetic algorithm used 32 chromosomes seeded with a random number generator.
+ In order to compute each 
+\begin_inset Formula $J$
+\end_inset
+
+ (cost function value), a step response was performed or the system.
+ This is done in simulate_sys.m, which also loads and returns values for
+ the nominal response.
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Subsection
+Convergence and Optimal Values
+\end_layout
+
+\begin_layout Standard
+The algorithm iterates until the total generation fitness converges to a
+ stable value.
+ For this problem, that value was found to be 0.9832.
+ Attaining this value took 110 generations and 37.17 seconds.
+ The best-estimate values for 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ and 
+\begin_inset Formula $\omega_{n}$
+\end_inset
+
+ produced by this algorithm were 0.4414 and 1.409, respectively.
+\end_layout
+
+\begin_layout Standard
+Convergence of the cost function to the optimal value was explored.
+ is a plot of 
+\begin_inset Formula $J_{total}$
+\end_inset
+
+ and 
+\begin_inset Formula $J_{best}$
+\end_inset
+
+ as they converge to the optimal values.
+ As we can see in the plot, 
+\begin_inset Formula $J_{best}$
+\end_inset
+
+ converges very fast, after fewer than five iterations.
+ It then changes very little over more than one hundred iterations, as Jtotal
+ converges to a stable value.
+ Jtotal converges to a stable value after about thirty iterations, remaining
+ in much the same position until the stopping criterion is reached (a local
+ deviation of less than 0.00001 from the average of the past fifty generations).
+ Looking at these graphs, it appears that results of similar accuracy could
+ be attained with less stringent stopping criteria.
+ However, the exact results of a genetic algorithm are probabalistic, and
+ after experimenting with many different stopping criteria, it was determined
+ that more stringent criteria gave more consistent results.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename MatLab/jtotal.png
+	width 3in
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename MatLab/jbest.png
+	width 3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Plots of 
+\begin_inset Formula $J_{total}$
+\end_inset
+
+ and 
+\begin_inset Formula $J_{best}$
+\end_inset
+
+ as they converge to the optimal values.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Mutation Effects
+\end_layout
+
+\begin_layout Standard
+The second argument of genetic.m, 
+\begin_inset Quotes eld
+\end_inset
+
+mutation,
+\begin_inset Quotes erd
+\end_inset
+
+ allows the user to specify how often mutations occur in the algorithm.
+ For this assignment, the effect of mutation every five generations was
+ tested.
+ Adding in mutations increased the runtime of the algorithm, causing it
+ to grow to 152 generations and 48 seconds.
+ However, it also increased the accuracy of the results, resulting in a
+ 
+\begin_inset Formula $J_{best}$
+\end_inset
+
+ of 0.9955, and 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ and 
+\begin_inset Formula $\omega_{n}$
+\end_inset
+
+ values of 0.4380 and 1.4961, respectively.
+ Mutation addition, therefore, is something that must be considered on a
+ case-by-case basis in the application of genetic algorithms.
+ In cases where accuracy is valued much more highly than computational efficienc
+y, mutations would certainly be beneficial, but if the genetic algorithm
+ already places the available computational facilities near their practical
+ limit, the addition of mutations is not recommended.
+\end_layout
+
+\begin_layout Subsection
+Effects of Gaussian Random Error
+\end_layout
+
+\begin_layout Standard
+A gaussian random error with 30% standard deviation was introduced into
+ the cost function residual.
+ This drastically increased the runtime of the algorithm, causing it to
+ run for 247 generations and 82 seconds.
+ Unlike the addition of mutations, the addition of gaussian random error
+ did not increase accuracy - it resulted in a 
+\begin_inset Formula $J_{best}$
+\end_inset
+
+ value of 0.9694 and values of 0.5332 and 1.5103 respectively for 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ and 
+\begin_inset Formula $\omega_{n}$
+\end_inset
+
+.
+ Based on these results, the introduction of gaussian random into a genetic
+ algorithm is not recommended.
+\end_layout
+
+\begin_layout Standard
+The combined effects of gaussian random error and mutations were also tested
+ with a 30% gaussian random error and mutations every 5 generations.
+ Unforunately, this proved beyond the computational limits of the computer
+ being used, causing it to run out of physical memory and shut down.
+\end_layout
+
+\begin_layout Subsection
+Comparison to a Gradient-Based Method
+\end_layout
+
+\begin_layout Standard
+To evaluate the effectiveness of the genetic algorithm, its performance
+ was compared with MatLab's 
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+fminsearch
+\end_layout
+
+\end_inset
+
+ function, which employs a gradient-based search.
+ The cost function had to be slightly modified (made negative) in order
+ to be used with 
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+fminsearch
+\end_layout
+
+\end_inset
+
+, as this solver minimizes the objective function rather than maximizing
+ it.
+ Values of 0.4 and 1.5, were found for 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ and 
+\begin_inset Formula $\omega_{n}$
+\end_inset
+
+ (repsectively) using 
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+fminsearch
+\end_layout
+
+\end_inset
+
+.
+ These values produced a cost function value of J=1, indicating a perfect
+ match.
+ The 
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+fminsearch
+\end_layout
+
+\end_inset
+
+ algorithm was able to produce these results in about one second, a fraction
+ of the time it took the genetic algorithm to get comparable results.
+ For this problem, it is clear that a gradient-based search is a better
+ choice than a genetic algorithm
+\end_layout
+
+\begin_layout Section*
+Conclusions
+\end_layout
+
+\begin_layout Standard
+From the results of this assignment, we conclude that genetic algorithms
+ are powerful but slow optimization tools.
+ For this problem, the genetic algorithm implemented was vastly outperformed
+ by a gradient-based algorithm, which was able to produce better results
+ in less time.
+ We infer from this result that the cost function for this problem has few
+ local minima, and that the 
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+fminsearch
+\end_layout
+
+\end_inset
+
+ algorithm was able to easily ride the gradient of the function to its optimal
+ value.
+ However, there are many optimization problem that cannot be solved through
+ gradient-based methods.
+ If the cost function has many local minima, a gradient-based algorithm
+ will likely become 
+\begin_inset Quotes eld
+\end_inset
+
+trapped
+\begin_inset Quotes erd
+\end_inset
+
+ in one of these minima and be unable to find the global minimum.
+ In these cases, a more cumbersome gradient-free algorithm like a genetic
+ algorithm must be employed.
+\end_layout
+
+\begin_layout Standard
+As an example, part of my thesis research involves configuring a robot arm
+ to minimize the integral of a potential field over its kinematic skeleton
+ (joints connected by straight lines).
+ The objective function (the skeleton integral) has many input variables
+ (the arm's joint angles), and is highly nonlinear with many local minima.
+ Currently, I use MatLab's gradient-based 
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+fmincon
+\end_layout
+
+\end_inset
+
+ function to optimize the arm's pose.
+ This function works very well (and very quickly) when the arm's initial
+ pose is not far from the optimum, but fails miserably due to local minima
+ when the starting pose is far from optimal.
+ Within the next few weeks, I plan to try a genetic algorithm as a solution
+ to this problem.
+ Based on what I have learned in this class, I expect that it will fare
+ much better than 
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+fmincon
+\end_layout
+
+\end_inset
+
+, but that it may also prove very slow.
+\end_layout
+
+\end_body
+\end_document

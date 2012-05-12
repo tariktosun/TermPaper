@@ -1,0 +1,333 @@
+#LyX 1.6.8 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+The Superbot Robotic System
+\end_layout
+
+\begin_layout Author
+Tarik Tosun, MAE 345
+\end_layout
+
+\begin_layout Date
+9/22/11
+\end_layout
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Standard
+The Superbot is a modular, multifunctional, robotic system developed at
+ the University of Souther California Information Sciences Institute (ISI).
+ As shown in Figure 1, each superbot module consists of two linked cubes
+ which are actuated to rotate relative to each other in three degrees of
+ freedom.
+ Each superbot module is capable of independent action, and may also link
+ with other Suberbot modules to engage in complex collaborative behaviors.
+ Collections of Superbots can self-assemble into a wide range of configurations,
+ and in practice could reconfigure themselves into whatever shape best suits
+ the task at hand.
+ Collections of Superbots are intended to accomplish tasks in rough environments
+, and could be used in a broad range of capacities, including search-and-rescue,
+ space, military, and even home use.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename superbot_main_pic.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The Superbot
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Technical Description
+\end_layout
+
+\begin_layout Standard
+Each Superbot module consists of two linked cubes with two end effectors,
+ allowing three degrees of rotational freedom (270º of roll, and 180º each
+ of pitch and yaw), making them extremely flexible.
+ Each module weighs 500 grams, and is 16.8cm long when fully extended.
+ Each module has its own ATMegal128 microcontroller, a 3D accelerometer/inclinom
+eter, power source, and actuators, making it fully capable of independent
+ action.
+ Six genderless universal connectors (found on each side of the end effectors)
+ allow connection and communication between modules, enabling a collection
+ of Superbots to act as a single robot.
+ In this case, the collection is governed by ID-free distributed software
+ loaded on each of the modules, and there is no central executive 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+.
+ When they are not linked, Superbot modules may communicate via IR transmitters
+ and receivers on their docking surfaces, which allow them to execute autonomous
+ docking maneuvers.
+\end_layout
+
+\begin_layout Section*
+Capabilities
+\end_layout
+
+\begin_layout Standard
+Superbots may assume a wide range of locomotive configurations, as shown
+ in Figure 2.
+ A single Superbot may use its end effectors to move in a “caterpillar”
+ gait, and a single chain of Superbots may use a wave-like motion to move
+ sideways in a snake-like “sidewinder” fashion.
+ Branched chains of Superbots may exhibit many different types of walking
+ gaits, including bipedal, quadrupedal, and hexapedal motion.
+ In addition to locomotion, collections of Superbots are capable of other
+ complex activities, such as digging in soil and object manipulation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename superbot_locomotive.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Locomotive Configurations of the Superbot 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Applications
+\end_layout
+
+\begin_layout Standard
+The Superbot system developed at ISI is a research project, not an immediate
+ solution to a real-world problem.
+ The underlying technology, however, could be broadly applied.
+ Modular reconfigurable robots are extremely versatile, as they can adapt
+ their form on the fly to accomplish a task.
+ This makes them ideal for search-and-rescue missions – imagine a robot
+ capable of caterpillar crawling through a small hole in a collapsed mineshaft
+ and then splitting up into many smaller modules to efficiently search for
+ injured miners.
+ When one is found, they could reconvene to configure themselves into a
+ quadrupedal medical transport and move the victim to a safe location.
+ In a military operation, they could be tightly packed for an airdrop into
+ enemy territory, and then assemble themselves into an all-terrain scout
+ robot.
+ If this scout took enemy fire, it could quickly shed the broken modules,
+ reconfigure itself, and continue its mission.
+ For space missions, where weight is paramount, a group of reconfigurable
+ modules could take on roles which would otherwise require many different
+ robots, making room for other important equipment.
+ A Superbot-like system could even make our day-to-day lives easier as household
+ cleaning and maintenance robots.
+ A set of general-purpose modules could connect to specialized cleaning
+ modules, like a vacuum module to clean the living room carpet, or a scrubber
+ module to clean the bathtub.
+ To clean the second floor, the robot could easily change from crawling
+ to legged locomotion in order to climb the stairs.
+\end_layout
+
+\begin_layout Section*
+Impacts and Implications of This Technology
+\end_layout
+
+\begin_layout Standard
+Aside from the practical utility of modular robotic systems, the development
+ of distributed algorithms such as those used to control the Superbot could
+ help us understand processes in economics, ecology, and sociology.
+ These fields all study systems that are composed of independent intelligent
+ agents that interact without a central executive – analogous to the distributed
+ operation of the Superbot system.
+\end_layout
+
+\begin_layout Standard
+While its potential for practical use is very great, there are some important
+ ethical implications of distributed robotics that should be considered.
+ A distributed robotic system such as the Superbot is designed so that the
+ whole is greater than the sum of its parts: the combination of several
+ modules gives rise to emergent behaviors which an individual unit could
+ never achieve.
+ If equipped with a genetic algorithm or artificial intelligence, a distributed
+ robotic system could generate entirely new, potentially unsafe emergent
+ behaviors.
+ Without a central executive, a ‘rogue’ distributed robotic system could
+ be difficult to control or shut down.
+ Science fiction writer Michael Crichton explores a scenario much like this
+ in his novel Prey, in which a swarm of nanobots with a genetic algorithm
+ develop predatory behavior and begin to hunt humans and animals.
+ To avoid such a catastrophic (or even just problematic) situation, designers
+ of distributed robotic systems must be careful to build fail-safe mechanisms
+ into their robots that allow remote shut-down if problematic behaviors
+ develop.
+\end_layout
+
+\begin_layout Section*
+The Future of the Superbot
+\end_layout
+
+\begin_layout Standard
+The Superbot is an exciting robotic technology with great promise for practical
+ applications in the future.
+ To make these ideas a reality, a great deal of work must still be done.
+ First and foremost, the technology is very expensive, and commercial viability
+ would require that modules be mass-produced quickly and cheaply.
+ The second most important challenge lies in actuation – at this point,
+ Superbot movement is quite slow, so the development of lighter-weight,
+ higher-power actuators would help to speed them up.
+ Finally, the continued development of distributed control algorithms and
+ software will allow the Superbot and other robotic systems to behave in
+ new, interesting, and useful ways.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Shen, Wei Min.
+ "Rolling and Climbing by the Multifunctional SuperBot Reconfigurable Robotic
+ System." (2008): n.
+ page.
+ Print.
+ <http://www.isi.edu/robots/prl/shen2008multifunctional-superbot-reconfigurable-sy
+stem.pdf>.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+"Superbot Videos." Graphic.
+ ISI Superbot Media.
+ First Last.
+ 2009-2011.
+ Web.
+ 22 Sep 2011.
+ <http://www.isi.edu/robots/media-superbot.html>.
+\end_layout
+
+\end_body
+\end_document

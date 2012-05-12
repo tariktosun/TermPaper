@@ -1,0 +1,195 @@
+#LyX 1.6.8 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+SmartShuffle: An Intelligent Algorithm for Song Selection
+\end_layout
+
+\begin_layout Author
+Tarik Tosun
+\end_layout
+
+\begin_layout Date
+9/22/11
+\end_layout
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Standard
+SmartShuffle is a music selection software program of my own design that
+ is intended to run on a computer or portable music player.
+ The program records a user’s past listening habits, and then uses them
+ to intelligently predict songs the user would currently like to hear.
+ The motivation to develop this software came from my own experience with
+ shuffle play on my mp3 player, which I believe is one that most users share.
+ I enjoy the unpredictability of shuffle play, but my music library is large
+ and varied enough that I often find myself skipping through many songs
+ in succession because I am simply not in the mood for them at the time.
+\end_layout
+
+\begin_layout Standard
+The key idea behind SmartShuffle is that of a semantic network.
+ A semantic network is a network that represents semantic relations among
+ concepts, and is used in psychology to model the way knowledge is represented
+ in the mind.
+ Pieces of knowledge that are semantically similar are more closely connected
+ in the network, and thoughts about a given concept are more likely to trigger
+ thoughts about closely connected concepts than concepts which are far away.
+ To take a simple example from the network in Figure 1 , if you are thinking
+ about fish, you are more likely to next think about whales than bears.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename semantic_network.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Simple example of a semantic network.
+ Picture taken from http://en.wikipedia.org/wiki/Semantic_network
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+SmartShuffle uses a semantic network to model the closeness between songs
+ in a user's music library according to that user's tastes.
+ As the user listens to songs that SmartShuffle picks, it records whether
+ a song is skipped or listened to, and uses this as feedback to refine its
+ knowledge of the semantic relationships between songs in the user’s mind.
+ This same feedback is also used to determine where in the network the user’s
+ musical mood currently lies, in order to pick songs that the user will
+ enjoy.
+ SmartShuffle lives up to the “smartness” implied by its name because it
+ picks songs according to a model that reflects the semantic relationships
+ between songs in the human mind.
+\end_layout
+
+\begin_layout Section*
+Implementation
+\end_layout
+
+\begin_layout Standard
+As this is intended to be a short essay, I will give only a high-level descripti
+on of how SmartShuffle is implemented.
+ Long-term knowledge of the user’s tastes is recorded in an undirected graph
+ in which each node represents a song in the user’s library.
+ When two songs are listened to one after another, an edge is created between
+ the nodes representing the two songs.
+ Conversely, if a song is skipped, the edge (if it exists) between that
+ song and the song listened to before it is eliminated.
+ In this way, high levels of connectivity are established between semantically
+ related songs, while semantically unrelated songs are not well connected.
+\end_layout
+
+\begin_layout Standard
+As the user listens to music, knowledge of the user’s immediate mood is
+ developed through use of a virtual “activation energy” that flows from
+ the song to which the user is currently listening to all of its neighbors
+ in the graph.
+ The connection paths in the graph cause songs that are semantically related
+ to the current song to be more strongly activated than those that are not.
+ The next song is then selected from the set of activated songs, with probabilit
+ies of selection weighted according to activation level.
+ If a song is skipped rather than listened to, the opposite occurs – “negative
+ activation energy” flows through the graph, which decreases the weighting
+ of songs in the selection process.
+ Both positive and negative activation persist for a certain amount of time,
+ so that after a few song selections, the regions of graph activation reflect
+ the user’s current mood.
+\end_layout
+
+\begin_layout Section*
+Technological Implications
+\end_layout
+
+\begin_layout Standard
+This program is meant for the specific and relatively benign purpose of
+ music selection, so I do not believe there are any significant ethical
+ or moral implications of its use.
+ I do believe, however, that it would be a novel technology.
+ Several “intelligent” music selection algorithms do already exist, for
+ example, the Apple Itunes Genius playlist creator and Pandora Radio’s Music
+ Genome Project.
+ However, to my knowledge none of these technologies deal with semantic
+ relatedness on a per-user basis.
+ The Genius playlist creator, for example, analyzes songs in a user’s library
+ from a signal processing perspective, and groups songs based on sonic similarit
+y, which may not necessarily correspond to the way songs are grouped in
+ a person’s mind.
+ The Music Genome Project classifies songs based on a large vector of musical
+ “genes” or traits (ie: “heavy guitar,” or “female vocalist”).
+ In my opinion, SmartShuffle has an advantage over other music selection
+ algorithms because it uses user feedback to determine semantic closeness
+ directly, rather than relying on some other metric (such as musical traits
+ or sonic similarity) to predict whether the songs will be semantically
+ similar for a given user.
+\end_layout
+
+\end_body
+\end_document

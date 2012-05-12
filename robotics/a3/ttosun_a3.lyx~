@@ -1,0 +1,1126 @@
+#LyX 1.6.8 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1in
+\topmargin 1.25in
+\rightmargin 1in
+\bottommargin 1.25in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Simulation of a Two-Link Robotic Manipulator
+\end_layout
+
+\begin_layout Author
+Tarik Tosun, MAE 345 Assignment 3
+\end_layout
+
+\begin_layout Date
+10/11/11
+\end_layout
+
+\begin_layout Abstract
+In this assignment, a Type 2 two-link robotic manipulator was simulated.
+ The dynamics of the system were represented in a MatLab SIMULINK model.
+ This assignment was motivated by the need to establish an understanding
+ of physical dynamic systems in the context of robotics.
+ It also served to establish familiarity with SIMULINK, a powerful software
+ system for modeling and designing dynamic systems.
+\end_layout
+
+\begin_layout Section
+SIMULINK Model
+\end_layout
+
+\begin_layout Standard
+The system was translated into the SIMULINK block model shown in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig1:simulink"
+
+\end_inset
+
+.
+ As can be seen in the figure, system parameters were represented as constant
+ blocks, and the equations of motion were represented using function blocks,
+ and integrated using integrator blocks in feedback loops.
+ Controllers for each part of the assignment were designed as subsystem
+ blocks that could be switched in and out easily.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename matlab/simulink.png
+	width 7in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig1:simulink"
+
+\end_inset
+
+ Screenshot of the Simulink model used in this assignment
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Link 2 in Equilibrium
+\end_layout
+
+\begin_layout Standard
+We desire the required torque as a function of joint angle to keep link
+ 2 suspended in equilibrium at angles ranging from -90º to 90º.
+ Since we are only concerned with the second link under equilibrium conditions,
+ 
+\begin_inset Formula $x_{\text{1}}$
+\end_inset
+
+ is unimportant and 
+\begin_inset Formula $x_{\text{2}}$
+\end_inset
+
+ must be zero.
+ We derive a function for 
+\begin_inset Formula $u{}_{2}$
+\end_inset
+
+ in terms of 
+\begin_inset Formula $x{}_{3}$
+\end_inset
+
+ by setting the equation for 
+\begin_inset Formula $x_{4}$
+\end_inset
+
+ equal to zero.
+ A plot of this function is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1 - equilibrium"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename matlab/a3_p2_plot.png
+	width 4.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1 - equilibrium"
+
+\end_inset
+
+ Plot of 
+\begin_inset Formula $u_{2}(x_{3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+x_{4}=\dot{x_{3}}=-\frac{g}{l}\cos(x_{3})-\frac{x_{2}}{2}\sin(2x_{3})+\frac{u_{2}}{ml^{2}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+cancelling the second term and solving for 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+u_{2}(x_{3})=mlg\cos(x_{3})\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The shape of this plot agrees with our natural intuitions.
+ As we would expect, the greatest torque is required at 
+\begin_inset Formula $\theta_{2}=0\text{º}$
+\end_inset
+
+, when the arm is horizontal and gravity's moment arm is largest.
+ At 
+\begin_inset Formula $\theta_{2}=\pm90\text{º}$
+\end_inset
+
+, the arm is vertical, and no torque is required.
+ A sinusoidal shape is also consistent with a simple pendulum, which is
+ essentially what this dynamic system represents.
+\end_layout
+
+\begin_layout Section
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ Oscillation
+\end_layout
+
+\begin_layout Subsection
+Five Degree Oscillation at 3.14 rad/sec
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset Formula $\theta_{2}=x_{3}=0-45º$
+\end_inset
+
+, we search for an amplitude of 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+that will produce an oscillation amplitude 
+\begin_inset Formula $\triangle\theta_{1}=5\text{º}$
+\end_inset
+
+.
+ We find the required amplitude of 
+\begin_inset Formula $u_{1}\left(t\right)$
+\end_inset
+
+by integrating the equation of motion for 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+to come up with an analytic solution for 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+as a function of 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+We begin with the dynamics for 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\dot{x}_{2}=\ddot{\theta}_{1}=\frac{1}{\cos^{2}(x_{3})}\left(x_{2}x_{4}\sin\left(2x_{3}\right)+\frac{u_{1}}{ml_{2}}\right)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $x_{3}=-45^{o}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{4}=\dot{x}_{3}=0$
+\end_inset
+
+, and we may cancel the first term in the parentheses.
+ Plugging in 
+\begin_inset Formula $x_{3}=-45^{o}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\ddot{\theta}_{1}=2\frac{u_{1}}{ml^{2}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{1}$
+\end_inset
+
+is specified as a sinusoidal function, so we assume it will take the form
+ 
+\begin_inset Formula $u_{1}=A\sin\left(t\right)+B\sin\left(t\right)$
+\end_inset
+
+.
+ We may now integrate to find 
+\begin_inset Formula $\theta_{1}\left(t\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\frac{d^{2}\theta}{dt^{2}}=\frac{2}{ml^{2}}\left(A\sin\left(\omega t\right)+B\cos\left(\omega t\right)\right)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\frac{d\theta}{dt}=\frac{2}{ml^{2}\omega}\left(-A\left(\cos\left(\omega t\right)+1\right)+B\left(\sin\left(\omega t\right)\right)\right)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\theta\left(t\right)=\frac{-2}{ml^{2}\omega^{2}}\left(A\left(\sin\left(\omega t\right)+t\right)+B\left(\cos\left(t\right)+1\right)\right)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We see that A must equal zero, or 
+\begin_inset Formula $\theta\left(t\right)$
+\end_inset
+
+ will grow to infinity.
+ We solve for B:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\triangle\theta\left(t\right)=\frac{-2B}{ml^{2}\omega^{2}}=5^{o}=0.0873rad\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+B=0.0436ml^{2}\omega^{2}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\omega=3.14$
+\end_inset
+
+, 
+\begin_inset Formula $B=0.8598$
+\end_inset
+
+.
+ As can be seen in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig2:part 3 low frequency"
+
+\end_inset
+
+, this yeilds an oscillation of 
+\begin_inset Formula $5^{o}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename matlab/a3_p3_x1_lowfreq.png
+	width 2.5in
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename matlab/a3_p3_u1_lowfreq.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig2:part 3 low frequency"
+
+\end_inset
+
+Plots of 
+\begin_inset Formula $u_{1}\left(t\right)$
+\end_inset
+
+(right) and 
+\begin_inset Formula $x_{1},\left(t\right)$
+\end_inset
+
+(left) at 3.14rad/s
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Five Degree Oscillation at 6.28 rad/sec
+\end_layout
+
+\begin_layout Standard
+We now seek the required amplitude for a five degree oscillation at a frequency
+ of 6.28 rad/sec.
+ This can be easily computed using the formula for B derived in the first
+ part of this equation.
+ Pluggin in 
+\begin_inset Formula $\omega=6.28$
+\end_inset
+
+, we find 
+\begin_inset Formula $B=3.439$
+\end_inset
+
+.
+ Again, in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig3:p3 hifreq osc"
+
+\end_inset
+
+ we see that this yeilds an oscillation of 
+\begin_inset Formula $5^{o}$
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename matlab/a3_p3_x1_hifreq.png
+	width 2.5in
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename matlab/a3_p3_u1_hifreq.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig3:p3 hifreq osc"
+
+\end_inset
+
+Plots of 
+\begin_inset Formula $u_{1}\left(t\right)$
+\end_inset
+
+(right) and 
+\begin_inset Formula $x_{1},\left(t\right)$
+\end_inset
+
+(left) at 6.28rad/s
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comparing the solutions to the first and second parts of this question,
+ we see that the only real difference lies in the frequency response of
+ the system.
+ The system is more resonant at 
+\begin_inset Formula $\omega=3.14$
+\end_inset
+
+ that it is at 
+\begin_inset Formula $\omega=6.28$
+\end_inset
+
+, evidenced by the fact that a much smaller input amplitude is required
+ to drive the system to the desired response amplitude at 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\omega=3.14$
+\end_inset
+
+.
+ Beyond the amplitude of the response, however, the dynamics of the system
+ do not change with frequency.
+\end_layout
+
+\begin_layout Section
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ Oscillation
+\end_layout
+
+\begin_layout Standard
+Here we drive 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+ with a sinusoidal function at 3.14 rad/sec plus a fixed torque 
+\begin_inset Formula $u_{2_{0}}$
+\end_inset
+
+which holds Link 2 at an equilibrium position.
+\end_layout
+
+\begin_layout Subsection
+Oscillation about -45º
+\end_layout
+
+\begin_layout Standard
+We seek an amplitude for 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+ which will cause an oscillation of 5º about an equilibrium value of -45º
+ at 3.14 rad/sec.
+\end_layout
+
+\begin_layout Standard
+The value of 
+\begin_inset Formula $u_{2_{0}}$
+\end_inset
+
+ can be easily found using the formula from part 1:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+u_{2_{0}}(x_{3})=mlg\cos(x_{3})\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $x_{3}=-45^{o}$
+\end_inset
+
+, 
+\begin_inset Formula $u_{2_{0}}=13.86$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The amplitude of 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+was found by trial-and-error.
+ For a five degree oscillation about 
+\begin_inset Formula $-45^{o}$
+\end_inset
+
+, this amplitude was found to be 0.35.
+ This oscillation is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig4: p4 -45"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename matlab/a3_p4_x3_neg45.png
+	width 2.5in
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename matlab/a3_p4_u2_neg45.png
+	width 2.5in
+
+\end_inset
+
+e
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig4: p4 -45"
+
+\end_inset
+
+Plots of Plots of 
+\begin_inset Formula $u_{2}\left(t\right)$
+\end_inset
+
+(right) and 
+\begin_inset Formula $x_{3},\left(t\right)$
+\end_inset
+
+(left) oscillating about 
+\begin_inset Formula $-45^{o}.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It can be clearly seen in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig4: p4 -45"
+
+\end_inset
+
+ that there is a second oscillation in amplitude present which is slower
+ than the intended osciallation at 3.14 rad/sec.
+ The explanation for this oscillation can be found in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1 - equilibrium"
+
+\end_inset
+
+.
+ If we look at the region in the vicinity of 
+\begin_inset Formula $-45^{o}$
+\end_inset
+
+, we see that the torque required to keep the arm at static equilibrium
+ decreases as the angle decreases and increases as the angle increases.
+ When the arm moves above the equilibrium position of 
+\begin_inset Formula $-45^{o},$
+\end_inset
+
+the force of gravity is greater than 
+\begin_inset Formula $u_{2_{0}}$
+\end_inset
+
+, and acts to move the arm back towards equilibrium.
+ When the arm moves below the equilibrium position, 
+\begin_inset Formula $u_{2_{0}}$
+\end_inset
+
+is greater than the force of gravity, and it also acts to move the arm back
+ towards equilibrium.
+ The result is a net restoring force that is related to the deviation from
+ equilibrium, which introduces a second, slower oscillatory mode.
+\end_layout
+
+\begin_layout Subsection
+Oscillation about -1º and 45º
+\end_layout
+
+\begin_layout Standard
+Applying the same methods as above, 
+\begin_inset Formula $u_{2_{0}}(-1^{o})=19.60$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{2_{0}}(45^{o})=13.86$
+\end_inset
+
+.
+ With these values and a sinusoidal oscillation as input, however, it is
+ impossible to generate a stable oscillation about either of these points.
+ We will consider the 
+\begin_inset Formula $45^{o}$
+\end_inset
+
+ case first.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig5:45"
+
+\end_inset
+
+ shows the input and response.
+ As can be seen in the figure, 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+ quickly grows to infinity with even the smallest amplitude of oscillation
+ in 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+ (in the case shown, the amplitude is only 0.01).
+ This is because 
+\begin_inset Formula $45^{o}$
+\end_inset
+
+ is not a stable equilibrium point.
+ Consulting Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1 - equilibrium"
+
+\end_inset
+
+, we see that the required equilibrium torque decreases as the angle increases
+ and increases as the angle decreases about 
+\begin_inset Formula $45^{o}$
+\end_inset
+
+.
+ As a result, the combination of 
+\begin_inset Formula $u_{2_{0}}$
+\end_inset
+
+ and gravity acts always acts away from the desired equilibrium point, driving
+ the system unstable.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename matlab/a3_p4_x3_45.png
+	width 2.5in
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename matlab/a3_p4_u2_45.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig5:45"
+
+\end_inset
+
+Plots of Plots of 
+\begin_inset Formula $u_{2}\left(t\right)$
+\end_inset
+
+(right) and 
+\begin_inset Formula $x_{3},\left(t\right)$
+\end_inset
+
+(left) about 
+\begin_inset Formula $45^{o}.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When we attempt to oscillate about 
+\begin_inset Formula $-1^{o}$
+\end_inset
+
+, we are successful only at very small amplitudes.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig6:lowAmp_neg1"
+
+\end_inset
+
+ shows an oscillation about 
+\begin_inset Formula $-1^{o}$
+\end_inset
+
+ with an amplitude of 0.01.
+ The oscillation is stable, but the low-frequency amplitude oscillation
+ is very pronounced because the system is so close to the unstable point
+ of 
+\begin_inset Formula $0^{o}$
+\end_inset
+
+.
+ However, we can see in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig7:unstable_neg1"
+
+\end_inset
+
+ that an amplitude of 0.1 is enough to push the system into the unstable
+ range, causing 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+ to blow up after about ten seconds.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename matlab/a3_p4_x3_1_stable.png
+	width 2.5in
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename matlab/a3_p4_u2_1_stable.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig6:lowAmp_neg1"
+
+\end_inset
+
+Plots of 
+\begin_inset Formula $u_{2}\left(t\right)$
+\end_inset
+
+(right) and 
+\begin_inset Formula $x_{3},\left(t\right)$
+\end_inset
+
+(left) about 
+\begin_inset Formula $-1^{o}$
+\end_inset
+
+with amplitude of 0.01
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename matlab/a3_p4_x3_1_unstable.png
+	width 2.5in
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename matlab/a3_p4_u2_1_unstable.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig7:unstable_neg1"
+
+\end_inset
+
+Plots of 
+\begin_inset Formula $u_{2}\left(t\right)$
+\end_inset
+
+(right) and 
+\begin_inset Formula $x_{3},\left(t\right)$
+\end_inset
+
+(left) about 
+\begin_inset Formula $-1^{o}$
+\end_inset
+
+with amplitude of 0.1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Conclusions
+\end_layout
+
+\begin_layout Standard
+This assignment demonstrated that the dynamics of even a simple physical
+ system can exhibit complex and sometimes surprising behavior.
+ The erratic behavior of the robot arm at and near the system's region of
+ natural instability is proof of the value of feedback controllers, which
+ can shape an unstable system's dynamics into something much more manageable.
+ In practice, a robot such as this one should have a well designed PID or
+ LQR controller in the inner loop of its control system in order to stabilize
+ the system dynamics and make it easy for an operator to move the robot
+ without worrying about driving the system unstable or damaging the actuators.
+\end_layout
+
+\begin_layout Subsection*
+A Final Note:
+\end_layout
+
+\begin_layout Standard
+You may have noticed that my SIMULINK scope output figures are strangly
+ angular, rather than smooth.
+ This is due to some sort of problem in SIMULINK which I have not been able
+ to figure out.
+ Several times when I output scope data I did have smooth lines, but after
+ a MatLab crash and restart, all my lines appeared angular.
+ I am sorry I was not able to fix the problem, but the graphs should be
+ otherwise correct, so I hope you can forgive their unusual appearance.
+\end_layout
+
+\end_body
+\end_document

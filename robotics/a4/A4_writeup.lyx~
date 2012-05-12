@@ -1,0 +1,2236 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+%% You can modify the fonts used in the document be using the
+%% following macros. They take one parameter which is the font
+%% changing command.
+%% \headerfont: the font used in both headers.
+%%              Defaults to sans serif.
+%% \titlefont:  the font used for the title.
+%%              Defaults to \LARGE sans-serif semi bold condensed.
+%% \sectionfont: the font used by \section when beginning a new topic.
+%%              Defaults to sans-serif semi bold condensed.
+%% \itemfont:   the font used in descriptions of items.
+%%              Defaults to sans-serif slanted.
+% to make your name even bigger, uncomment the following line:
+% \titlefont{\Huge}
+%%
+%% You can modify the following parameters using \renewcommand:
+%% \topicmargin: the left margin inside topics.
+%%               Defaults to 20% of the column width (0.20\columnwidth).
+% To get more room for left column of Topic layouts, uncomment following line:
+% \renewcommand{\topicmargin}{0.3\columnwidth}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding default
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25in
+\topmargin 1.25in
+\rightmargin 1.25in
+\bottommargin 1.25in
+\secnumdepth 3
+\tocdepth 5
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Linearization of the Two Link Robot Arm
+\end_layout
+
+\begin_layout Author
+Tarik Tosun, MAE 345 Assignment 4
+\end_layout
+
+\begin_layout Date
+10/20/11
+\end_layout
+
+\begin_layout Abstract
+In this assignment, the dynamics of the Type 2 two-link robotics manipulator
+ (explored in the previous assignment) were linearized about certain points.
+ In doing this, we show the effectiveness of linearization in simplifying
+ the analysis of complicated nonlinear dynamic systems.
+\end_layout
+
+\begin_layout Section
+Linearization of the State Space Model
+\end_layout
+
+\begin_layout Subsection
+Derivation of 
+\begin_inset Formula $F(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $G(t)$
+\end_inset
+
+ from State Space Model
+\end_layout
+
+\begin_layout Standard
+Taking the first-order linearization of the state space model, we aim to
+ express the system in the form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{x\left(t\right)}\thickapprox\mathbf{f}\left[\mathbf{x}_{N}\left(t\right),\mathbf{u}_{N}\left(t\right)\right]+\mathbf{F}\left(t\right)\triangle\mathbf{x}\left(t\right)+\mathbf{G}\left(t\right)\triangle\mathbf{u}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Taking the first-order linearization of the state space model, we find:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\mathbf{F}\left(t\right)=\left[\begin{array}{cccc}
+0 & 1 & 0 & 0\\
+0 & \left.\left(\frac{x_{4}\sin\left(2x_{3}\right)}{\cos^{2}\left(x_{3}\right)}\right)\right|_{eq} & \left.\left(\frac{x_{2}x_{4}\sin\left(2x_{3}\right)+\frac{u_{1}}{ml^{2}}}{\cos^{2}\left(x_{3}\right)}\right)\right|_{eq} & \left.\left(\frac{x_{2}\sin\left(2x_{3}\right)}{\cos^{2}\left(x_{3}\right)}\right)\right|_{eq}\\
+0 & 0 & 0 & 1\\
+0 & \left.\left(\frac{-\sin\left(2x_{3}\right)}{2}\right)\right|_{eq} & \left.\left(\frac{g}{l}\sin\left(x_{3}\right)-x_{2}\cos\left(2x_{3}\right)\right)\right|_{eq} & 0
+\end{array}\right]$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\mathbf{G}\left(t\right)=\left[\begin{array}{cc}
+0 & 0\\
+\left.\left(\frac{1}{ml^{2}\cos^{2}\left(x_{3}\right)}\right)\right|_{eq} & 0\\
+0 & 0\\
+0 & \frac{1}{ml^{2}}
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Constant Conditions
+\end_layout
+
+\begin_layout Standard
+We wish to determine the circumstances under which 
+\series bold
+F
+\series default
+ and 
+\series bold
+G
+\series default
+ are constant.
+ By inspecting the matrices, we see that 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+ and, 
+\begin_inset Formula $x_{4}$
+\end_inset
+
+, and 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+ must be constant in order for 
+\series bold
+F
+\series default
+ and 
+\series bold
+G 
+\series default
+to be constant.
+ Both 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ may vary freely.
+\end_layout
+
+\begin_layout Section
+Analysis about 
+\begin_inset Formula $\theta_{3_{N}}=0^{o},\,\pm45^{o}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We wish to analyze the system under the conditions 
+\begin_inset Formula $\theta_{1_{N}}=x_{1_{N}}=$
+\end_inset
+
+constant and 
+\begin_inset Formula $x_{2_{N}}=x_{4_{N}}=0$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\theta_{2_{N}}=x_{3_{N}}$
+\end_inset
+
+ will take on the values 
+\begin_inset Formula $-45^{o}$
+\end_inset
+
+, 
+\begin_inset Formula $0^{o}$
+\end_inset
+
+, and 
+\begin_inset Formula $45^{o}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Numerical Values of F and G
+\end_layout
+
+\begin_layout Standard
+The numerical values of 
+\series bold
+F
+\series default
+ and 
+\series bold
+G 
+\series default
+under these three conditions are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{3}=-45^{o}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $\mathbf{F}\left(t\right)=\left[\begin{array}{cccc}
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0.5 & -6.93 & 0
+\end{array}\right]$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{G}\left(t\right)=\left[\begin{array}{cc}
+0 & 0\\
+1 & 0\\
+0 & 0\\
+0 & 0.5
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{3}=0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $\mathbf{F}\left(t\right)=\left[\begin{array}{cccc}
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0
+\end{array}\right]$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{G}\left(t\right)=\left[\begin{array}{cc}
+0 & 0\\
+0.5 & 0\\
+0 & 0\\
+0 & 0.5
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{3}=45$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $\mathbf{F}\left(t\right)=\left[\begin{array}{cccc}
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & -0.5 & 6.93 & 0
+\end{array}\right]$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{G}\left(t\right)=\left[\begin{array}{cc}
+0 & 0\\
+1 & 0\\
+0 & 0\\
+0 & 0.5
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Eigenvalues of F
+\end_layout
+
+\begin_layout Standard
+The Eigenvalues of 
+\series bold
+F
+\series default
+ under these three conditions are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{3}=-45^{o}$
+\end_inset
+
+: 
+\begin_inset Formula $\lambda=\pm2.63i,\,0,\,0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{3}=0$
+\end_inset
+
+: 
+\begin_inset Formula $\lambda=0,\,0,\,0,\,0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{3}=45$
+\end_inset
+
+: 
+\begin_inset Formula $\lambda=\pm2.63,\,0,\,0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Initial Angular Rate Perturbations
+\end_layout
+
+\begin_layout Standard
+We seek that values 
+\begin_inset Formula $\triangle u_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+ that will produce initial rate perturbations 
+\begin_inset Formula $\triangle x_{2}\left(0\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\triangle x_{4}\left(0\right)$
+\end_inset
+
+ of 
+\begin_inset Formula $0.1^{o}/sec$
+\end_inset
+
+ under these three conditions.
+ In order to accurately determine these values, we would need to investigate
+ the impulse response of the system.
+ As this was not covered in class, the following values will be used:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{3_{N}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangle u_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-45^{o}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0^{o}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $45^{o}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Step Response to 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Please note: Here I am choosing to discuss the response to 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+ first, and 
+\begin_inset Formula $\triangle u_{1}$
+\end_inset
+
+ second.
+ The system responses to step inputs have been computed and plotted for
+ the values of 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+ given above, and are shown in Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pl45_u2_step"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:zero_u2_step"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:min45_u2_step"
+
+\end_inset
+
+.
+ In all figures, the step occurs at 
+\begin_inset Formula $t=1sec$
+\end_inset
+
+.
+ The step responses illustrate the stability of the system about each of
+ the three equilibrium points explored.
+ Physically, it corresponds to the instantaneous application of a small
+ constant upwards torque at the joint where the transverse arm meets the
+ upright link.
+ For 
+\begin_inset Formula $x_{3_{N}}=45^{o}$
+\end_inset
+
+, we see that the step input quickly drives the system unstable.
+ This can be explained in terms of the system's eigenvalues: 
+\begin_inset Formula $\lambda=\pm2.63,\,0,\,0$
+\end_inset
+
+.
+ They are all real, indicating a non-oscillatory response, and one of them
+ is positive, indicating instability.
+ If a system has even one positive eigenvalue, it will be asymptotically
+ unstable- as time increases, the modes of the system goverend by positive
+ eigenvalues will grow, while those goverened by negative eigenvalues will
+ tend towards zero, causing the unstable modes to dominate.
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $x_{3_{N}}=0^{o}$
+\end_inset
+
+, we also see the system's response growing in an unbounded fashion, albeit
+ more slowly than for 
+\begin_inset Formula $x_{3_{N}}=45^{o}$
+\end_inset
+
+.
+ In this case, the system's eigenvalues are 
+\begin_inset Formula $\lambda=0,\,0,\,0,\,0$
+\end_inset
+
+.
+ This indicates that the system's dynamics are constant, and its response
+ is exactly proportional to the input.
+ The angular acceleration of 
+\begin_inset Formula $\triangle\theta_{2}$
+\end_inset
+
+is constant and proportional to the constant input 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+, so we see 
+\begin_inset Formula $\triangle x_{4}$
+\end_inset
+
+ increasing linearly and 
+\begin_inset Formula $\triangle x_{3}$
+\end_inset
+
+ increasing quadratically.
+\end_layout
+
+\begin_layout Standard
+The system's response for 
+\begin_inset Formula $x_{3_{N}}=-45^{o}$
+\end_inset
+
+ is quite different from that at either of the other two positions - it
+ is stable.
+ We see that the system's nonzero eigenvalues are 
+\begin_inset Formula $\lambda=\pm2.63i,\,0,\,0$
+\end_inset
+
+.
+ They are purely imaginary, consistent with constant-amplitude oscillation
+ (which is exactly what we see).
+ Notice that 
+\begin_inset Formula $\triangle x_{4}$
+\end_inset
+
+ oscillates about zero, while 
+\begin_inset Formula $\triangle x_{3}$
+\end_inset
+
+ oscillates about position slightly above zero.
+ This is point at which the constant input torque and the torque due to
+ gravity (accounted for in the system dynamics matrix) are equal.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename step responses/pl45_u2_step.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pl45_u2_step"
+
+\end_inset
+
+
+\begin_inset Formula $x_{3_{N}}=45^{o}$
+\end_inset
+
+ step response to 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename step responses/zero_u2_step.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:zero_u2_step"
+
+\end_inset
+
+
+\begin_inset Formula $x_{3_{N}}=0^{o}$
+\end_inset
+
+ step response to 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename step responses/min45_u2_step.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:min45_u2_step"
+
+\end_inset
+
+
+\begin_inset Formula $x_{3_{N}}=-45^{o}$
+\end_inset
+
+ step response to 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Step Responses to 
+\begin_inset Formula $\triangle u_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The system responses to step inputs have been computed and plotted for the
+ values of 
+\begin_inset Formula $\triangle u_{1}$
+\end_inset
+
+ given above, and are shown in Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:45_u1_step"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:zero_u1_step"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:min45_u1_step"
+
+\end_inset
+
+.
+ As before, the step occurs at 
+\begin_inset Formula $t=1sec$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The responses can again be explained in terms of the eigenvalues.
+ Examining the responses, we see that the third and fourth eigenvalues of
+ the dynamics matrices (which take on zero values in all three cases) correspond
+ to modes of motion in the 
+\begin_inset Formula $\triangle x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\triangle x_{2}$
+\end_inset
+
+.
+ These states exhibit constant dynamics under all three conditions, with
+ 
+\begin_inset Formula $\triangle x_{1}$
+\end_inset
+
+ increasing linearly and 
+\begin_inset Formula $\triangle x_{2}$
+\end_inset
+
+ increasing quatratically.
+ However,
+\begin_inset Formula $\triangle x_{4}$
+\end_inset
+
+ (and therefore 
+\begin_inset Formula $\triangle x_{3}$
+\end_inset
+
+) is coupled to 
+\begin_inset Formula $\triangle x_{2}$
+\end_inset
+
+ when 
+\begin_inset Formula $\theta_{2_{N}}=x_{3_{N}}\neq0^{o}$
+\end_inset
+
+, so under these conditions we would expect to see exponential and oscillatory
+ responses in 
+\begin_inset Formula $\triangle x_{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\triangle x_{4}$
+\end_inset
+
+.
+ Inspecting the figures, that is exactly what we see.
+ When 
+\begin_inset Formula $x_{2_{N}}=45^{o}$
+\end_inset
+
+, we see exponential growth in 
+\begin_inset Formula $\triangle x_{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\triangle x_{4}$
+\end_inset
+
+ due to the real positive eigenvalue that governs their behavior under these
+ conditions.
+ When 
+\begin_inset Formula $x_{2_{N}}=-45^{o}$
+\end_inset
+
+, we see a purely oscillatory response in 
+\begin_inset Formula $\triangle x_{4}$
+\end_inset
+
+, and an oscillatory but increasing response in 
+\begin_inset Formula $\triangle x_{3}$
+\end_inset
+
+.
+ There is motion on two time scales here.
+ On the slow time scale, we see the 'equilibrium angle' of the transverse
+ arm (the angle at which the gravitational and centripital torques are equal)
+ increase linearly with increasing angular velocity.
+ On the fast time scale, we see oscillations about this 'equilibrium angle'
+ due to the oscillatory mode of the first two imaginary eigenvalues.
+ For 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $x_{3_{N}}=0^{o}$
+\end_inset
+
+, the first two states are decoupled from the second two states, so we see
+ no response in 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $\triangle x_{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\triangle x_{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename step responses/pl45_u1_step.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:45_u1_step"
+
+\end_inset
+
+
+\begin_inset Formula $x_{3_{N}}=45^{o}$
+\end_inset
+
+ step response to 
+\begin_inset Formula $\triangle u_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename step responses/zero_u1_step.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:zero_u1_step"
+
+\end_inset
+
+
+\begin_inset Formula $x_{3_{N}}=0^{o}$
+\end_inset
+
+ step response to 
+\begin_inset Formula $\triangle u_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename step responses/min45_u1_step.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:min45_u1_step"
+
+\end_inset
+
+
+\begin_inset Formula $x_{3_{N}}=-45^{o}$
+\end_inset
+
+ step response to 
+\begin_inset Formula $\triangle u_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bode Plots for 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+ inputs
+\end_layout
+
+\begin_layout Standard
+Bode plots for gain from input 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+ to system states 
+\begin_inset Formula $\triangle x_{4}$
+\end_inset
+
+ and 
+\begin_inset Formula $\triangle x_{3}$
+\end_inset
+
+ have been computed for each of the three states discussed previously.
+ Bode plots for gain from 
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+ to 
+\begin_inset Formula $\triangle x_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\triangle x_{1}$
+\end_inset
+
+ were not plotted, because these gains are always zero (
+\begin_inset Formula $\triangle u_{2}$
+\end_inset
+
+ is a torque on the transverse arm, and has no effect on the rotation of
+ the upright link).
+\end_layout
+
+\begin_layout Standard
+Bode plots for 
+\begin_inset Formula $x_{3_{N}}=45^{o}$
+\end_inset
+
+are show in Figures c and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:x4_p45_bode"
+
+\end_inset
+
+ below.
+ For 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\frac{\triangle x_{3}\left(j\omega\right)}{\triangle u_{2}\left(j\omega\right)}$
+\end_inset
+
+,
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ we see a steady gain of about -23db for low frequencies, with gain dropping
+ off at -40db/decade for increasing frequencies after the two poles at 2.36
+ rad/sec.
+ Intuitively this makes sense, as we would expect the angular inertia of
+ the arm to make it a natural 
+\begin_inset Quotes eld
+\end_inset
+
+low-pass filter.
+\begin_inset Quotes erd
+\end_inset
+
+ When we consider 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\frac{\triangle x_{4}\left(j\omega\right)}{\triangle u_{2}\left(j\omega\right)}$
+\end_inset
+
+, we are dealing with the derivative of 
+\begin_inset Formula $\frac{\triangle x_{3}\left(j\omega\right)}{\triangle u_{2}\left(j\omega\right)}$
+\end_inset
+
+.
+ In the frequency domain, this corresponds to multiplying the transfer function
+ of 
+\begin_inset Formula $\frac{\triangle x_{3}\left(j\omega\right)}{\triangle u_{2}\left(j\omega\right)}$
+\end_inset
+
+ by s, or adding a zero at zero frequency.
+ When we look at 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:x4_p45_bode"
+
+\end_inset
+
+, we see that it does indeed correspond to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:x4_p45_bode"
+
+\end_inset
+
+ with a zero added at zero frequency.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename bode plots/x3_p45_bode.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:x3_p45_bode"
+
+\end_inset
+
+Bode plot for 
+\begin_inset Formula $\frac{\triangle x_{3}\left(j\omega\right)}{\triangle u_{2}\left(j\omega\right)}$
+\end_inset
+
+for 
+\begin_inset Formula $\triangle x_{3_{N}}=45^{o}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename bode plots/x4_p45_bode.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:x4_p45_bode"
+
+\end_inset
+
+Bode plot for 
+\begin_inset Formula $\frac{\triangle x_{4}\left(j\omega\right)}{\triangle u_{2}\left(j\omega\right)}$
+\end_inset
+
+for 
+\begin_inset Formula $\triangle x_{3_{N}}=45^{o}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Bode plots for 
+\begin_inset Formula $x_{3_{N}}=0^{o}$
+\end_inset
+
+are shown in Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:x3_zero_bode"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:x4_zero_bode"
+
+\end_inset
+
+ below.
+ As expected, in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:x3_zero_bode"
+
+\end_inset
+
+ we see a second-order pole at zero (corresponding to the zero eigenvalues),
+ evidenced by the downward slope of -40db/decade.
+ In Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:x4_zero_bode"
+
+\end_inset
+
+, we see a downward slope of only -20db/decade, due to the fact that 
+\begin_inset Formula $\triangle x_{4}$
+\end_inset
+
+ is the derivative of 
+\begin_inset Formula $\triangle x_{3}$
+\end_inset
+
+, placing a zero at zero frequency.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename bode plots/x3_zero_bode.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:x3_zero_bode"
+
+\end_inset
+
+Bode plot for 
+\begin_inset Formula $\frac{\triangle x_{3}\left(j\omega\right)}{\triangle u_{2}\left(j\omega\right)}$
+\end_inset
+
+for 
+\begin_inset Formula $\triangle x_{3_{N}}=0^{o}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename bode plots/x4_zero_bode.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:x4_zero_bode"
+
+\end_inset
+
+Bode plot for 
+\begin_inset Formula $\frac{\triangle x_{4}\left(j\omega\right)}{\triangle u_{2}\left(j\omega\right)}$
+\end_inset
+
+for 
+\begin_inset Formula $\triangle x_{3_{N}}=0^{o}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bode plots for 
+\begin_inset Formula $x_{3_{N}}=-45^{o}$
+\end_inset
+
+are show in Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:x3_m45_bode"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:x4_m45_bode"
+
+\end_inset
+
+ below.
+ We see the typical response of a second-order oscillatory system here,
+ with a clear resonant peak at 2.63.
+ Because the system has no damping, the peak is infinite, and the phase
+ drop is a sharp right angle.
+ Were damping included in the model, the curves would become increasingly
+ smooth with greater damping.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename bode plots/x3_m45_bode.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:x3_m45_bode"
+
+\end_inset
+
+Bode plot for 
+\begin_inset Formula $\frac{\triangle x_{3}\left(j\omega\right)}{\triangle u_{2}\left(j\omega\right)}$
+\end_inset
+
+for 
+\begin_inset Formula $\triangle x_{3_{N}}=-45^{o}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename bode plots/x4_m45_bode.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:x4_m45_bode"
+
+\end_inset
+
+Bode plot for 
+\begin_inset Formula $\frac{\triangle x_{4}\left(j\omega\right)}{\triangle u_{2}\left(j\omega\right)}$
+\end_inset
+
+for 
+\begin_inset Formula $\triangle x_{3_{N}}=-45^{o}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Effects of Constant Angular Rate About Vertical Axis
+\end_layout
+
+\begin_layout Standard
+We assume that 
+\begin_inset Formula $\dot{\theta}_{1}=x_{2_{N}}$
+\end_inset
+
+takes on constant values between 
+\begin_inset Formula $0^{o}/sec$
+\end_inset
+
+ and 
+\begin_inset Formula $720^{o}/sec$
+\end_inset
+
+.
+ We wish to determine the effect of this nominal angular rate on the eigenvalues
+ of 
+\series bold
+F
+\series default
+ under the three conditions previously explored.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:zero_eig"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p45_eig"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:min45_eig"
+
+\end_inset
+
+ show plots of the real and imaginary part of the eigenvalues for each of
+ the three cases explored as 
+\begin_inset Formula $\dot{\theta}_{1}=x_{2_{N}}$
+\end_inset
+
+ varies between 
+\begin_inset Formula $0^{o}/sec$
+\end_inset
+
+ and 
+\begin_inset Formula $720^{o}/sec$
+\end_inset
+
+.
+ The rotation of the upright introduces a centripetal force which changes
+ the values of the first two eigenvalues, which control the dynamics of
+ the transverse arm.
+ We begin by investigating 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:zero_eig"
+
+\end_inset
+
+, showing the zero degree case.
+ We see that the centripital force introduces an oscillatory mode into the
+ system, as evidenced by the pure imaginary eigenvalues that grow with the
+ square root of the angular rate.
+ This makes physical sense, as the centripetal force will act as a restoring
+ moment towards the equilibrium point of 
+\begin_inset Formula $\theta_{2}=x_{3}=0^{o}$
+\end_inset
+
+.
+ The force acts in the horizontal direction and its moment arm is proportional
+ to 
+\begin_inset Formula $\sin\left(\theta_{2}\right)$
+\end_inset
+
+, so we expect to see an oscillatory mode analogous to that of a simple
+ pendulum.
+\end_layout
+
+\begin_layout Standard
+In the 
+\begin_inset Formula $\pm45^{o}$
+\end_inset
+
+ cases, we see similar effects.
+ In both 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p45_eig"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:min45_eig"
+
+\end_inset
+
+ we see that 
+\begin_inset Formula $\dot{\theta}_{1}\thickapprox400^{o}/sec$
+\end_inset
+
+ appears to be a special point - in the 
+\begin_inset Formula $45^{o}$
+\end_inset
+
+case, the eigenvalues switch from being entirely real to all zero to entirely
+ imaginary at this point, and in the 
+\begin_inset Formula $-45^{o}$
+\end_inset
+
+ case the imaginary eigenvalues suddenly cross through zero.
+ This angular velocity corresponds to the point at which the centripetal
+ torque exactly balances the gravitational torque for the moment arm correspondi
+ng to 
+\begin_inset Formula $\pm45^{o}$
+\end_inset
+
+.
+ For rotations slower than 
+\begin_inset Formula $400^{o}/sec$
+\end_inset
+
+, gravitational effects dominate.
+ In the 
+\begin_inset Formula $45^{o}$
+\end_inset
+
+ case, this means the system is unstable, for reasons discussed in the previous
+ assignment - the torque required to balance gravity decreases with increasing
+ angle, so perturbations lead to unbounded growth.
+ In the 
+\begin_inset Formula $-45^{o}$
+\end_inset
+
+ case, the system is stable and oscillatory, and becomes more oscillatory
+ with increasing angular velocity because the centripital force acts as
+ an additional restoring torque.
+ At 
+\begin_inset Formula $400^{o}/sec$
+\end_inset
+
+, gravity and the centripetal force are perfectly balanced, so all eigenvalues
+ are zero.
+ For rotations faster than 
+\begin_inset Formula $400^{o}/sec$
+\end_inset
+
+, the centripetal effects dominate.
+ In the 
+\begin_inset Formula $-45^{o}$
+\end_inset
+
+ case, the system is still stable, and the oscillatory imaginary eigenvalues
+ continue to increase with angular velocity at the same rate as before.
+ For the 
+\begin_inset Formula $45^{o}$
+\end_inset
+
+ case however, the system dynamics have changed - the overall torque now
+ acts as a restoring torque, and we have oscillatory imaginary eigenvalues.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename eigenvalue plots/zero_re_eig.png
+	width 2.5in
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename eigenvalue plots/zero_eig.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:zero_eig"
+
+\end_inset
+
+Plot of im(eig(
+\series bold
+F
+\series default
+)) at 
+\begin_inset Formula $x_{3_{N}}=0^{o}$
+\end_inset
+
+ as 
+\begin_inset Formula $\dot{\theta}_{1}=x_{2_{N}}$
+\end_inset
+
+ varies between 
+\begin_inset Formula $0^{o}/sec$
+\end_inset
+
+ and 
+\begin_inset Formula $720^{o}/sec$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename eigenvalue plots/p45_re_eig.png
+	width 2.5in
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename eigenvalue plots/p45_eig.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p45_eig"
+
+\end_inset
+
+Plots of eig(
+\series bold
+F
+\series default
+) at 
+\begin_inset Formula $x_{3_{N}}=45^{o}$
+\end_inset
+
+ as as 
+\begin_inset Formula $\dot{\theta}_{1}=x_{2_{N}}$
+\end_inset
+
+ varies between 
+\begin_inset Formula $0^{o}/sec$
+\end_inset
+
+ and 
+\begin_inset Formula $720^{o}/sec$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename eigenvalue plots/min45_re_eig.png
+	width 2.5in
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename eigenvalue plots/min45_eig.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:min45_eig"
+
+\end_inset
+
+Plot of im(eig(
+\series bold
+F
+\series default
+)) at 
+\begin_inset Formula $x_{3_{N}}=-45^{o}$
+\end_inset
+
+ as as 
+\begin_inset Formula $\dot{\theta}_{1}=x_{2_{N}}$
+\end_inset
+
+ varies between 
+\begin_inset Formula $0^{o}/sec$
+\end_inset
+
+ and 
+\begin_inset Formula $720^{o}/sec$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section*
+Conclusions
+\end_layout
+
+\begin_layout Standard
+The results of these analyses show that important qualities of dynamic systems
+ (such as stability to perturbation) can often be accurately determined
+ through linearization about points of interest.
+ Linearization can simplify the mathematics required to analyze a complicated
+ nonlinear system a great deal, making it a very useful tool in the study
+ of dynamic systems.
+ It is important to note, however, that these results are valid 
+\shape italic
+only in the vicinity of the linearization point.
+ 
+\shape default
+For example, our linearized equations about 
+\begin_inset Formula $\theta_{2_{N}}=-45^{o}$
+\end_inset
+
+indicate that 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ will increase linearly with increasing 
+\begin_inset Formula $\dot{\theta}_{1}$
+\end_inset
+
+ for arbitrarily large values of 
+\begin_inset Formula $\dot{\theta}_{1}$
+\end_inset
+
+.
+ Physically, this is quite incorrect - 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ may only increase until it reaches 
+\begin_inset Formula $0^{o}$
+\end_inset
+
+.
+ While linearization is a powerful tool, we must be careful to apply linearized
+ equations only where they are valid.
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,25 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% crossover.m
+% Tarik Tosun, MAE 345, 12/1/11
+% Description:
+%   Takes four binary strings as a column vector, and a crossover index value.
+%   Crosses the strings at this crossover site.
+%   It is up to the user to pass in only binary strings (zeros and ones).
+% Created: 12/1/11
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function offspring = crossover(parents, cross_index)
+    L = size(parents,2);    %string length
+    %%% Arg Checking %%%
+    if(size(parents,1)~=4)
+        error('did not recieve four parent strings');
+    end
+    if(~(cross_index>0 && cros_index<L))
+        error('cross_index out of bounds');
+    end
+    %%%%%%%%%%%%%%%%%%%%
+    
+    
+    
+
+end
+

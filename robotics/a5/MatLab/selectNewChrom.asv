@@ -1,0 +1,15 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% selectNewChrom.m
+% Tarik Tosun, MAE 345 Assignment 5, 12/1/11
+% Description:
+%   Given the 
+% Created 12/1/11.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function newChrom = selectNewChrom(chrom,J,Jt)
+    prob = J/Jt;
+    
+
+
+
+end

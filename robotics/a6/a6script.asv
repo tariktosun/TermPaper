@@ -1,0 +1,42 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% a6script.m
+% Tarik Tosun, MAE 345 Assignment 6 Neural Network
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% create target matrix (3x21)
+% convention:  row 1 - BRCA1, row 2 - BRCA2, row 3 - Sporadic
+%              Sample columns are arranged in same order as spreadsheet.
+clear all; clc
+o = ones(1,7);
+z = zeros(1,7);
+targets = [o z z; z o z; z z o];
+%% create training matrix (18x21)
+load set2.mat;  % load training set 1 - first 18 from the paper.
+%% Do hidden neurons - epoch performance analysis:
+nh = [1 2 4 8 16];
+epochs = [1 2 3 4 5 6 7 8 9 10];
+N = size(nh,2);
+E = size(epochs,2);
+conf = zeros(N,E);
+for i=1:N
+    for j=1:E
+        [net,outputs] = create_pr_net(set2,targets,nh(i),epochs(j));
+        [c,cm,ind,per] = confusion(targets,outputs);
+        conf(i,j) = c;
+    end
+end
+
+figure; surf(epochs,nh,conf)
+xlabel('Epochs')
+ylabel('Hidden Nodes')
+zlabel('Confusion Percentage')
+title('Confusion Percentage vs. Number of Epochs and Hidden Nodes')
+
+%% Effects of learning rate on network convergence
+
+%% leave-one-out validation
+N = 21; % number of samples
+for i=1:N
+    
+end

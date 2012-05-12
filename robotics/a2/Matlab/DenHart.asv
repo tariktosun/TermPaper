@@ -1,0 +1,20 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DenHart.m
+% Tarik Tosun, MAE 345, Princeton University
+% Created 9/27/11
+% Description:
+%   Function returning the transformation matrix from one joint to the next
+%   given the Denavit-Hartenberg parameters theta, l, alpha, and d.
+% Usage;
+%   transMat = DenHart(theta, l, alpha, d);
+%
+% Last Edited: 9/27/11
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function transMat = DenHart(theta, l, alpha, d)
+t = 
+transMat = [cos(theta)  -sin(theta)*cos(alpha)  sin(theta)*sin(alpha)   l*cos(theta);
+            sin(theta)  cos(theta)*cos(alpha)   -cos(theta)*sin(alpha)  l*sin(theta);
+            0           sin(alpha)              cos(alpha)              d;
+            0           0                       0                       1            ];
+end
