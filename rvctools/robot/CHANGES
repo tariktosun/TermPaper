@@ -1,0 +1,446 @@
+mlint checks on all functions
+ - language fixups,
+ - future compatibility: findstr->strfind, strvcat->char, istr->ischar
+ - added message identifiers to some error() calls
+ - speed up by matrix preallocations.
+ - formatting changes, tabs -> 4 spaces
+General documentation improvement, particularly in the mobile robot functions
+    - comments in more consistent format
+Improvements to documentation generator script
+    - all functions/classes in alpha order
+    - all methods in alpha order but constructor first
+/simulink: 
+    help doco for all blocks, 
+    new ikine blocks, 
+    fixed bugs in icon generation for kinematic blocks
+    speedup plot, jtraj
+    fixed sl_quadcopter_vs
+Speedup fkine by changes to Link.A
+Fix friction model in Link.friction, MEX rne.
+Speed up in the mobile robot functions, ParticleFilter 4x faster, vectorized
+    some functions in Vehicle and Sensor classes.
+New unit test framework
+    - over 400 assertions
+    - takes 15 mins to run!
+    - verified changes against the (new) unit test suite
+    - verified performance with MATLAB R2012a
+
+Changes:
+* visualize() method in mobile robot planning methods replaced by plot()
+
+New:
+* jacob_dot() method of SerialLink now works.
+* Vehicle.plotv() is a static method that replaces plot_vehicle()
+
+------------------------------------------------------------------------
+r802 | pic | 2012-04-29 17:30:56 +1000 (Sun, 29 Apr 2012) | 7 lines
+Changed paths:
+   M /matlab/robot/trunk/@SerialLink/animate.m
+   M /matlab/robot/trunk/@SerialLink/cinertia.m
+   M /matlab/robot/trunk/@SerialLink/fdyn.m
+   M /matlab/robot/trunk/@SerialLink/fkine.m
+   M /matlab/robot/trunk/@SerialLink/friction.m
+   M /matlab/robot/trunk/@SerialLink/ikine.m
+   M /matlab/robot/trunk/@SerialLink/ikine3.m
+   M /matlab/robot/trunk/@SerialLink/ikine6s.m
+   M /matlab/robot/trunk/@SerialLink/inertia.m
+   M /matlab/robot/trunk/@SerialLink/itorque.m
+   M /matlab/robot/trunk/@SerialLink/jacob0.m
+   M /matlab/robot/trunk/@SerialLink/jacobn.m
+   M /matlab/robot/trunk/@SerialLink/nofriction.m
+   M /matlab/robot/trunk/@SerialLink/perturb.m
+   M /matlab/robot/trunk/@SerialLink/plot.m
+   M /matlab/robot/trunk/@SerialLink/rne_dh.m
+   M /matlab/robot/trunk/@SerialLink/rne_mdh.m
+   M /matlab/robot/trunk/DHFactor.m
+   M /matlab/robot/trunk/DXform.m
+   M /matlab/robot/trunk/Dstar.m
+   M /matlab/robot/trunk/Link.m
+   M /matlab/robot/trunk/PRM.m
+   M /matlab/robot/trunk/Quaternion.m
+   M /matlab/robot/trunk/RRT.m
+   M /matlab/robot/trunk/RangeBearingSensor.m
+   D /matlab/robot/trunk/TODO
+   D /matlab/robot/trunk/WHATSNEW
+   M /matlab/robot/trunk/distancexform.m
+   M /matlab/robot/trunk/distrib/Makefile
+   M /matlab/robot/trunk/distrib/allfuncs.txt
+   M /matlab/robot/trunk/eul2jac.m
+   M /matlab/robot/trunk/eul2r.m
+   A /matlab/robot/trunk/interfaces/labview
+   A /matlab/robot/trunk/interfaces/nxt
+   A /matlab/robot/trunk/interfaces/ros
+   M /matlab/robot/trunk/ishomog.m
+   M /matlab/robot/trunk/jsingu.m
+   M /matlab/robot/trunk/jtraj.m
+   M /matlab/robot/trunk/lspb.m
+   M /matlab/robot/trunk/makemap.m
+   M /matlab/robot/trunk/mdl_S4ABB2p8.m
+   M /matlab/robot/trunk/mdl_p8.m
+   M /matlab/robot/trunk/mdl_puma560.m
+   M /matlab/robot/trunk/mstraj.m
+   M /matlab/robot/trunk/qplot.m
+   M /matlab/robot/trunk/r2t.m
+   M /matlab/robot/trunk/rpy2jac.m
+   M /matlab/robot/trunk/rpy2r.m
+   M /matlab/robot/trunk/rt2tr.m
+   M /matlab/robot/trunk/rtdemo.m
+   M /matlab/robot/trunk/simulink/ploop_test.mdl
+   M /matlab/robot/trunk/simulink/sl_ctorque.mdl
+   A /matlab/robot/trunk/simulink/sl_ctorque2.mdl
+   M /matlab/robot/trunk/simulink/sl_drivepoint.mdl
+   M /matlab/robot/trunk/simulink/sl_fforward.mdl
+   M /matlab/robot/trunk/simulink/sl_flex.mdl
+   M /matlab/robot/trunk/skew.m
+   M /matlab/robot/trunk/startup_rtb.m
+   M /matlab/robot/trunk/t2r.m
+   M /matlab/robot/trunk/test_jacob_dot.m
+   M /matlab/robot/trunk/tpoly.m
+   M /matlab/robot/trunk/tr2angvec.m
+   M /matlab/robot/trunk/tr2eul.m
+   M /matlab/robot/trunk/tr2rpy.m
+   M /matlab/robot/trunk/tr2rt.m
+   M /matlab/robot/trunk/tranimate.m
+   M /matlab/robot/trunk/transl.m
+   M /matlab/robot/trunk/trnorm.m
+   M /matlab/robot/trunk/trplot2.m
+   M /matlab/robot/trunk/trprint.m
+   M /matlab/robot/trunk/unit_test/DifferentialMotionTest.m
+   A /matlab/robot/trunk/unit_test/LinkTest.m
+   M /matlab/robot/trunk/unit_test/LocnTest.m
+   M /matlab/robot/trunk/unit_test/PGraphTest.m
+   M /matlab/robot/trunk/unit_test/PlanTest.m
+   M /matlab/robot/trunk/unit_test/QuaternionTest.m
+   M /matlab/robot/trunk/unit_test/SerialLinkTest.m
+   D /matlab/robot/trunk/unit_test/TrajectoryGenerationTest.m
+   A /matlab/robot/trunk/unit_test/TrajectoryTest.m (from /matlab/robot/trunk/unit_test/TrajectoryGenerationTest.m:761)
+   M /matlab/robot/trunk/unit_test/TransformationsTest.m
+   M /matlab/robot/trunk/unit_test/UtilityTest.m
+   M /matlab/robot/trunk/vex.m
+
+Documentation and code upgrade pass.
+- top of file documentation blocks updated and more consistent
+- tabs changed to 4 space indentation
+- code upgrade, mlint syntax and performance updates
+- error() added message identifier strings
+- MATLAB version tracking: findstr->strfind, isstr->ischar, strvcat->char
+
+------------------------------------------------------------------------
+r801 | pic | 2012-04-29 17:24:21 +1000 (Sun, 29 Apr 2012) | 4 lines
+Changed paths:
+   D /matlab/robot/trunk/CHANGES
+   M /matlab/robot/trunk/CITATION
+   M /matlab/robot/trunk/CONTRIB
+   M /matlab/robot/trunk/README
+   M /matlab/robot/trunk/RELEASE
+
+Remove CHANGES from version control.
+Update citation in CITATION.
+Update RTB details in README
+
+------------------------------------------------------------------------
+r799 | pic | 2012-04-29 16:37:24 +1000 (Sun, 29 Apr 2012) | 3 lines
+Changed paths:
+   M /matlab/robot/trunk/eul2tr.m
+   M /matlab/robot/trunk/rpy2tr.m
+
+These are now simple wrappers of the X2r versions.
+Perhaps less efficient but saves on code replication.
+
+------------------------------------------------------------------------
+r798 | pic | 2012-04-29 16:35:46 +1000 (Sun, 29 Apr 2012) | 2 lines
+Changed paths:
+   M /matlab/robot/trunk/@SerialLink/coriolis.m
+
+Added single argument call format, useful for Simulink block.
+
+------------------------------------------------------------------------
+r797 | pic | 2012-04-29 16:32:42 +1000 (Sun, 29 Apr 2012) | 3 lines
+Changed paths:
+   M /matlab/robot/trunk/@SerialLink/accel.m
+
+Doco updates
+Improved logic for argument checking.
+
+------------------------------------------------------------------------
+r796 | pic | 2012-04-29 16:29:45 +1000 (Sun, 29 Apr 2012) | 2 lines
+Changed paths:
+   D /matlab/robot/trunk/@SerialLink/showlink.m
+
+This functionality exists in dyn
+
+------------------------------------------------------------------------
+r795 | pic | 2012-04-29 16:28:53 +1000 (Sun, 29 Apr 2012) | 3 lines
+Changed paths:
+   M /matlab/robot/trunk/@SerialLink/maniplty.m
+
+Added options for rotational or translational manipulability.
+Works for Yoshikawa and Asada.
+
+------------------------------------------------------------------------
+r794 | pic | 2012-04-29 16:27:59 +1000 (Sun, 29 Apr 2012) | 7 lines
+Changed paths:
+   M /matlab/robot/trunk/@SerialLink/SerialLink.m
+
+Major doco upgrades
+Support for record function
+Removed some properties no longer required after mods to plot method
+Changed strvcat to char
+many mlint tidyups
+dyn method now just a wrapper for Link.dyn
+
+------------------------------------------------------------------------
+r793 | pic | 2012-04-29 16:25:14 +1000 (Sun, 29 Apr 2012) | 4 lines
+Changed paths:
+   M /matlab/robot/trunk/@SerialLink/jacob_dot.m
+
+Rewritten, and tested.
+Based on textbook of Angeles.
+This implementation currently not very efficient.
+
+------------------------------------------------------------------------
+r792 | pic | 2012-04-29 16:24:18 +1000 (Sun, 29 Apr 2012) | 3 lines
+Changed paths:
+   M /matlab/robot/trunk/@SerialLink/rne.m
+
+Allow variable output arguments to be passed to the rne_dh and rne_mdh
+functions.
+
+------------------------------------------------------------------------
+r791 | pic | 2012-04-29 16:23:29 +1000 (Sun, 29 Apr 2012) | 5 lines
+Changed paths:
+   M /matlab/robot/trunk/@SerialLink/teach.m
+
+Mods to support changes to the way UserData is organized by SerialLink.plot
+Slider scaling now comes from qlim properties and must be set for prismatic links.
+Added the logic to implement record button.
+
+
+------------------------------------------------------------------------
+r790 | pic | 2012-04-29 16:20:38 +1000 (Sun, 29 Apr 2012) | 3 lines
+Changed paths:
+   A /matlab/robot/trunk/Frame.m
+
+New class to ultimately replace trplot and tranimate.
+Work in progress
+
+------------------------------------------------------------------------
+r789 | pic | 2012-04-29 16:19:16 +1000 (Sun, 29 Apr 2012) | 2 lines
+Changed paths:
+   M /matlab/robot/trunk/trplot.m
+
+Added support for 3D plots using anaglyph glasses.
+
+------------------------------------------------------------------------
+r788 | pic | 2012-04-29 16:17:56 +1000 (Sun, 29 Apr 2012) | 2 lines
+Changed paths:
+   M /matlab/robot/trunk/mex/Makefile
+
+Add uninstall rule to remove mex files.
+
+------------------------------------------------------------------------
+r787 | pic | 2012-04-29 16:17:37 +1000 (Sun, 29 Apr 2012) | 2 lines
+Changed paths:
+   M /matlab/robot/trunk/mex/check.m
+
+Removed hacks to investigate friction errors in rne.
+
+------------------------------------------------------------------------
+r786 | pic | 2012-04-29 16:13:19 +1000 (Sun, 29 Apr 2012) | 2 lines
+Changed paths:
+   M /matlab/robot/trunk/mex/Makefile
+
+Added loop to copy frne.mex* to ../@SerialLink/rne.mex*
+
+------------------------------------------------------------------------
+r785 | pic | 2012-04-29 16:12:41 +1000 (Sun, 29 Apr 2012) | 3 lines
+Changed paths:
+   M /matlab/robot/trunk/mex/frne.c
+
+Remove check for number of arguments, it's incorrect for all usage patterns.
+Update copyright year.
+
+------------------------------------------------------------------------
+r784 | pic | 2012-04-29 16:11:47 +1000 (Sun, 29 Apr 2012) | 2 lines
+Changed paths:
+   M /matlab/robot/trunk/mex/ne.c
+
+Fix bug in viscous friction, should be multipled by G^2
+
+------------------------------------------------------------------------
+r783 | pic | 2012-04-29 16:10:48 +1000 (Sun, 29 Apr 2012) | 3 lines
+Changed paths:
+   M /matlab/robot/trunk/doc/Makefile
+   M /matlab/robot/trunk/doc/robot.tex
+
+Create release.tex which defines release and release date which is
+included in the main document (page 2 and footer).
+
+------------------------------------------------------------------------
+r782 | pic | 2012-04-28 16:33:04 +1000 (Sat, 28 Apr 2012) | 2 lines
+Changed paths:
+   M /matlab/robot/trunk/simulink/roblocks.mdl
+
+Added ikine and ikine6s blocks
+
+------------------------------------------------------------------------
+r781 | pic | 2012-04-28 16:11:15 +1000 (Sat, 28 Apr 2012) | 5 lines
+Changed paths:
+   A /matlab/robot/trunk/@SerialLink/animate.m
+   M /matlab/robot/trunk/@SerialLink/plot.m
+   M /matlab/robot/trunk/simulink/slplotbot.m
+
+Fixed longstanding problem where plotblock in simulink is very slow unless mouse is over it.
+- eliminated auto raise and also set delay to zero.
+- split SerialLink.plot into plot and animate methods, the latter is very low overhead
+and is used in slplotbot.
+
+------------------------------------------------------------------------
+r780 | pic | 2012-04-25 21:25:45 +1000 (Wed, 25 Apr 2012) | 4 lines
+Changed paths:
+   M /matlab/robot/trunk/simulink/roblocks.mdl
+
+Removed some diagnostic prints
+Removed sph.img.jacobian
+changed some output widths to automatic, works fine...
+
+------------------------------------------------------------------------
+r779 | pic | 2012-04-25 21:23:48 +1000 (Wed, 25 Apr 2012) | 4 lines
+Changed paths:
+   M /matlab/robot/trunk/simulink/sl_quadcopter_vs.mdl
+
+Changed Jacobian block to normal one, no need for sph.image jacobian.
+Added pinvJac instead of invJac and rejigged output wiring accordingly.
+
+
+------------------------------------------------------------------------
+r778 | pic | 2012-04-25 21:22:19 +1000 (Wed, 25 Apr 2012) | 2 lines
+Changed paths:
+   D /matlab/robot/trunk/simulink/quadcopter_dynamics.m
+   D /matlab/robot/trunk/simulink/quadcopter_plot.m
+   A /matlab/robot/trunk/simulink/quadrotor_dynamics.m (from /matlab/robot/trunk/simulink/quadcopter_dynamics.m:724)
+   A /matlab/robot/trunk/simulink/quadrotor_plot.m (from /matlab/robot/trunk/simulink/quadcopter_plot.m:724)
+
+Rename functions, eventually will be rid of quadcopter...
+
+------------------------------------------------------------------------
+r776 | pic | 2012-04-25 12:07:47 +1000 (Wed, 25 Apr 2012) | 7 lines
+Changed paths:
+   M /matlab/robot/trunk/simulink/roblocks.mdl
+
+Eliminated disabled blocks
+Finished doco for all blocks
+ what is the purpose of "image jacobian spherical", chap 16 exercises??
+rearranged all the sub-palettes, made them prettier
+fixed the robot.name problem in fkine, jacobian*, only displayed when
+ a valid parameter is present, used texmode to make the icons prettier.
+
+------------------------------------------------------------------------
+r775 | pic | 2012-04-23 17:35:17 +1000 (Mon, 23 Apr 2012) | 4 lines
+Changed paths:
+   M /matlab/robot/trunk/simulink/roblocks.mdl
+   M /matlab/robot/trunk/simulink/sl_ctorque.mdl
+   M /matlab/robot/trunk/simulink/sl_driveline.mdl
+   M /matlab/robot/trunk/simulink/sl_drivepoint.mdl
+   M /matlab/robot/trunk/simulink/sl_fforward.mdl
+   M /matlab/robot/trunk/simulink/sl_jspace.mdl
+   M /matlab/robot/trunk/simulink/sl_pursuit.mdl
+   M /matlab/robot/trunk/simulink/sl_quadcopter.mdl
+   M /matlab/robot/trunk/simulink/sl_quadcopter_vs.mdl
+
+Added per block documentation to most blocks in roblocks library.
+Fixed error in Trajectory palette which was actually 'Trajectory '
+Global change of name of blocks from quadcopter to quadrotor
+
+------------------------------------------------------------------------
+r774 | pic | 2012-04-22 12:20:14 +1000 (Sun, 22 Apr 2012) | 6 lines
+Changed paths:
+   M /matlab/robot/trunk/Quaternion.m
+
+fix bug in tr2q that gave error with an HT
+added overloaded methods for == and ~=
+plot passes all options through to trplot
+mlint tidy ups
+documentation tidy up, added refs
+
+------------------------------------------------------------------------
+r773 | pic | 2012-04-22 12:16:15 +1000 (Sun, 22 Apr 2012) | 4 lines
+Changed paths:
+   D /matlab/robot/trunk/unit_test/MobileRobot.m
+   A /matlab/robot/trunk/unit_test/PlotTest.m (from /matlab/robot/trunk/unit_test/PlotsTest.m:761)
+   D /matlab/robot/trunk/unit_test/PlotsTest.m
+   M /matlab/robot/trunk/unit_test/QuaternionTest.m
+
+move one test from Plot to Quaternion
+reformating
+extensive tests for trplot and tranimate
+
+------------------------------------------------------------------------
+r772 | pic | 2012-04-15 17:58:43 +1000 (Sun, 15 Apr 2012) | 2 lines
+Changed paths:
+   M /matlab/robot/trunk/RRT.m
+
+Major doco changes.
+Removed hardwired vehicle model, now passed a Vehicle object.
+------------------------------------------------------------------------
+r771 | pic | 2012-04-15 17:57:44 +1000 (Sun, 15 Apr 2012) | 3 lines
+Changed paths:
+   M /matlab/robot/trunk/Bug2.m
+   M /matlab/robot/trunk/DXform.m
+   M /matlab/robot/trunk/Dstar.m
+   M /matlab/robot/trunk/Navigation.m
+   M /matlab/robot/trunk/PRM.m
+
+Major improvment in doco
+Change visualize() to plot()
+More options
+------------------------------------------------------------------------
+r762 | pic | 2012-04-15 17:15:31 +1000 (Sun, 15 Apr 2012) | 6 lines
+Changed paths:
+   M /matlab/robot/trunk/EKF.m
+   M /matlab/robot/trunk/Map.m
+   M /matlab/robot/trunk/ParticleFilter.m
+   M /matlab/robot/trunk/RandomPath.m
+   M /matlab/robot/trunk/RangeBearingSensor.m
+   M /matlab/robot/trunk/Sensor.m
+   M /matlab/robot/trunk/Vehicle.m
+
+Significant documentation upgrades.
+Vectorized a number of functions to increase speed, particularly for
+ParticleFilter.
+Changed visualize() methods to plot().
+Added static plotv() method to Vehicle() to animate a vehicle.
+
+------------------------------------------------------------------------
+r761 | pic | 2012-04-15 17:10:28 +1000 (Sun, 15 Apr 2012) | 3 lines
+Changed paths:
+   D /matlab/robot/trunk/unit_test/DifferentialMotion.m
+   A /matlab/robot/trunk/unit_test/DifferentialMotionTest.m (from /matlab/robot/trunk/unit_test/DifferentialMotion.m:734)
+   A /matlab/robot/trunk/unit_test/LocnTest.m
+   A /matlab/robot/trunk/unit_test/PGraphTest.m
+   A /matlab/robot/trunk/unit_test/PlanTest.m
+   D /matlab/robot/trunk/unit_test/Plots.m
+   A /matlab/robot/trunk/unit_test/PlotsTest.m (from /matlab/robot/trunk/unit_test/Plots.m:734)
+   D /matlab/robot/trunk/unit_test/Quaternion.m
+   A /matlab/robot/trunk/unit_test/QuaternionTest.m (from /matlab/robot/trunk/unit_test/Quaternion.m:734)
+   D /matlab/robot/trunk/unit_test/SerialLink.m
+   M /matlab/robot/trunk/unit_test/SerialLinkModels.m
+   A /matlab/robot/trunk/unit_test/SerialLinkTest.m (from /matlab/robot/trunk/unit_test/SerialLink.m:734)
+   D /matlab/robot/trunk/unit_test/TrajectoryGeneration.m
+   A /matlab/robot/trunk/unit_test/TrajectoryGenerationTest.m (from /matlab/robot/trunk/unit_test/TrajectoryGeneration.m:734)
+   D /matlab/robot/trunk/unit_test/Transformations.m
+   A /matlab/robot/trunk/unit_test/TransformationsTest.m (from /matlab/robot/trunk/unit_test/Transformations.m:734)
+   D /matlab/robot/trunk/unit_test/Utility.m
+   A /matlab/robot/trunk/unit_test/UtilityTest.m (from /matlab/robot/trunk/unit_test/Utility.m:734)
+
+File renaming (should all end with Test)
+Additional unit tests and whole test suites.
+
+------------------------------------------------------------------------
+r760 | pic | 2012-03-27 07:28:07 +1000 (Tue, 27 Mar 2012) | 2 lines
+Changed paths:
+   M /matlab/robot/trunk/@SerialLink/friction.m
+
+Update for v9 SerialLink object.
+
+------------------------------------------------------------------------
