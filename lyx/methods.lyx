@@ -154,6 +154,53 @@ name "fig:robotSimulink"
 \end_layout
 
 \begin_layout Subsection
+LQR Design
+\end_layout
+
+\begin_layout Standard
+An LQR controller was designed to stabilize and control the system.
+ Analysis indicated that variation in 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ contributed the most nonlinear effects to the system dynamics, so the system
+ was linearized about a set of operating points spanning the domain of operation
+ for 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+.
+ LQR state feedback matrices were then computed at each of these points
+ to form a gain-scheduled controller.
+\end_layout
+
+\begin_layout Subsubsection
+Analysis of System Dynamics
+\end_layout
+
+\begin_layout Standard
+Inspecting the dynamic equations of the robot (Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ss1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ss4"
+
+\end_inset
+
+), we see that the dynamics vary nonlinearly with 
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Subsubsection
 Steady-State Operating Points
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -292,7 +339,7 @@ The shape of this plot agrees with our natural intuitions.
  essentially what this dynamic system represents.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Linearization
 \end_layout
 
@@ -352,22 +399,55 @@ L,
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 LQR Gain Matrix Computation
+\end_layout
+
+\begin_layout Standard
+LQR state feedback gain matrices were computed for the linearized system
+ at each operating point.
+ 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ was varied between -90 and 90 degrees in intervals of five degrees; 
+\begin_inset Formula $\dot{\theta}_{2},\,\theta_{1},$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{\theta}_{1}$
+\end_inset
+
+ were set to zero.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Plot-of-LQR"
+
+\end_inset
+
+ shows the variation of these gains with 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+.
+ There is a great deal of variation over the domain for all elements of
+ the gain matrix, indicating that linearization of the system at a single
+ operating point would likely produce an unsuccessful controller.
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
-sideways false
-status open
+sideways true
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/robotSimulink.png
-	width 4.5in
+	filename images/LQRbyOperating.png
+	width 9in
 
 \end_inset
 
