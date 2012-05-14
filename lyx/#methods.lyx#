@@ -160,17 +160,7 @@ reference "eq:ss4"
 \begin_inset Formula $\theta_{2}$
 \end_inset
 
- is the most significant 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Finish this section!
-\end_layout
-
-\end_inset
-
-
+ is the most significant
 \end_layout
 
 \begin_layout Standard
@@ -178,7 +168,7 @@ Finish this section!
 \end_layout
 
 \begin_layout Subsubsection
-Steady-State Operating Points 
+Steady-State Operating Points
 \begin_inset CommandInset citation
 LatexCommand cite
 key "345pset3"
@@ -492,19 +482,6 @@ reference "eq:Ljac"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-maybe include plot of variation of F and G with set point here.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 LQR Gain Matrix Computation
 \end_layout
@@ -540,16 +517,6 @@ reference "fig:Plot-of-LQR"
  There is a great deal of variation over the domain for all elements of
  the gain matrix, indicating that linearization of the system at a single
  operating point would likely produce an unsuccessful controller.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-more analysis
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -612,16 +579,6 @@ reference "fig:robotSimulink"
 \end_inset
 
 .
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-talk more here
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -679,25 +636,7 @@ reference "fig:controllerSimulink"
 \end_inset
 
 .
- The gain scheduler is implemented using a number of linear interpolation
- table lookup blocks as shown in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:schedulerSimulink"
-
-\end_inset
-
-.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-talk more here.
-\end_layout
-
-\end_inset
-
-
+ The Gain scheduling is implemented in the subsystem shown in Figure 
 \end_layout
 
 \begin_layout Standard
@@ -745,12 +684,12 @@ name "fig:controllerSimulink"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/schedulerSimulink.png
+	filename images/controllerSimulink.png
 	width 5in
 
 \end_inset
@@ -762,14 +701,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-SIMULINK Gain scheduling model 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:schedulerSimulink"
-
-\end_inset
-
-
+SIMULINK Controller Model 
 \end_layout
 
 \end_inset

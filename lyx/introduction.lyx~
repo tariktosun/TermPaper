@@ -309,6 +309,21 @@ key "MAE345Assignment3"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $d_{1}$
 \end_inset
 
@@ -343,12 +358,17 @@ key "MAE345Assignment3"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center

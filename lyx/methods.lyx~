@@ -104,75 +104,28 @@ LQR controllers require an LTI system, so an LQR controller could not be
 \end_layout
 
 \begin_layout Subsection
-Robot Model
-\end_layout
-
-\begin_layout Standard
-The system dynamic models was translated into the SIMULINK block model subsystem
- shown in 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/robotSimulink.png
-	width 4.5in
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-SIMULINK Robot Model 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:robotSimulink"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
 LQR Design
 \end_layout
 
 \begin_layout Standard
 An LQR controller was designed to stabilize and control the system.
- To account for nonlinear dynamics, system Jacobians were computed to allow
- linearization about operating points in the state space.
- The dynamics of the system were then analyzed to determine which states
- contributed the most important nonlinear effects b
-\end_layout
-
-\begin_layout Standard
-The system was then linearized about a set of operating points spanning
- the domain of operation for 
+ Analysis indicated that variation in 
 \begin_inset Formula $\theta_{2}$
 \end_inset
 
-, and LQR state feedback matrices were computed at each of these points
+ contributed the most nonlinear effects to the system dynamics, so the system
+ was linearized about a set of operating points spanning the domain of operation
+ for 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+.
+ LQR state feedback matrices were then computed at each of these points
  to form a gain-scheduled controller.
+\end_layout
+
+\begin_layout Subsubsection
+Analysis of System Dynamics
 \end_layout
 
 \begin_layout Standard
@@ -191,6 +144,33 @@ reference "eq:ss4"
 \end_inset
 
 ), we see that the dynamics vary nonlinearly with 
+\begin_inset Formula $\overset{.}{\theta}_{1}$
+\end_inset
+
+,
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $\overset{.}{\theta}_{2}$
+\end_inset
+
+.
+ Of these, the variation with 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ is the most significant 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Finish this section!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -293,7 +273,7 @@ name "fig:1 - equilibrium"
 \begin_layout Standard
 \begin_inset Formula 
 \[
-x_{4}=\dot{x_{3}}=-\frac{g}{l}\cos(x_{3})-\frac{x_{2}}{2}\sin(2x_{3})+\frac{u_{2}}{ml^{2}}
+x_{4}=\dot{x}_{3}=-\frac{g}{l}\cos(x_{3})-\frac{x_{2}}{2}\sin(2x_{3})+\frac{u_{2}}{ml^{2}}
 \]
 
 \end_inset
@@ -341,10 +321,55 @@ Linearization
 \end_layout
 
 \begin_layout Standard
-System dynamics were linearized so that a gain-scheduled for the development
- of a gain-scheduled LQR controller.
- Jacobian matrices 
+We wish to express our system in the linearized form given in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LinearizedForm"
+
+\end_inset
+
+ at each operating point.
+ As the operating points are steady-state, the nominal solutions are simply
+ 
+\begin_inset Formula $\overset{.}{\mathbf{x}}_{0}(t)=0$
+\end_inset
+
+.
+ We wish to express the perturbation solution 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Delta\overset{.}{\mathbf{x}}(t)$
+\end_inset
+
+ in the linear time-varying form shown in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:PerturbationForm"
+
+\end_inset
+
+, where 
+\family default
 \series bold
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
 F
 \series default
 , 
@@ -353,26 +378,97 @@ G
 \series default
 , and 
 \series bold
-L,
+H
 \series default
- are given in equations .
+ are Jacobian matrices of 
+\begin_inset Formula $\mathbf{f}\left(\overset{.}{\mathbf{x}}_{0}(t),\,\mathbf{u}_{0}(t),\,\mathbf{w}_{0}(t),\, t\right)$
+\end_inset
+
+ with respect to 
+\series bold
+x
+\series default
+, 
+\series bold
+u
+\series default
+, and 
+\series bold
+w
+\series default
+, respectively.
+ These matrices are given in Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Fjac"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Gjac"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Ljac"
+
+\end_inset
+
+.
+ Disturbances are modeled as torques applied to the joints, so disturbance
+ dynamics are identical to control dynamics and 
+\begin_inset Formula $\mathbf{L}=\mathbf{G}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{F}=\label{eq:Fjac}
+\overset{.}{\mathbf{x}}_{0}(t)+\Delta\overset{.}{\mathbf{x}}(t)=\mathbf{f}\left(\overset{.}{\mathbf{x}}_{0}(t),\,\mathbf{u}_{0}(t),\,\mathbf{w}_{0}(t),\, t\right)+\Delta\mathbf{f}\left(\overset{.}{\mathbf{x}}_{0}(t),\,\mathbf{u}_{0}(t),\,\mathbf{w}_{0}(t),\, t\right)\label{eq:LinearizedForm}
 \end{equation}
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{G}=\left[\begin{array}{cc}
+\Delta\overset{.}{\mathbf{x}}(t)=\mathbf{F}(t)\Delta\mathbf{x}(t)+\mathbf{G}(t)\Delta\mathbf{u}(t)+\mathbf{L}(t)\Delta\mathbf{w}(t)\label{eq:PerturbationForm}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{F}=\frac{\partial\mathbf{f}}{\partial\mathbf{x}}=\left[\begin{array}{cccc}
+0 & 1 & 0 & 0\\
+0 & \frac{\mathrm{x_{4}}\sin\left(2\mathrm{x_{3}}\right)}{\cos^{2}\left(\mathrm{x_{3}}\right)} & \frac{2\sin\left(\mathrm{x_{3}}\right)\,\left(\frac{\mathrm{u1}}{l^{2}m}+\mathrm{x_{2}}x_{4}\sin\left(2\mathrm{x_{3}}\right)\right)}{\cos^{3}\left(\mathrm{x_{3}}\right)}+\frac{2\mathrm{x_{2}}\mathrm{x_{4}}\cos\left(2\mathrm{x_{3}}\right)}{\cos\left(x_{3}\right)^{2}} & \frac{\mathrm{x_{2}}\sin\left(2\mathrm{x_{3}}\right)}{\cos\left(\mathrm{x_{3}}\right)^{2}}\\
+0 & 0 & 0 & 1\\
+0 & \sin\left(2\mathrm{x_{3}}\right) & \frac{g\sin\left(\mathrm{x_{3}}\right)}{l}-\mathrm{x_{2}}\cos\left(2\mathrm{x_{3}}\right) & 0
+\end{array}\right]\label{eq:Fjac}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{G}=\frac{\partial\mathbf{f}}{\partial\mathbf{u}}=\left[\begin{array}{cc}
 0 & 0\\
 \frac{1}{\left(\cos\left({\it x3}\right)\right)^{2}ml^{2}} & 0\\
 0 & 0\\
@@ -388,8 +484,21 @@ L,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{L}=\label{eq:Ljac}
+\mathbf{L}=\mathbf{G}\label{eq:Ljac}
 \end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+maybe include plot of variation of F and G with set point here.
+\end_layout
 
 \end_inset
 
@@ -431,6 +540,16 @@ reference "fig:Plot-of-LQR"
  There is a great deal of variation over the domain for all elements of
  the gain matrix, indicating that linearization of the system at a single
  operating point would likely produce an unsuccessful controller.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+more analysis
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -463,6 +582,194 @@ name "fig:Plot-of-LQR"
 \end_inset
 
  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Simulink Model
+\end_layout
+
+\begin_layout Subsubsection
+Robot Model
+\end_layout
+
+\begin_layout Standard
+The system dynamic models was translated into the SIMULINK block model subsystem
+ shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:robotSimulink"
+
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+talk more here
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/robotSimulink.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+SIMULINK Robot Model 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:robotSimulink"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Controller Model
+\end_layout
+
+\begin_layout Standard
+The controller was also implemented in SIMULINK, and is show in the block
+ model in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:controllerSimulink"
+
+\end_inset
+
+.
+ The gain scheduler is implemented using a number of linear interpolation
+ table lookup blocks as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:schedulerSimulink"
+
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+talk more here.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/controllerSimulink.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+SIMULINK Controller Model 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:controllerSimulink"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/schedulerSimulink.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+SIMULINK Gain scheduling model 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:schedulerSimulink"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

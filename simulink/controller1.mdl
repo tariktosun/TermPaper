@@ -1,12 +1,12 @@
 Model {
   Name			  "controller1"
-  Version		  7.7
+  Version		  7.6
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.91"
+    ComputedModelVersion    "1.93"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -18,7 +18,7 @@ Model {
       Type		      "Cell"
       Dimension		      2
       Cell		      "HDLSubsystem"
-      Cell		      "controller0"
+      Cell		      "controller1"
       PropName		      "mdlProps"
     }
   }
@@ -35,11 +35,11 @@ Model {
   Creator		  "tarik"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "ttosun"
+  LastModifiedBy	  "tarik"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun May 13 17:52:50 2012"
-  RTWModifiedTimeStamp	  258821217
-  ModelVersionFormat	  "1.%<AutoIncrement:91>"
+  LastModifiedDate	  "Mon May 14 15:19:03 2012"
+  RTWModifiedTimeStamp	  258909310
+  ModelVersionFormat	  "1.%<AutoIncrement:93>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -114,13 +114,13 @@ Model {
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      2
-      Version		      "1.11.0"
+      Version		      "1.10.0"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
 	  $ObjectID		  3
-	  Version		  "1.11.0"
+	  Version		  "1.10.0"
 	  StartTime		  "0.0"
 	  StopTime		  "10"
 	  AbsTol		  "auto"
@@ -154,7 +154,7 @@ Model {
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  4
-	  Version		  "1.11.0"
+	  Version		  "1.10.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -166,7 +166,6 @@ Model {
 	  SaveFinalState	  off
 	  SaveCompleteFinalSimState off
 	  SaveFormat		  "Array"
-	  SignalLoggingSaveFormat "ModelDataLogs"
 	  SaveOutput		  on
 	  SaveState		  off
 	  SignalLogging		  on
@@ -186,7 +185,7 @@ Model {
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  5
-	  Version		  "1.11.0"
+	  Version		  "1.10.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -237,11 +236,10 @@ Model {
 	  BufferReusableBoundary  on
 	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
-	  AccelParallelForEachSubsystem	on
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  6
-	  Version		  "1.11.0"
+	  Version		  "1.10.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -312,7 +310,6 @@ Model {
 	  ModelReferenceExtraNoncontSigs "error"
 	  StateNameClashWarn	  "warning"
 	  SimStateInterfaceChecksumMismatchMsg "warning"
-	  SimStateOlderReleaseMsg "error"
 	  InitInArrayFormatMsg	  "warning"
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
@@ -327,7 +324,7 @@ Model {
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  7
-	  Version		  "1.11.0"
+	  Version		  "1.10.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -364,7 +361,7 @@ Model {
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  8
-	  Version		  "1.11.0"
+	  Version		  "1.10.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
@@ -379,7 +376,7 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  9
-	  Version		  "1.11.0"
+	  Version		  "1.10.0"
 	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
@@ -394,7 +391,7 @@ Model {
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  10
-	  Version		  "1.11.0"
+	  Version		  "1.10.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    7
@@ -437,7 +434,6 @@ Model {
 	  GenerateTraceReportEml  off
 	  GenerateCodeInfo	  off
 	  GenerateSLWebview	  off
-	  GenerateCodeMetricsReport off
 	  RTWCompilerOptimization "Off"
 	  CheckMdlBeforeBuild	  "Off"
 	  CustomRebuildMode	  "OnUpdate"
@@ -446,7 +442,7 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      11
-	      Version		      "1.11.0"
+	      Version		      "1.10.0"
 	      Array {
 		Type			"Cell"
 		Dimension		21
@@ -511,7 +507,7 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      12
-	      Version		      "1.11.0"
+	      Version		      "1.10.0"
 	      Array {
 		Type			"Cell"
 		Dimension		16
@@ -539,8 +535,6 @@ Model {
 	      TargetFunctionLibrary   "ANSI_C"
 	      UtilityFuncGeneration   "Auto"
 	      ERTMultiwordTypeDef     "System defined"
-	      FunctionExecutionProfile off
-	      CodeExecutionProfiling  off
 	      ERTCodeCoverageTool     "None"
 	      ERTMultiwordLength      256
 	      MultiwordLength	      2048
@@ -586,7 +580,6 @@ Model {
 	      RTWCAPISignals	      off
 	      RTWCAPIParams	      off
 	      RTWCAPIStates	      off
-	      RTWCAPIRootIO	      off
 	      GenerateASAP2	      off
 	    }
 	    PropName		    "Components"
@@ -594,15 +587,22 @@ Model {
 	}
 	hdlcoderui.hdlcc {
 	  $ObjectID		  13
-	  Version		  "1.11.0"
+	  Version		  "1.10.0"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    1
+	    Cell		    ""
+	    PropName		    "HDLConfigFile"
+	  }
+	  HDLCActiveTab		  "0"
 	}
 	PropName		"Components"
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 250, 24, 1190, 829 ] 
+      ConfigPrmDlgPosition    " [ 250, 24, 1190, 829 ] "
     }
     PropName		    "ConfigurationSets"
   }
@@ -673,7 +673,6 @@ Model {
     Block {
       BlockType		      Inport
       Port		      "1"
-      OutputFunctionCall      off
       OutMin		      "[]"
       OutMax		      "[]"
       OutDataTypeStr	      "Inherit: auto"
@@ -704,7 +703,7 @@ Model {
       ContinuousStateAttributes	"''"
     }
     Block {
-      BlockType		      Lookup_n-D
+      BlockType		      "Lookup_n-D"
       NumberOfTableDimensions "2"
       BreakpointsForDimension1 "[10,22,31]"
       BreakpointsForDimension2 "[10,22,31]"
@@ -836,8 +835,7 @@ Model {
       IntermediateResultsDataTypeStr "Inherit: Same as output"
       InterpMethod	      "Linear"
       ExtrapMethod	      "Linear"
-      DiagnosticForOutOfRangeInput "None"
-      RemoveProtectionInput   off
+      ActionForOutOfRangeInput "None"
       UseLastTableValue	      off
       SampleTime	      "-1"
       InputSameDT	      on
@@ -958,7 +956,7 @@ Model {
   }
   System {
     Name		    "controller1"
-    Location		    [185, 298, 1237, 869]
+    Location		    [0, 53, 1440, 900]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -978,7 +976,7 @@ Model {
       Name		      "Demux"
       SID		      "97"
       Ports		      [1, 4]
-      Position		      [345, 398, 350, 482]
+      Position		      [580, 498, 585, 582]
       ShowName		      off
       DisplayOption	      "bar"
     }
@@ -987,7 +985,7 @@ Model {
       Name		      "Demux1"
       SID		      "32"
       Ports		      [1, 2]
-      Position		      [550, 170, 555, 265]
+      Position		      [790, 270, 795, 365]
       ShowName		      off
       Outputs		      "2"
       DisplayOption	      "bar"
@@ -997,7 +995,7 @@ Model {
       Name		      "Demux2"
       SID		      "98"
       Ports		      [1, 4]
-      Position		      [735, 403, 740, 487]
+      Position		      [960, 518, 965, 602]
       ShowName		      off
       DisplayOption	      "bar"
     }
@@ -1006,7 +1004,7 @@ Model {
       Name		      "Input Trajectory"
       SID		      "86"
       Ports		      [0, 2]
-      Position		      [45, 214, 145, 256]
+      Position		      [285, 314, 385, 356]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1030,7 +1028,7 @@ Model {
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
 	Block {
-	  BlockType		  Lookup_n-D
+	  BlockType		  "Lookup_n-D"
 	  Name			  "1-D Lookup\nTable"
 	  SID			  "95"
 	  Ports			  [1, 1]
@@ -1042,7 +1040,7 @@ Model {
 	  RndMeth		  "Simplest"
 	}
 	Block {
-	  BlockType		  Lookup_n-D
+	  BlockType		  "Lookup_n-D"
 	  Name			  "1-D Lookup\nTable1"
 	  SID			  "96"
 	  Ports			  [1, 1]
@@ -1111,7 +1109,7 @@ Model {
       Name		      "Matrix Gain"
       SID		      "30"
       Ports		      [2, 1]
-      Position		      [445, 199, 500, 241]
+      Position		      [685, 299, 740, 341]
       Multiplication	      "Matrix(*)"
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -1123,7 +1121,7 @@ Model {
       Name		      "Mux"
       SID		      "28"
       Ports		      [4, 1]
-      Position		      [310, 187, 315, 273]
+      Position		      [550, 287, 555, 373]
       ShowName		      off
       DisplayOption	      "bar"
     }
@@ -1132,7 +1130,7 @@ Model {
       Name		      "Mux1"
       SID		      "29"
       Ports		      [4, 1]
-      Position		      [835, 172, 840, 258]
+      Position		      [1075, 272, 1080, 358]
       ShowName		      off
       DisplayOption	      "bar"
     }
@@ -1141,7 +1139,7 @@ Model {
       Name		      "Mux2"
       SID		      "99"
       Ports		      [2, 1]
-      Position		      [795, 381, 800, 419]
+      Position		      [1025, 531, 1030, 569]
       ShowName		      off
       Inputs		      "2"
       DisplayOption	      "bar"
@@ -1151,7 +1149,7 @@ Model {
       Name		      "Mux3"
       SID		      "100"
       Ports		      [2, 1]
-      Position		      [815, 476, 820, 514]
+      Position		      [1045, 591, 1050, 629]
       ShowName		      off
       Inputs		      "2"
       DisplayOption	      "bar"
@@ -1161,7 +1159,7 @@ Model {
       Name		      "Robot Model"
       SID		      "1"
       Ports		      [2, 4]
-      Position		      [615, 175, 790, 265]
+      Position		      [855, 275, 1030, 365]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1171,8 +1169,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Robot Model"
-	Location		[88, 257, 1501, 838]
-	Open			on
+	Location		[26, 257, 1439, 838]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1217,22 +1215,6 @@ Model {
 	  ShowName		  off
 	  Inputs		  "2"
 	  DisplayOption		  "bar"
-	  Port {
-	    PortNumber		    1
-	    PropagatedSignals	    ", "
-	    Array {
-	      Type		      "Struct"
-	      Dimension		      1
-	      MATStruct {
-		Type			"in"
-		OpenLoop		"off"
-		BusElementName		""
-	      }
-	      PropName		      "LinearAnalysisIO"
-	    }
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  Mux
@@ -1282,21 +1264,6 @@ Model {
 	  RTWMemSecDataInternal	  "Inherit from model"
 	  RTWMemSecDataParameters "Inherit from model"
 	  GeneratePreprocessorConditionals off
-	  Port {
-	    PortNumber		    1
-	    Array {
-	      Type		      "Struct"
-	      Dimension		      1
-	      MATStruct {
-		Type			"out"
-		OpenLoop		"off"
-		BusElementName		""
-	      }
-	      PropName		      "LinearAnalysisIO"
-	    }
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  Constant
@@ -1563,7 +1530,7 @@ Model {
       BlockType		      Fcn
       Name		      "SS torque"
       SID		      "60"
-      Position		      [460, 280, 520, 310]
+      Position		      [700, 380, 760, 410]
       Expr		      "2*9.807*1*cos(u(3)*pi/180)"
     }
     Block {
@@ -1571,7 +1538,7 @@ Model {
       Name		      "Sum"
       SID		      "25"
       Ports		      [2, 1]
-      Position		      [380, 220, 400, 240]
+      Position		      [620, 320, 640, 340]
       ShowName		      off
       IconShape		      "round"
       Inputs		      "|+-"
@@ -1584,7 +1551,7 @@ Model {
       Name		      "Sum1"
       SID		      "54"
       Ports		      [2, 1]
-      Position		      [585, 235, 605, 255]
+      Position		      [825, 335, 845, 355]
       ShowName		      off
       IconShape		      "round"
       Inputs		      "|++"
@@ -1597,7 +1564,7 @@ Model {
       Name		      "scheduler"
       SID		      "64"
       Ports		      [1, 1]
-      Position		      [305, 79, 405, 121]
+      Position		      [540, 229, 640, 271]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1607,8 +1574,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"scheduler"
-	Location		[444, 351, 1705, 948]
-	Open			off
+	Location		[73, 149, 1334, 746]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1647,7 +1614,7 @@ Model {
 	  OutputDimensions	  "[2,4]"
 	}
 	Block {
-	  BlockType		  Lookup_n-D
+	  BlockType		  "Lookup_n-D"
 	  Name			  "k11"
 	  SID			  "67"
 	  Ports			  [1, 1]
@@ -1659,7 +1626,7 @@ Model {
 	  RndMeth		  "Simplest"
 	}
 	Block {
-	  BlockType		  Lookup_n-D
+	  BlockType		  "Lookup_n-D"
 	  Name			  "k12"
 	  SID			  "69"
 	  Ports			  [1, 1]
@@ -1671,7 +1638,7 @@ Model {
 	  RndMeth		  "Simplest"
 	}
 	Block {
-	  BlockType		  Lookup_n-D
+	  BlockType		  "Lookup_n-D"
 	  Name			  "k13"
 	  SID			  "71"
 	  Ports			  [1, 1]
@@ -1683,7 +1650,7 @@ Model {
 	  RndMeth		  "Simplest"
 	}
 	Block {
-	  BlockType		  Lookup_n-D
+	  BlockType		  "Lookup_n-D"
 	  Name			  "k14"
 	  SID			  "73"
 	  Ports			  [1, 1]
@@ -1695,7 +1662,7 @@ Model {
 	  RndMeth		  "Simplest"
 	}
 	Block {
-	  BlockType		  Lookup_n-D
+	  BlockType		  "Lookup_n-D"
 	  Name			  "k21"
 	  SID			  "68"
 	  Ports			  [1, 1]
@@ -1707,7 +1674,7 @@ Model {
 	  RndMeth		  "Simplest"
 	}
 	Block {
-	  BlockType		  Lookup_n-D
+	  BlockType		  "Lookup_n-D"
 	  Name			  "k22"
 	  SID			  "70"
 	  Ports			  [1, 1]
@@ -1719,7 +1686,7 @@ Model {
 	  RndMeth		  "Simplest"
 	}
 	Block {
-	  BlockType		  Lookup_n-D
+	  BlockType		  "Lookup_n-D"
 	  Name			  "k23"
 	  SID			  "72"
 	  Ports			  [1, 1]
@@ -1731,7 +1698,7 @@ Model {
 	  RndMeth		  "Simplest"
 	}
 	Block {
-	  BlockType		  Lookup_n-D
+	  BlockType		  "Lookup_n-D"
 	  Name			  "k24"
 	  SID			  "74"
 	  Ports			  [1, 1]
@@ -1824,7 +1791,7 @@ Model {
 	Line {
 	  SrcBlock		  "k11"
 	  SrcPort		  1
-	  Points		  [5, 0; 0, 150; 680, 0]
+	  Points		  [5, 0; 0, 155; 680, 0]
 	  DstBlock		  "Mux"
 	  DstPort		  1
 	}
@@ -1832,7 +1799,7 @@ Model {
 	  Labels		  [2, 0]
 	  SrcBlock		  "k21"
 	  SrcPort		  1
-	  Points		  [20, 0; 0, 70; 650, 0; 0, -175]
+	  Points		  [20, 0; 0, 75; 650, 0; 0, -180]
 	  DstBlock		  "Mux"
 	  DstPort		  2
 	}
@@ -1885,9 +1852,9 @@ Model {
       Name		      "state 1"
       SID		      "37"
       Ports		      [1]
-      Position		      [845, 384, 875, 416]
+      Position		      [1075, 534, 1105, 566]
       Floating		      off
-      Location		      [1300, 583, 1864, 898]
+      Location		      [871, 579, 1435, 894]
       Open		      on
       NumInputPorts	      "1"
       List {
@@ -1906,9 +1873,9 @@ Model {
       Name		      "state 2"
       SID		      "35"
       Ports		      [1]
-      Position		      [845, 479, 875, 511]
+      Position		      [1075, 594, 1105, 626]
       Floating		      off
-      Location		      [1288, 213, 1871, 509]
+      Location		      [852, 213, 1435, 509]
       Open		      on
       NumInputPorts	      "1"
       List {
@@ -1925,35 +1892,35 @@ Model {
       BlockType		      Constant
       Name		      "theta1 nom"
       SID		      "23"
-      Position		      [140, 85, 170, 115]
+      Position		      [125, 300, 155, 330]
       Value		      "10"
     }
     Block {
       BlockType		      Constant
       Name		      "theta1dot nom"
       SID		      "24"
-      Position		      [215, 190, 245, 220]
+      Position		      [455, 290, 485, 320]
       Value		      "0"
     }
     Block {
       BlockType		      Constant
       Name		      "theta2 nom"
       SID		      "26"
-      Position		      [140, 315, 170, 345]
+      Position		      [70, 415, 100, 445]
       Value		      "-45"
     }
     Block {
       BlockType		      Constant
       Name		      "theta2dot nom"
       SID		      "27"
-      Position		      [215, 300, 245, 330]
+      Position		      [455, 400, 485, 430]
       Value		      "0"
     }
     Block {
       BlockType		      Constant
       Name		      "zero1"
       SID		      "58"
-      Position		      [340, 160, 370, 190]
+      Position		      [145, 235, 175, 265]
       Value		      "[1 2.23 0 0; 0 0 1 2.23]"
     }
     Line {
@@ -1975,6 +1942,7 @@ Model {
       SrcPort		      1
       Points		      [10, 0]
       Branch {
+	Points			[0, 210]
 	DstBlock		"Demux"
 	DstPort			1
       }
@@ -2010,7 +1978,7 @@ Model {
       SrcPort		      3
       Points		      [0, -5; 10, 0]
       Branch {
-	Points			[-5, 0; 0, -165; -510, 0]
+	Points			[-5, 0; 0, -110; -515, 0]
 	DstBlock		"scheduler"
 	DstPort			1
       }
@@ -2036,7 +2004,7 @@ Model {
 	DstPort			2
       }
       Branch {
-	Points			[0, 110]
+	Points			[0, 125]
 	DstBlock		"Demux2"
 	DstPort			1
       }
@@ -2097,14 +2065,14 @@ Model {
     Line {
       SrcBlock		      "Demux"
       SrcPort		      3
-      Points		      [50, 0; 0, 55]
+      Points		      [45, 0; 0, 70]
       DstBlock		      "Mux3"
       DstPort		      2
     }
     Line {
       SrcBlock		      "Demux2"
       SrcPort		      1
-      Points		      [15, 0; 0, -5]
+      Points		      [20, 0; 0, 30]
       DstBlock		      "Mux2"
       DstPort		      2
     }
@@ -2117,7 +2085,7 @@ Model {
     Line {
       SrcBlock		      "Demux"
       SrcPort		      1
-      Points		      [0, -50; 425, 0]
+      Points		      [420, 0]
       DstBlock		      "Mux2"
       DstPort		      1
     }
@@ -2130,30 +2098,30 @@ Model {
     Line {
       SrcBlock		      "Demux2"
       SrcPort		      3
-      Points		      [25, 0; 0, 30]
+      Points		      [0, 30]
       DstBlock		      "Mux3"
       DstPort		      1
     }
     Line {
       SrcBlock		      "scheduler"
       SrcPort		      1
-      Points		      [10, 0; 0, 110]
+      Points		      [15, 0; 0, 60]
       DstBlock		      "Matrix Gain"
       DstPort		      1
     }
     Annotation {
       Name		      "Input"
-      Position		      [346, 495]
+      Position		      [586, 605]
     }
     Annotation {
       Name		      "output"
-      Position		      [735, 494]
+      Position		      [965, 644]
     }
   }
 }
 # Finite State Machines
 #
-#    Stateflow Version 7.5 (R2010a) dated Mar  5 2011, 00:01:50
+#    Stateflow Version 7.5 (R2010a) dated Aug  8 2010, 22:51:52
 #
 #
 
@@ -2165,7 +2133,7 @@ Stateflow {
     created		    "13-May-2012 16:35:35"
     isLibrary		    0
     firstTarget		    2
-    sfVersion		    75014001
+    sfVersion		    75014000.000003
   }
   target {
     id			    2

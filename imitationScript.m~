@@ -1,0 +1,12 @@
+% manipulatorScript.m
+% for MAE 546 Term Paper
+
+%% Create chains:
+m = twoLinkManipulator(sum(kLMotion.chain.lengths));
+
+%% make imitation:
+
+mIm = motionImitation(kLMotion, m, 'cost_joints_ee', 'noscale', 1);
+
+%% animate:
+figure; headAnimate(kLMotion, mIm);

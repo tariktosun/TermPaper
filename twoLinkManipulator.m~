@@ -1,0 +1,20 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% twoLinkManipulator.m
+% Tarik Tosun, Princeton University
+% MAE 546 Final Assignment
+%
+% Returns kinematic chain of total length L corresponding to the two-link
+% manipulator used in MAE 546 Term Paper and in MAE 345 Assignment 3.
+%
+% Created 5/13/12
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function arm = twoLinkManipulator(L)
+    addpath('/home/tarik/tarik_retargeter/chainsolver');
+    setup(); load('params.mat');
+
+    orient = inline('[0, 0, 0, 0]','x');
+    roll = inline(['[0, 0, ' num2str(d) ', r'],'r');    nl(1)=1;
+    
+
+end
