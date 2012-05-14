@@ -28,7 +28,7 @@ logicalmkup
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command default
+\bibtex_command bibtex
 \index_command default
 \paperfontsize 12
 \spacing single
@@ -46,6 +46,11 @@ logicalmkup
 \suppress_date false
 \use_refstyle 1
 \branch Introduction
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch Abstract
 \selected 1
 \filename_suffix 0
 \color #faf0e6
@@ -104,6 +109,21 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch Abstract
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "abstract.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -120,6 +140,24 @@ filename "introduction.lyx"
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bibliograpy"
+options "bibtotoc,plain"
 
 \end_inset
 

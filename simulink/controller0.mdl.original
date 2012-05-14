@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.84"
+    ComputedModelVersion    "1.21"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -37,9 +37,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ttosun"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun May 13 16:28:00 2012"
-  RTWModifiedTimeStamp	  258821217
-  ModelVersionFormat	  "1.%<AutoIncrement:84>"
+  LastModifiedDate	  "Sat May 12 16:35:46 2012"
+  RTWModifiedTimeStamp	  0
+  ModelVersionFormat	  "1.%<AutoIncrement:21>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -122,7 +122,7 @@ Model {
 	  $ObjectID		  3
 	  Version		  "1.11.0"
 	  StartTime		  "0.0"
-	  StopTime		  "10"
+	  StopTime		  "1"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -134,7 +134,7 @@ Model {
 	  ExtrapolationOrder	  4
 	  NumberNewtonIterations  1
 	  MaxStep		  "auto"
-	  MinStep		  "1e-9"
+	  MinStep		  "auto"
 	  MaxConsecutiveMinStep	  "1"
 	  RelTol		  "1e-3"
 	  SolverMode		  "Auto"
@@ -700,158 +700,6 @@ Model {
       ContinuousStateAttributes	"''"
     }
     Block {
-      BlockType		      Lookup_n-D
-      NumberOfTableDimensions "2"
-      BreakpointsForDimension1 "[10,22,31]"
-      BreakpointsForDimension2 "[10,22,31]"
-      BreakpointsForDimension3 "[1:3]"
-      BreakpointsForDimension4 "[1:3]"
-      BreakpointsForDimension5 "[1:3]"
-      BreakpointsForDimension6 "[1:3]"
-      BreakpointsForDimension7 "[1:3]"
-      BreakpointsForDimension8 "[1:3]"
-      BreakpointsForDimension9 "[1:3]"
-      BreakpointsForDimension10	"[1:3]"
-      BreakpointsForDimension11	"[1:3]"
-      BreakpointsForDimension12	"[1:3]"
-      BreakpointsForDimension13	"[1:3]"
-      BreakpointsForDimension14	"[1:3]"
-      BreakpointsForDimension15	"[1:3]"
-      BreakpointsForDimension16	"[1:3]"
-      BreakpointsForDimension17	"[1:3]"
-      BreakpointsForDimension18	"[1:3]"
-      BreakpointsForDimension19	"[1:3]"
-      BreakpointsForDimension20	"[1:3]"
-      BreakpointsForDimension21	"[1:3]"
-      BreakpointsForDimension22	"[1:3]"
-      BreakpointsForDimension23	"[1:3]"
-      BreakpointsForDimension24	"[1:3]"
-      BreakpointsForDimension25	"[1:3]"
-      BreakpointsForDimension26	"[1:3]"
-      BreakpointsForDimension27	"[1:3]"
-      BreakpointsForDimension28	"[1:3]"
-      BreakpointsForDimension29	"[1:3]"
-      BreakpointsForDimension30	"[1:3]"
-      BreakpointsForDimension1Min "[]"
-      BreakpointsForDimension2Min "[]"
-      BreakpointsForDimension3Min "[]"
-      BreakpointsForDimension4Min "[]"
-      BreakpointsForDimension5Min "[]"
-      BreakpointsForDimension6Min "[]"
-      BreakpointsForDimension7Min "[]"
-      BreakpointsForDimension8Min "[]"
-      BreakpointsForDimension9Min "[]"
-      BreakpointsForDimension10Min "[]"
-      BreakpointsForDimension11Min "[]"
-      BreakpointsForDimension12Min "[]"
-      BreakpointsForDimension13Min "[]"
-      BreakpointsForDimension14Min "[]"
-      BreakpointsForDimension15Min "[]"
-      BreakpointsForDimension16Min "[]"
-      BreakpointsForDimension17Min "[]"
-      BreakpointsForDimension18Min "[]"
-      BreakpointsForDimension19Min "[]"
-      BreakpointsForDimension20Min "[]"
-      BreakpointsForDimension21Min "[]"
-      BreakpointsForDimension22Min "[]"
-      BreakpointsForDimension23Min "[]"
-      BreakpointsForDimension24Min "[]"
-      BreakpointsForDimension25Min "[]"
-      BreakpointsForDimension26Min "[]"
-      BreakpointsForDimension27Min "[]"
-      BreakpointsForDimension28Min "[]"
-      BreakpointsForDimension29Min "[]"
-      BreakpointsForDimension30Min "[]"
-      BreakpointsForDimension1Max "[]"
-      BreakpointsForDimension2Max "[]"
-      BreakpointsForDimension3Max "[]"
-      BreakpointsForDimension4Max "[]"
-      BreakpointsForDimension5Max "[]"
-      BreakpointsForDimension6Max "[]"
-      BreakpointsForDimension7Max "[]"
-      BreakpointsForDimension8Max "[]"
-      BreakpointsForDimension9Max "[]"
-      BreakpointsForDimension10Max "[]"
-      BreakpointsForDimension11Max "[]"
-      BreakpointsForDimension12Max "[]"
-      BreakpointsForDimension13Max "[]"
-      BreakpointsForDimension14Max "[]"
-      BreakpointsForDimension15Max "[]"
-      BreakpointsForDimension16Max "[]"
-      BreakpointsForDimension17Max "[]"
-      BreakpointsForDimension18Max "[]"
-      BreakpointsForDimension19Max "[]"
-      BreakpointsForDimension20Max "[]"
-      BreakpointsForDimension21Max "[]"
-      BreakpointsForDimension22Max "[]"
-      BreakpointsForDimension23Max "[]"
-      BreakpointsForDimension24Max "[]"
-      BreakpointsForDimension25Max "[]"
-      BreakpointsForDimension26Max "[]"
-      BreakpointsForDimension27Max "[]"
-      BreakpointsForDimension28Max "[]"
-      BreakpointsForDimension29Max "[]"
-      BreakpointsForDimension30Max "[]"
-      BreakpointsForDimension1DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension2DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension3DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension4DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension5DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension6DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension7DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension8DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension9DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension10DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension11DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension12DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension13DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension14DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension15DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension16DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension17DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension18DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension19DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension20DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension21DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension22DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension23DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension24DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension25DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension26DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension27DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension28DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension29DataTypeStr "Inherit: Same as corresponding input"
-      BreakpointsForDimension30DataTypeStr "Inherit: Same as corresponding input"
-      IndexSearchMethod	      "Binary search"
-      BeginIndexSearchUsingPreviousIndexResult off
-      UseOneInputPortForAllInputData off
-      Table		      "[4 5 6;16 19 20;10 18 23]"
-      TableMin		      "[]"
-      TableMax		      "[]"
-      TableDataTypeStr	      "Inherit: Same as output"
-      IntermediateResultsDataTypeStr "Inherit: Same as output"
-      InterpMethod	      "Linear"
-      ExtrapMethod	      "Linear"
-      DiagnosticForOutOfRangeInput "None"
-      RemoveProtectionInput   off
-      UseLastTableValue	      off
-      SampleTime	      "-1"
-      InputSameDT	      on
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	off
-      FractionDataTypeStr     "Inherit: Inherit via internal rule"
-      LUTDesignTableMode      "Redesign Table"
-      LUTDesignDataSource     "Block Dialog"
-      LUTDesignFunctionName   "sqrt(x)"
-      LUTDesignUseExistingBP  on
-      LUTDesignRelError	      "0.01"
-      LUTDesignAbsError	      "1e-6"
-    }
-    Block {
       BlockType		      MATLABFcn
       MATLABFcn		      "sin"
       OutputDimensions	      "-1"
@@ -898,11 +746,6 @@ Model {
       RndMeth		      "Zero"
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Reshape
-      OutputDimensionality    "1-D array"
-      OutputDimensions	      "[1,1]"
     }
     Block {
       BlockType		      Scope
@@ -962,7 +805,7 @@ Model {
   }
   System {
     Name		    "controller0"
-    Location		    [647, 271, 1664, 967]
+    Location		    [76, 311, 1021, 788]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -976,35 +819,29 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "77"
+    SIDHighWatermark	    "39"
     Block {
       BlockType		      Demux
       Name		      "Demux1"
       SID		      "32"
       Ports		      [1, 2]
-      Position		      [375, 125, 380, 220]
+      Position		      [415, 125, 420, 220]
       ShowName		      off
       Outputs		      "2"
       DisplayOption	      "bar"
-    }
-    Block {
-      BlockType		      Fcn
-      Name		      "Fcn"
-      SID		      "60"
-      Position		      [205, 320, 265, 350]
-      Expr		      "2*9.807*1*cos(u(1)*pi/180)"
     }
     Block {
       BlockType		      Product
       Name		      "Matrix Gain"
       SID		      "30"
       Ports		      [2, 1]
-      Position		      [270, 154, 325, 196]
+      Position		      [295, 154, 350, 196]
       Multiplication	      "Matrix(*)"
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	off
+      SampleTime	      "0.1"
     }
     Block {
       BlockType		      Mux
@@ -1029,7 +866,7 @@ Model {
       Name		      "Robot Model"
       SID		      "1"
       Ports		      [2, 4]
-      Position		      [440, 130, 615, 220]
+      Position		      [445, 126, 620, 214]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1039,8 +876,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Robot Model"
-	Location		[88, 257, 1501, 838]
-	Open			off
+	Location		[27, 82, 1054, 479]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1056,14 +893,14 @@ Model {
 	  BlockType		  Inport
 	  Name			  "tau1"
 	  SID			  "2"
-	  Position		  [115, 58, 145, 72]
+	  Position		  [80, 58, 110, 72]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "tau2"
 	  SID			  "3"
-	  Position		  [115, 98, 145, 112]
+	  Position		  [80, 98, 110, 112]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -1085,22 +922,6 @@ Model {
 	  ShowName		  off
 	  Inputs		  "2"
 	  DisplayOption		  "bar"
-	  Port {
-	    PortNumber		    1
-	    PropagatedSignals	    ", "
-	    Array {
-	      Type		      "Struct"
-	      Dimension		      1
-	      MATStruct {
-		Type			"in"
-		OpenLoop		"off"
-		BusElementName		""
-	      }
-	      PropName		      "LinearAnalysisIO"
-	    }
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  Mux
@@ -1150,61 +971,6 @@ Model {
 	  RTWMemSecDataInternal	  "Inherit from model"
 	  RTWMemSecDataParameters "Inherit from model"
 	  GeneratePreprocessorConditionals off
-	  Port {
-	    PortNumber		    1
-	    Array {
-	      Type		      "Struct"
-	      Dimension		      1
-	      MATStruct {
-		Type			"out"
-		OpenLoop		"off"
-		BusElementName		""
-	      }
-	      PropName		      "LinearAnalysisIO"
-	    }
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "Scope"
-	  SID			  "51"
-	  Ports			  [1]
-	  Position		  [1180, 74, 1210, 106]
-	  Floating		  off
-	  Location		  [1548, 216, 1872, 455]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  YMin			  "-1e+015"
-	  YMax			  "0"
-	  SaveName		  "ScopeData3"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "Scope1"
-	  SID			  "52"
-	  Ports			  [1]
-	  Position		  [1305, 149, 1335, 181]
-	  Floating		  off
-	  Location		  [1354, 531, 1678, 770]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  YMin			  "90"
-	  YMax			  "90"
-	  SaveName		  "ScopeData4"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
 	}
 	Block {
 	  BlockType		  Constant
@@ -1231,14 +997,14 @@ Model {
 	  Name			  "x1"
 	  SID			  "13"
 	  Ports			  [1, 1]
-	  Position		  [590, 194, 620, 226]
+	  Position		  [590, 195, 620, 225]
 	}
 	Block {
 	  BlockType		  Integrator
 	  Name			  "x2"
 	  SID			  "14"
 	  Ports			  [1, 1]
-	  Position		  [960, 169, 990, 201]
+	  Position		  [960, 165, 990, 195]
 	}
 	Block {
 	  BlockType		  Fcn
@@ -1252,15 +1018,14 @@ Model {
 	  Name			  "x3"
 	  SID			  "16"
 	  Ports			  [1, 1]
-	  Position		  [590, 254, 620, 286]
-	  InitialCondition	  "0*pi/180"
+	  Position		  [590, 255, 620, 285]
 	}
 	Block {
 	  BlockType		  Integrator
 	  Name			  "x4"
 	  SID			  "17"
 	  Ports			  [1, 1]
-	  Position		  [960, 229, 990, 261]
+	  Position		  [960, 225, 990, 255]
 	}
 	Block {
 	  BlockType		  Fcn
@@ -1323,14 +1088,12 @@ Model {
 	Line {
 	  SrcBlock		  "x2dot"
 	  SrcPort		  1
-	  Points		  [45, 0]
 	  DstBlock		  "x2"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "x4dot"
 	  SrcPort		  1
-	  Points		  [45, 0]
 	  DstBlock		  "x4"
 	  DstPort		  1
 	}
@@ -1373,7 +1136,7 @@ Model {
 	Line {
 	  SrcBlock		  "x4"
 	  SrcPort		  1
-	  Points		  [0, 80; -385, 0]
+	  Points		  [0, 85; -385, 0]
 	  Branch {
 	    Points		    [0, -25]
 	    DstBlock		    "Mux3"
@@ -1384,6 +1147,20 @@ Model {
 	    DstBlock		    "x3"
 	    DstPort		    1
 	  }
+	}
+	Line {
+	  SrcBlock		  "tau1"
+	  SrcPort		  1
+	  Points		  [80, 0; 0, 10]
+	  DstBlock		  "Mux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "tau2"
+	  SrcPort		  1
+	  Points		  [80, 0; 0, -10]
+	  DstBlock		  "Mux1"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "Mux4"
@@ -1403,13 +1180,13 @@ Model {
 	Line {
 	  SrcBlock		  "x2"
 	  SrcPort		  1
-	  Points		  [20, 0; 0, 175; -475, 0; 0, -120]
+	  Points		  [20, 0; 0, 180; -475, 0; 0, -120]
 	  Branch {
 	    DstBlock		    "Mux3"
 	    DstPort		    2
 	  }
 	  Branch {
-	    Points		    [0, -20]
+	    Points		    [0, -30]
 	    DstBlock		    "x1"
 	    DstPort		    1
 	  }
@@ -1424,15 +1201,8 @@ Model {
 	  SrcBlock		  "Demux"
 	  SrcPort		  1
 	  Points		  [30, 0; 0, -5]
-	  Branch {
-	    DstBlock		    "x1_out"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [-15, 0]
-	    DstBlock		    "Scope"
-	    DstPort		    1
-	  }
+	  DstBlock		  "x1_out"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Demux"
@@ -1444,16 +1214,8 @@ Model {
 	Line {
 	  SrcBlock		  "Demux"
 	  SrcPort		  3
-	  Points		  [40, 0]
-	  Branch {
-	    DstBlock		    "x3_out"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -115]
-	    DstBlock		    "Scope1"
-	    DstPort		    1
-	  }
+	  DstBlock		  "x3_out"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Demux"
@@ -1468,20 +1230,6 @@ Model {
 	  DstBlock		  "Demux"
 	  DstPort		  1
 	}
-	Line {
-	  SrcBlock		  "tau1"
-	  SrcPort		  1
-	  Points		  [0, 10]
-	  DstBlock		  "Mux1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "tau2"
-	  SrcPort		  1
-	  Points		  [0, -10]
-	  DstBlock		  "Mux1"
-	  DstPort		  2
-	}
       }
     }
     Block {
@@ -1489,18 +1237,17 @@ Model {
       Name		      "Scope1"
       SID		      "35"
       Ports		      [1]
-      Position		      [780, 99, 810, 131]
+      Position		      [780, 24, 810, 56]
       Floating		      off
-      Location		      [1288, 213, 1871, 509]
+      Location		      [1175, 116, 1758, 412]
       Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
-      TimeRange		      "0.09            "
-      YMin		      "0.005125"
-      YMax		      "0.00545"
+      YMin		      "-5e+10"
+      YMax		      "5e+11"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
@@ -1509,18 +1256,17 @@ Model {
       Name		      "Scope2"
       SID		      "37"
       Ports		      [1]
-      Position		      [780, 39, 810, 71]
+      Position		      [780, 94, 810, 126]
       Floating		      off
-      Location		      [1300, 583, 1864, 898]
+      Location		      [1266, 600, 1830, 915]
       Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
-      TimeRange		      "0.09            "
-      YMin		      "-44.9962"
-      YMax		      "-44.9957"
+      YMin		      "-5e+10"
+      YMax		      "5e+11"
       SaveName		      "ScopeData1"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
@@ -1532,306 +1278,18 @@ Model {
       Ports		      [1]
       Position		      [430, 39, 460, 71]
       Floating		      off
-      Location		      [720, 90, 1254, 334]
-      Open		      off
+      Location		      [839, 211, 1422, 808]
+      Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
-      YMin		      "2.77556e-017"
-      YMax		      "0.5"
+      YMin		      "-0.25"
+      YMax		      "3.75"
       SaveName		      "ScopeData2"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
-    }
-    Block {
-      BlockType		      SubSystem
-      Name		      "Subsystem"
-      SID		      "64"
-      Ports		      [1, 1]
-      Position		      [315, 524, 415, 566]
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      System {
-	Name			"Subsystem"
-	Location		[484, 313, 1855, 885]
-	Open			on
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	Block {
-	  BlockType		  Inport
-	  Name			  "In1"
-	  SID			  "65"
-	  Position		  [15, 123, 45, 137]
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Mux
-	  Name			  "Mux"
-	  SID			  "77"
-	  Ports			  [8, 1]
-	  Position		  [945, 155, 950, 315]
-	  ShowName		  off
-	  Inputs		  "8"
-	  DisplayOption		  "bar"
-	}
-	Block {
-	  BlockType		  Reshape
-	  Name			  "Reshape"
-	  SID			  "76"
-	  Ports			  [1, 1]
-	  Position		  [1040, 208, 1120, 262]
-	  OutputDimensionality	  "Customize"
-	  OutputDimensions	  "[2,4]"
-	}
-	Block {
-	  BlockType		  Lookup_n-D
-	  Name			  "k11"
-	  SID			  "67"
-	  Ports			  [1, 1]
-	  Position		  [175, 167, 240, 233]
-	  NumberOfTableDimensions "1"
-	  BreakpointsForDimension1 "[-90:5:90]"
-	  IndexSearchMethod	  "Binary search"
-	  Table			  "K(1,:)"
-	  RndMeth		  "Simplest"
-	}
-	Block {
-	  BlockType		  Lookup_n-D
-	  Name			  "k12"
-	  SID			  "69"
-	  Ports			  [1, 1]
-	  Position		  [325, 167, 390, 233]
-	  NumberOfTableDimensions "1"
-	  BreakpointsForDimension1 "[-90:5:90]"
-	  IndexSearchMethod	  "Binary search"
-	  Table			  "K(3,:)"
-	  RndMeth		  "Simplest"
-	}
-	Block {
-	  BlockType		  Lookup_n-D
-	  Name			  "k13"
-	  SID			  "71"
-	  Ports			  [1, 1]
-	  Position		  [495, 167, 560, 233]
-	  NumberOfTableDimensions "1"
-	  BreakpointsForDimension1 "[-90:5:90]"
-	  IndexSearchMethod	  "Binary search"
-	  Table			  "K(5,:)"
-	  RndMeth		  "Simplest"
-	}
-	Block {
-	  BlockType		  Lookup_n-D
-	  Name			  "k14"
-	  SID			  "73"
-	  Ports			  [1, 1]
-	  Position		  [625, 167, 690, 233]
-	  NumberOfTableDimensions "1"
-	  BreakpointsForDimension1 "[-90:5:90]"
-	  IndexSearchMethod	  "Binary search"
-	  Table			  "K(7,:)"
-	  RndMeth		  "Simplest"
-	}
-	Block {
-	  BlockType		  Lookup_n-D
-	  Name			  "k21"
-	  SID			  "68"
-	  Ports			  [1, 1]
-	  Position		  [175, 257, 240, 323]
-	  NumberOfTableDimensions "1"
-	  BreakpointsForDimension1 "[-90:5:90]"
-	  IndexSearchMethod	  "Binary search"
-	  Table			  "K(2,:)"
-	  RndMeth		  "Simplest"
-	}
-	Block {
-	  BlockType		  Lookup_n-D
-	  Name			  "k22"
-	  SID			  "70"
-	  Ports			  [1, 1]
-	  Position		  [325, 257, 390, 323]
-	  NumberOfTableDimensions "1"
-	  BreakpointsForDimension1 "[-90:5:90]"
-	  IndexSearchMethod	  "Binary search"
-	  Table			  "K(4,:)"
-	  RndMeth		  "Simplest"
-	}
-	Block {
-	  BlockType		  Lookup_n-D
-	  Name			  "k23"
-	  SID			  "72"
-	  Ports			  [1, 1]
-	  Position		  [495, 272, 560, 338]
-	  NumberOfTableDimensions "1"
-	  BreakpointsForDimension1 "[-90:5:90]"
-	  IndexSearchMethod	  "Binary search"
-	  Table			  "K(6,:)"
-	  RndMeth		  "Simplest"
-	}
-	Block {
-	  BlockType		  Lookup_n-D
-	  Name			  "k24"
-	  SID			  "74"
-	  Ports			  [1, 1]
-	  Position		  [625, 272, 690, 338]
-	  NumberOfTableDimensions "1"
-	  BreakpointsForDimension1 "[-90:5:90]"
-	  IndexSearchMethod	  "Binary search"
-	  Table			  "K(8,:)"
-	  RndMeth		  "Simplest"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "Out1"
-	  SID			  "66"
-	  Position		  [1180, 228, 1210, 242]
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  SrcBlock		  "In1"
-	  SrcPort		  1
-	  Points		  [70, 0]
-	  Branch {
-	    Points		    [170, 0]
-	    Branch {
-	      Points		      [155, 0]
-	      Branch {
-		Points			[165, 0; 0, 70]
-		Branch {
-		  DstBlock		  "k24"
-		  DstPort		  1
-		}
-		Branch {
-		  DstBlock		  "k14"
-		  DstPort		  1
-		}
-	      }
-	      Branch {
-		Points			[0, -5; 5, 0; 0, 80]
-		Branch {
-		  Points		  [0, 100]
-		  DstBlock		  "k23"
-		  DstPort		  1
-		}
-		Branch {
-		  Points		  [0, -5]
-		  DstBlock		  "k13"
-		  DstPort		  1
-		}
-	      }
-	    }
-	    Branch {
-	      Points		      [0, 70]
-	      Branch {
-		Points			[0, 90]
-		DstBlock		"k22"
-		DstPort			1
-	      }
-	      Branch {
-		DstBlock		"k12"
-		DstPort			1
-	      }
-	    }
-	  }
-	  Branch {
-	    Points		    [0, 65]
-	    Branch {
-	      Points		      [0, 95]
-	      DstBlock		      "k21"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, 5]
-	      DstBlock		      "k11"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Line {
-	  SrcBlock		  "Reshape"
-	  SrcPort		  1
-	  DstBlock		  "Out1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Mux"
-	  SrcPort		  1
-	  DstBlock		  "Reshape"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "k11"
-	  SrcPort		  1
-	  Points		  [5, 0; 0, 150; 680, 0]
-	  DstBlock		  "Mux"
-	  DstPort		  1
-	}
-	Line {
-	  Labels		  [2, 0]
-	  SrcBlock		  "k21"
-	  SrcPort		  1
-	  Points		  [20, 0; 0, 70; 650, 0; 0, -175]
-	  DstBlock		  "Mux"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "k12"
-	  SrcPort		  1
-	  Points		  [10, 0; 0, 180; 500, 0; 0, -175]
-	  DstBlock		  "Mux"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "k22"
-	  SrcPort		  1
-	  Points		  [0, 120; 495, 0; 0, -190; 40, 0]
-	  DstBlock		  "Mux"
-	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "k13"
-	  SrcPort		  1
-	  Points		  [0, 230; 310, 0; 0, -185]
-	  DstBlock		  "Mux"
-	  DstPort		  5
-	}
-	Line {
-	  SrcBlock		  "k23"
-	  SrcPort		  1
-	  Points		  [15, 0; 0, 140; 280, 0; 0, -180]
-	  DstBlock		  "Mux"
-	  DstPort		  6
-	}
-	Line {
-	  SrcBlock		  "k14"
-	  SrcPort		  1
-	  Points		  [20, 0; 0, 295; 125, 0; 0, -210]
-	  DstBlock		  "Mux"
-	  DstPort		  7
-	}
-	Line {
-	  SrcBlock		  "k24"
-	  SrcPort		  1
-	  Points		  [0, 215; 120, 0; 0, -215]
-	  DstBlock		  "Mux"
-	  DstPort		  8
-	}
-      }
     }
     Block {
       BlockType		      Sum
@@ -1847,24 +1305,11 @@ Model {
       SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum1"
-      SID		      "54"
-      Ports		      [2, 1]
-      Position		      [410, 190, 430, 210]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|++"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
       BlockType		      MATLABFcn
       Name		      "gain scheduler"
       SID		      "33"
       Ports		      [1, 1]
-      Position		      [145, 50, 215, 80]
+      Position		      [180, 55, 250, 85]
       MATLABFcn		      "scheduler(u)"
       OutputDimensions	      "[2,4]"
       Output1D		      off
@@ -1888,7 +1333,7 @@ Model {
       Name		      "theta2 nom"
       SID		      "26"
       Position		      [40, 200, 70, 230]
-      Value		      "-45"
+      Value		      "-10"
     }
     Block {
       BlockType		      Constant
@@ -1899,10 +1344,10 @@ Model {
     }
     Block {
       BlockType		      Constant
-      Name		      "zero1"
-      SID		      "58"
-      Position		      [165, 115, 195, 145]
-      Value		      "[1 2.23 0 0; 0 0 1 2.23]"
+      Name		      "zero"
+      SID		      "39"
+      Position		      [330, 75, 360, 105]
+      Value		      "0"
     }
     Line {
       SrcBlock		      "theta1 nom"
@@ -1921,17 +1366,9 @@ Model {
     Line {
       SrcBlock		      "theta2 nom"
       SrcPort		      1
-      Points		      [15, 0]
-      Branch {
-	Points			[5, 0; 0, -20]
-	DstBlock		"Mux"
-	DstPort			3
-      }
-      Branch {
-	Points			[5, 0; 0, 115; 95, 0]
-	DstBlock		"Fcn"
-	DstPort			1
-      }
+      Points		      [20, 0; 0, -20]
+      DstBlock		      "Mux"
+      DstPort		      3
     }
     Line {
       SrcBlock		      "theta2dot nom"
@@ -1949,13 +1386,13 @@ Model {
     Line {
       SrcBlock		      "Robot Model"
       SrcPort		      1
-      Points		      [0, -5; 10, 0]
+      Points		      [5, 0]
       Branch {
 	DstBlock		"Mux1"
 	DstPort			1
       }
       Branch {
-	Points			[0, -25]
+	Points			[0, -100]
 	DstBlock		"Scope1"
 	DstPort			1
       }
@@ -1963,28 +1400,27 @@ Model {
     Line {
       SrcBlock		      "Robot Model"
       SrcPort		      2
-      Points		      [0, -5]
       DstBlock		      "Mux1"
       DstPort		      2
     }
     Line {
       SrcBlock		      "Robot Model"
       SrcPort		      3
-      Points		      [0, -5; 10, 0]
+      Points		      [5, 0]
       Branch {
 	Points			[10, 0]
-	Branch {
-	  Points		  [0, -125]
-	  DstBlock		  "Scope2"
-	  DstPort		  1
-	}
 	Branch {
 	  DstBlock		  "Mux1"
 	  DstPort		  3
 	}
+	Branch {
+	  Points		  [0, -70]
+	  DstBlock		  "Scope2"
+	  DstPort		  1
+	}
       }
       Branch {
-	Points			[-5, 0; 0, -165; -515, 0; 0, 50]
+	Points			[-5, 0; 0, -165; -480, 0; 0, 55]
 	DstBlock		"gain scheduler"
 	DstPort			1
       }
@@ -1992,28 +1428,20 @@ Model {
     Line {
       SrcBlock		      "Robot Model"
       SrcPort		      4
-      Points		      [0, -5]
       DstBlock		      "Mux1"
       DstPort		      4
     }
     Line {
       SrcBlock		      "Mux1"
       SrcPort		      1
-      Points		      [10, 0; 0, 130; -465, 0]
+      Points		      [20, 0; 0, 145; -475, 0]
       DstBlock		      "Sum"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Sum1"
-      SrcPort		      1
+      SrcBlock		      "Demux1"
+      SrcPort		      2
       DstBlock		      "Robot Model"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Fcn"
-      SrcPort		      1
-      Points		      [150, 0]
-      DstBlock		      "Sum1"
       DstPort		      2
     }
     Line {
@@ -2023,36 +1451,31 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Demux1"
-      SrcPort		      2
-      Points		      [5, 0; 0, 5]
-      DstBlock		      "Sum1"
-      DstPort		      1
-    }
-    Line {
       SrcBlock		      "Sum"
       SrcPort		      1
       DstBlock		      "Matrix Gain"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Demux1"
+      SrcBlock		      "gain scheduler"
       SrcPort		      1
-      Points		      [20, 0; 0, 5; 10, 0]
+      Points		      [10, 0; 0, 40]
       Branch {
-	DstBlock		"Robot Model"
+	Points			[0, 55]
+	DstBlock		"Matrix Gain"
 	DstPort			1
       }
       Branch {
+	Points			[0, -55]
 	DstBlock		"Scope3"
 	DstPort			1
       }
     }
     Line {
-      SrcBlock		      "gain scheduler"
+      SrcBlock		      "zero"
       SrcPort		      1
-      Points		      [15, 0; 0, 100]
-      DstBlock		      "Matrix Gain"
+      Points		      [65, 0]
+      DstBlock		      "Robot Model"
       DstPort		      1
     }
   }
