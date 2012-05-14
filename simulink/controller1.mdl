@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.93"
+    ComputedModelVersion    "1.102"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -37,9 +37,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "tarik"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon May 14 15:19:03 2012"
-  RTWModifiedTimeStamp	  258909310
-  ModelVersionFormat	  "1.%<AutoIncrement:93>"
+  LastModifiedDate	  "Mon May 14 17:16:51 2012"
+  RTWModifiedTimeStamp	  258916180
+  ModelVersionFormat	  "1.%<AutoIncrement:102>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -122,7 +122,7 @@ Model {
 	  $ObjectID		  3
 	  Version		  "1.10.0"
 	  StartTime		  "0.0"
-	  StopTime		  "10"
+	  StopTime		  "te"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -602,7 +602,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    " [ 250, 24, 1190, 829 ] "
+      ConfigPrmDlgPosition    " [ 238, 24, 1202, 899 ] "
     }
     PropName		    "ConfigurationSets"
   }
@@ -956,7 +956,7 @@ Model {
   }
   System {
     Name		    "controller1"
-    Location		    [0, 53, 1440, 900]
+    Location		    [85, 146, 1409, 740]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -970,13 +970,13 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "100"
+    SIDHighWatermark	    "109"
     Block {
       BlockType		      Demux
       Name		      "Demux"
       SID		      "97"
       Ports		      [1, 4]
-      Position		      [580, 498, 585, 582]
+      Position		      [600, 488, 605, 572]
       ShowName		      off
       DisplayOption	      "bar"
     }
@@ -1001,10 +1001,10 @@ Model {
     }
     Block {
       BlockType		      SubSystem
-      Name		      "Input Trajectory"
-      SID		      "86"
+      Name		      "Input Trajectory1"
+      SID		      "101"
       Ports		      [0, 2]
-      Position		      [285, 314, 385, 356]
+      Position		      [310, 309, 410, 351]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1013,9 +1013,9 @@ Model {
       RequestExecContextInheritance off
       MaskHideContents	      off
       System {
-	Name			"Input Trajectory"
-	Location		[903, 350, 1401, 650]
-	Open			off
+	Name			"Input Trajectory1"
+	Location		[617, 361, 1115, 661]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1030,45 +1030,45 @@ Model {
 	Block {
 	  BlockType		  "Lookup_n-D"
 	  Name			  "1-D Lookup\nTable"
-	  SID			  "95"
+	  SID			  "102"
 	  Ports			  [1, 1]
 	  Position		  [155, 43, 220, 107]
 	  NumberOfTableDimensions "1"
-	  BreakpointsForDimension1 "[0:0.1:10]"
+	  BreakpointsForDimension1 "t"
 	  IndexSearchMethod	  "Binary search"
-	  Table			  "sin([0:0.1:10])"
+	  Table			  "traj(1,:)"
 	  RndMeth		  "Simplest"
 	}
 	Block {
 	  BlockType		  "Lookup_n-D"
 	  Name			  "1-D Lookup\nTable1"
-	  SID			  "96"
+	  SID			  "103"
 	  Ports			  [1, 1]
 	  Position		  [155, 168, 220, 232]
 	  NumberOfTableDimensions "1"
-	  BreakpointsForDimension1 "[0:0.1:10]"
+	  BreakpointsForDimension1 "t"
 	  IndexSearchMethod	  "Binary search"
-	  Table			  "cos([0:0.1:10])"
+	  Table			  "traj(2,:)"
 	  RndMeth		  "Simplest"
 	}
 	Block {
 	  BlockType		  Clock
 	  Name			  "Clock"
-	  SID			  "93"
+	  SID			  "104"
 	  Position		  [40, 130, 60, 150]
 	  Decimation		  "10"
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "theta1"
-	  SID			  "88"
+	  SID			  "105"
 	  Position		  [380, 73, 410, 87]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "theta2"
-	  SID			  "94"
+	  SID			  "106"
 	  Position		  [380, 158, 410, 172]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1574,8 +1574,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"scheduler"
-	Location		[73, 149, 1334, 746]
-	Open			on
+	Location		[67, 120, 1328, 717]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1854,7 +1854,7 @@ Model {
       Ports		      [1]
       Position		      [1075, 534, 1105, 566]
       Floating		      off
-      Location		      [871, 579, 1435, 894]
+      Location		      [463, 243, 1027, 558]
       Open		      on
       NumInputPorts	      "1"
       List {
@@ -1876,7 +1876,7 @@ Model {
       Position		      [1075, 594, 1105, 626]
       Floating		      off
       Location		      [852, 213, 1435, 509]
-      Open		      on
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1942,7 +1942,7 @@ Model {
       SrcPort		      1
       Points		      [10, 0]
       Branch {
-	Points			[0, 210]
+	Points			[0, 200]
 	DstBlock		"Demux"
 	DstPort			1
       }
@@ -2049,23 +2049,16 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Input Trajectory"
-      SrcPort		      2
-      Points		      [70, 0; 0, -5]
-      DstBlock		      "Mux"
-      DstPort		      3
-    }
-    Line {
-      SrcBlock		      "Input Trajectory"
+      SrcBlock		      "Input Trajectory1"
       SrcPort		      1
-      Points		      [40, 0; 0, -40; 105, 0]
+      Points		      [15, 0; 0, -35; 105, 0]
       DstBlock		      "Mux"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Demux"
       SrcPort		      3
-      Points		      [45, 0; 0, 70]
+      Points		      [25, 0; 0, 80]
       DstBlock		      "Mux3"
       DstPort		      2
     }
@@ -2085,7 +2078,7 @@ Model {
     Line {
       SrcBlock		      "Demux"
       SrcPort		      1
-      Points		      [420, 0]
+      Points		      [400, 0]
       DstBlock		      "Mux2"
       DstPort		      1
     }
@@ -2108,6 +2101,12 @@ Model {
       Points		      [15, 0; 0, 60]
       DstBlock		      "Matrix Gain"
       DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Input Trajectory1"
+      SrcPort		      2
+      DstBlock		      "Mux"
+      DstPort		      3
     }
     Annotation {
       Name		      "Input"
