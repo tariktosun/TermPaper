@@ -45,6 +45,11 @@ logicalmkup
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 1
+\branch refs
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -74,9 +79,407 @@ logicalmkup
 Introduction
 \end_layout
 
+\begin_layout Subsection
+Motivation
+\end_layout
+
 \begin_layout Standard
-In this paper, I'm going to build a controller for a two-link manipulator.
- It's going to be great!
+For my senior thesis, I designed a kinematic retargeter which instructs
+ a target robot to imitate a source robot on a pose-by-pose basis.
+ Computation is performed in simulation using modeled kinematic chains with
+ no dynamics, resulting in a series of poses frames the target is to assume
+ at specified times.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+improve/elaborate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to control a robot using these joint-angle instructions, a good
+ dynamic controller is required to cause the system to track the specified
+ trajectory.
+ During actual robot trials, movements were jerky or too slow due to poor
+ controller performance.
+ For example, movement of the PR2 suffered from serious overshoot problems
+ due to low damping
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+elaborate / pic or something
+\end_layout
+
+\end_inset
+
+.
+ The CKbot, on the other hand, moved in steps using only servo position
+ feedback.
+ While this resulted in accurate matching on a pose-by-pose basis, the overall
+ motion was jerky and extremely slow.
+ It would be better if a more advanced controller could be used for higher
+ quality tracking
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+rephrase this whole paragraph.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Project Description
+\end_layout
+
+\begin_layout Standard
+For this project, I am going to develop a tracking controller for a simple
+ robot model in Simulink in order to demonstrate how such a controller could
+ be developed for a real robot.
+ 
+\end_layout
+
+\begin_layout Subsection
+Robot Model
+\end_layout
+
+\begin_layout Standard
+The robot model is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:robotMcKerrow"
+
+\end_inset
+
+ below, which is Fig.
+ 4.7 in 
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+Introduction to Robotics
+\end_layout
+
+\end_inset
+
+ by P.
+ J.
+ McKerrow.
+ McKerrow derives equations for the manipulator's dynamics, which lead to
+ the fourth-order, nonlinear state-space model shown in Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ss1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ss4"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\overset{.}{x}_{1}=x_{2}\label{eq:ss1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\overset{.}{x}_{2}=\frac{1}{\cos^{2}(x_{3})}\left(x_{2}x_{4}\sin2x_{3}+\frac{u_{1}}{ml_{2}^{2}}\right)\label{eq:ss2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\overset{.}{x}_{3}=x_{4}\label{eq:ss3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\overset{.}{x}_{4}=-\frac{g}{l_{2}}\cos(x_{3})-\frac{x_{2}}{2}\sin2x_{3}+\frac{u_{2}}{ml_{2}^{2}}\label{eq:ss4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+x_{1}\\
+x_{2}\\
+x_{3}\\
+x_{4}
+\end{array}\right]=\left[\begin{array}{c}
+Angle\, of\,1^{st}\, link,\,\theta_{1},\, rad\\
+Angle\, of\,1^{st}\, link,\,\dot{\theta}_{1},\, rad/sec\\
+Angle\, of\,2^{nd}\, link,\,\theta_{2},\, rad\\
+Angle\, of\,2^{nd}\, link,\,\dot{\theta}_{2},\, rad/sec
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+u_{1}\\
+u_{2}
+\end{array}\right]=\left[\begin{array}{c}
+\tau_{1}\\
+\tau_{2}
+\end{array}\right]
+\]
+
+\end_inset
+
+The angles, 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ (positive up), are zero when they are aligned with their respective x axes,
+ and 
+\begin_inset Formula $\tau_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau_{2}$
+\end_inset
+
+ are the torques at each joint..
+ Inertial properties are modeled simply by a point mass, m, at the distal
+ end of the manipulator, and the length of the second link is l2.
+ Thus the mass and inertia of the links are neglected.
+ Link 2 is mounted at distance d1 from the base 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MAE345Assignment3"
+
+\end_inset
+
+.
+ The model parameters are:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $d_{1}$
+\end_inset
+
+ = 1.5 m
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $l_{2}$
+\end_inset
+
+ = 1 m
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $m$
+\end_inset
+
+ =2 kg
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $g$
+\end_inset
+
+ =9.807 
+\begin_inset Formula $m/s^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/robotMcKerrow.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Robot Model, from McKerrow 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "McKerrow"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:robotMcKerrow"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Controller Properties
+\end_layout
+
+\begin_layout Standard
+I am going to build a gain-scheduled LQR controller and explore what kind
+ of linearization is needed to attain good tracking performance with the
+ system
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Definitely need to expand this.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Paper structure
+\end_layout
+
+\begin_layout Itemize
+Introduce everything
+\end_layout
+
+\begin_layout Itemize
+Develop Controller model and structure
+\end_layout
+
+\begin_layout Itemize
+Test controller using output of retargeting solver
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+explain retargeter a little bit
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Analyze the results
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch refs
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bibliograpy"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

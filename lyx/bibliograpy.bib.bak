@@ -1,0 +1,33 @@
+% This file was created with JabRef 2.7.2.
+% Encoding: Cp1252
+
+@BOOK{McKerrow,
+  title = {Introduction To Robotics},
+  publisher = {Addison-Wesley},
+  year = {1991},
+  author = {P. J. McKerrow},
+  pages = {188},
+  owner = {Tarik},
+  timestamp = {2012.05.13}
+}
+
+@TECHREPORT{345pset3,
+  author = {Tarik Tosun},
+  title = {MAE 345 Homework 3},
+  institution = {Princeton University},
+  year = {2011},
+  type = {Problem Set},
+  owner = {Tarik},
+  timestamp = {2012.05.12}
+}
+
+@comment{jabref-meta: selector_review:}
+
+@comment{jabref-meta: selector_publisher:}
+
+@comment{jabref-meta: selector_author:}
+
+@comment{jabref-meta: selector_journal:}
+
+@comment{jabref-meta: selector_keywords:}
+

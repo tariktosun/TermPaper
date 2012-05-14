@@ -7,9 +7,15 @@
 % steady-state values.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [F,G,L] = linMats(x2,x3,x4,u1,u2)
+function [F,G,L] = linMats(S)
     setup();
     load('params.mat');
+    
+    x2 = S.x2;
+    x3 = S.x3;
+    x4 = S.x3;
+    u1 = S.u1;
+    u2 = S.u2;
 
     f23 = 2*sin(x3)*(u1/(l^2*m)+x2*x4*sin(2*x3))/cos(x3)^3 +...
           (2*x2*x4*cos(2*x3))/(cos(x3)^2);

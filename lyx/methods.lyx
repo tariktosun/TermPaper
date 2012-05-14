@@ -45,6 +45,11 @@ logicalmkup
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 1
+\branch Refs
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -74,14 +79,217 @@ logicalmkup
 Methods
 \end_layout
 
+\begin_layout Standard
+A robust linear quadratic controller was designed for the system.
+ A model of the robot was built in Simulink for analysis.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+more.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LQR controllers require an LTI system, so an LQR controller could not be
+ built directly from this nonlinear system's dynamics.
+ Instead, the system was linearized at a series of operating points.
+ LQR gain matrices were computed at each operating point to form a gain
+ scheduled controller.
+\end_layout
+
+\begin_layout Subsection
+Robot Model
+\end_layout
+
+\begin_layout Standard
+The system dynamic models was translated into the SIMULINK block model subsystem
+ shown in 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/robotSimulink.png
+	width 4.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+SIMULINK Robot Model 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:robotSimulink"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Steady-State Operating Points
+\begin_inset CommandInset citation
+LatexCommand cite
+key "345pset3"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Steady-state operating points were computed for different positions of the
  manipulator's horizontal arm.
+ We desire the required torque as a function of joint angle to keep link
+ 2 suspended in equilibrium at angles ranging from -90º to 90º.
+ Since we are only concerned with the second link under equilibrium conditions,
  
+\begin_inset Formula $x_{\text{1}}$
+\end_inset
+
+ is unimportant and 
+\begin_inset Formula $x_{\text{2}}$
+\end_inset
+
+ must be zero.
+ We derive a function for 
+\begin_inset Formula $u{}_{2}$
+\end_inset
+
+ in terms of 
+\begin_inset Formula $x{}_{3}$
+\end_inset
+
+ by setting the equation for 
+\begin_inset Formula $x_{4}$
+\end_inset
+
+ equal to zero.
+ A plot of this function is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1 - equilibrium"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../robotics/a3/matlab/a3_p2_plot.png
+	width 4.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1 - equilibrium"
+
+\end_inset
+
+ Plot of 
+\begin_inset Formula $u_{2}(x_{3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x_{4}=\dot{x_{3}}=-\frac{g}{l}\cos(x_{3})-\frac{x_{2}}{2}\sin(2x_{3})+\frac{u_{2}}{ml^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+cancelling the second term and solving for 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u_{2}(x_{3})=mlg\cos(x_{3})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The shape of this plot agrees with our natural intuitions.
+ As we would expect, the greatest torque is required at 
+\begin_inset Formula $\theta_{2}=0\text{º}$
+\end_inset
+
+, when the arm is horizontal and gravity's moment arm is largest.
+ At 
+\begin_inset Formula $\theta_{2}=\pm90\text{º}$
+\end_inset
+
+, the arm is vertical, and no torque is required.
+ A sinusoidal shape is also consistent with a simple pendulum, which is
+ essentially what this dynamic system represents.
 \end_layout
 
 \begin_layout Subsection
@@ -89,19 +297,121 @@ Linearization
 \end_layout
 
 \begin_layout Standard
-I have linearized the system dynamics into model matrices:
+System dynamics were linearized so that a gain-scheduled for the development
+ of a gain-scheduled LQR controller.
+ Jacobian matrices 
+\series bold
+F
+\series default
+, 
+\series bold
+G
+\series default
+, and 
+\series bold
+L,
+\series default
+ are given in equations .
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\left[\begin{array}{cc}
+\begin{equation}
+\mathbf{F}=\label{eq:Fjac}
+\end{equation}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{G}=\left[\begin{array}{cc}
 0 & 0\\
 \frac{1}{\left(\cos\left({\it x3}\right)\right)^{2}ml^{2}} & 0\\
 0 & 0\\
 0 & \frac{1}{ml^{2}}
-\end{array}\right]
-\]
+\end{array}\right]\label{eq:Gjac}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{L}=\label{eq:Ljac}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+LQR Gain Matrix Computation
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/robotSimulink.png
+	width 4.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Plot of LQR gains by operating point 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Plot-of-LQR"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Refs
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bibliograpy"
+options "plain"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

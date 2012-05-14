@@ -1,12 +1,12 @@
 Model {
-  Name			  "controller0"
+  Name			  "controller1"
   Version		  7.7
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.84"
+    ComputedModelVersion    "1.91"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -37,9 +37,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ttosun"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun May 13 16:28:00 2012"
+  LastModifiedDate	  "Sun May 13 17:52:50 2012"
   RTWModifiedTimeStamp	  258821217
-  ModelVersionFormat	  "1.%<AutoIncrement:84>"
+  ModelVersionFormat	  "1.%<AutoIncrement:91>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -643,6 +643,10 @@ Model {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Clock
+      DisplayTime	      off
+    }
+    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -852,14 +856,6 @@ Model {
       LUTDesignAbsError	      "1e-6"
     }
     Block {
-      BlockType		      MATLABFcn
-      MATLABFcn		      "sin"
-      OutputDimensions	      "-1"
-      OutputSignalType	      "auto"
-      Output1D		      on
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      Mux
       Inputs		      "4"
       DisplayOption	      "none"
@@ -961,8 +957,8 @@ Model {
     }
   }
   System {
-    Name		    "controller0"
-    Location		    [647, 271, 1664, 967]
+    Name		    "controller1"
+    Location		    [185, 298, 1237, 869]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -976,30 +972,146 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "77"
+    SIDHighWatermark	    "100"
+    Block {
+      BlockType		      Demux
+      Name		      "Demux"
+      SID		      "97"
+      Ports		      [1, 4]
+      Position		      [345, 398, 350, 482]
+      ShowName		      off
+      DisplayOption	      "bar"
+    }
     Block {
       BlockType		      Demux
       Name		      "Demux1"
       SID		      "32"
       Ports		      [1, 2]
-      Position		      [375, 125, 380, 220]
+      Position		      [550, 170, 555, 265]
       ShowName		      off
       Outputs		      "2"
       DisplayOption	      "bar"
     }
     Block {
-      BlockType		      Fcn
-      Name		      "Fcn"
-      SID		      "60"
-      Position		      [205, 320, 265, 350]
-      Expr		      "2*9.807*1*cos(u(1)*pi/180)"
+      BlockType		      Demux
+      Name		      "Demux2"
+      SID		      "98"
+      Ports		      [1, 4]
+      Position		      [735, 403, 740, 487]
+      ShowName		      off
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Input Trajectory"
+      SID		      "86"
+      Ports		      [0, 2]
+      Position		      [45, 214, 145, 256]
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Input Trajectory"
+	Location		[903, 350, 1401, 650]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Lookup_n-D
+	  Name			  "1-D Lookup\nTable"
+	  SID			  "95"
+	  Ports			  [1, 1]
+	  Position		  [155, 43, 220, 107]
+	  NumberOfTableDimensions "1"
+	  BreakpointsForDimension1 "[0:0.1:10]"
+	  IndexSearchMethod	  "Binary search"
+	  Table			  "sin([0:0.1:10])"
+	  RndMeth		  "Simplest"
+	}
+	Block {
+	  BlockType		  Lookup_n-D
+	  Name			  "1-D Lookup\nTable1"
+	  SID			  "96"
+	  Ports			  [1, 1]
+	  Position		  [155, 168, 220, 232]
+	  NumberOfTableDimensions "1"
+	  BreakpointsForDimension1 "[0:0.1:10]"
+	  IndexSearchMethod	  "Binary search"
+	  Table			  "cos([0:0.1:10])"
+	  RndMeth		  "Simplest"
+	}
+	Block {
+	  BlockType		  Clock
+	  Name			  "Clock"
+	  SID			  "93"
+	  Position		  [40, 130, 60, 150]
+	  Decimation		  "10"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "theta1"
+	  SID			  "88"
+	  Position		  [380, 73, 410, 87]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "theta2"
+	  SID			  "94"
+	  Position		  [380, 158, 410, 172]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Clock"
+	  SrcPort		  1
+	  Points		  [35, 0]
+	  Branch {
+	    Points		    [0, -65]
+	    DstBlock		    "1-D Lookup\nTable"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 60]
+	    DstBlock		    "1-D Lookup\nTable1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "1-D Lookup\nTable"
+	  SrcPort		  1
+	  Points		  [70, 0; 0, 5]
+	  DstBlock		  "theta1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "1-D Lookup\nTable1"
+	  SrcPort		  1
+	  Points		  [70, 0; 0, -35]
+	  DstBlock		  "theta2"
+	  DstPort		  1
+	}
+      }
     }
     Block {
       BlockType		      Product
       Name		      "Matrix Gain"
       SID		      "30"
       Ports		      [2, 1]
-      Position		      [270, 154, 325, 196]
+      Position		      [445, 199, 500, 241]
       Multiplication	      "Matrix(*)"
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -1011,7 +1123,7 @@ Model {
       Name		      "Mux"
       SID		      "28"
       Ports		      [4, 1]
-      Position		      [135, 142, 140, 228]
+      Position		      [310, 187, 315, 273]
       ShowName		      off
       DisplayOption	      "bar"
     }
@@ -1020,8 +1132,28 @@ Model {
       Name		      "Mux1"
       SID		      "29"
       Ports		      [4, 1]
-      Position		      [660, 127, 665, 213]
+      Position		      [835, 172, 840, 258]
       ShowName		      off
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux2"
+      SID		      "99"
+      Ports		      [2, 1]
+      Position		      [795, 381, 800, 419]
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux3"
+      SID		      "100"
+      Ports		      [2, 1]
+      Position		      [815, 476, 820, 514]
+      ShowName		      off
+      Inputs		      "2"
       DisplayOption	      "bar"
     }
     Block {
@@ -1029,7 +1161,7 @@ Model {
       Name		      "Robot Model"
       SID		      "1"
       Ports		      [2, 4]
-      Position		      [440, 130, 615, 220]
+      Position		      [615, 175, 790, 265]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1040,7 +1172,7 @@ Model {
       System {
 	Name			"Robot Model"
 	Location		[88, 257, 1501, 838]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1056,14 +1188,14 @@ Model {
 	  BlockType		  Inport
 	  Name			  "tau1"
 	  SID			  "2"
-	  Position		  [115, 58, 145, 72]
+	  Position		  [580, 103, 610, 117]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "tau2"
 	  SID			  "3"
-	  Position		  [115, 98, 145, 112]
+	  Position		  [580, 143, 610, 157]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -1081,7 +1213,7 @@ Model {
 	  Name			  "Mux1"
 	  SID			  "5"
 	  Ports			  [2, 1]
-	  Position		  [295, 66, 300, 104]
+	  Position		  [670, 121, 675, 159]
 	  ShowName		  off
 	  Inputs		  "2"
 	  DisplayOption		  "bar"
@@ -1107,7 +1239,7 @@ Model {
 	  Name			  "Mux2"
 	  SID			  "6"
 	  Ports			  [3, 1]
-	  Position		  [355, 236, 360, 274]
+	  Position		  [505, 171, 510, 209]
 	  ShowName		  off
 	  Inputs		  "3"
 	  DisplayOption		  "bar"
@@ -1117,7 +1249,7 @@ Model {
 	  Name			  "Mux3"
 	  SID			  "7"
 	  Ports			  [4, 1]
-	  Position		  [640, 192, 645, 318]
+	  Position		  [670, 192, 675, 318]
 	  ShowName		  off
 	  DisplayOption		  "bar"
 	}
@@ -1167,63 +1299,23 @@ Model {
 	  }
 	}
 	Block {
-	  BlockType		  Scope
-	  Name			  "Scope"
-	  SID			  "51"
-	  Ports			  [1]
-	  Position		  [1180, 74, 1210, 106]
-	  Floating		  off
-	  Location		  [1548, 216, 1872, 455]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  YMin			  "-1e+015"
-	  YMax			  "0"
-	  SaveName		  "ScopeData3"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "Scope1"
-	  SID			  "52"
-	  Ports			  [1]
-	  Position		  [1305, 149, 1335, 181]
-	  Floating		  off
-	  Location		  [1354, 531, 1678, 770]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  YMin			  "90"
-	  YMax			  "90"
-	  SaveName		  "ScopeData4"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
-	}
-	Block {
 	  BlockType		  Constant
 	  Name			  "g (m/s^2)"
 	  SID			  "10"
-	  Position		  [280, 295, 310, 325]
+	  Position		  [435, 220, 465, 250]
 	  Value			  "9.807"
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  "l2 (m)"
 	  SID			  "11"
-	  Position		  [280, 240, 310, 270]
+	  Position		  [435, 165, 465, 195]
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  "m (kg)"
 	  SID			  "12"
-	  Position		  [280, 185, 310, 215]
+	  Position		  [435, 110, 465, 140]
 	  Value			  "2"
 	}
 	Block {
@@ -1231,7 +1323,7 @@ Model {
 	  Name			  "x1"
 	  SID			  "13"
 	  Ports			  [1, 1]
-	  Position		  [590, 194, 620, 226]
+	  Position		  [615, 194, 645, 226]
 	}
 	Block {
 	  BlockType		  Integrator
@@ -1252,7 +1344,7 @@ Model {
 	  Name			  "x3"
 	  SID			  "16"
 	  Ports			  [1, 1]
-	  Position		  [590, 254, 620, 286]
+	  Position		  [615, 254, 645, 286]
 	  InitialCondition	  "0*pi/180"
 	}
 	Block {
@@ -1303,20 +1395,21 @@ Model {
 	Line {
 	  SrcBlock		  "m (kg)"
 	  SrcPort		  1
-	  Points		  [10, 0; 0, 45]
+	  Points		  [10, 0; 0, 55]
 	  DstBlock		  "Mux2"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "l2 (m)"
 	  SrcPort		  1
+	  Points		  [0, 10]
 	  DstBlock		  "Mux2"
 	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "g (m/s^2)"
 	  SrcPort		  1
-	  Points		  [25, 0]
+	  Points		  [0, -35]
 	  DstBlock		  "Mux2"
 	  DstPort		  3
 	}
@@ -1337,7 +1430,7 @@ Model {
 	Line {
 	  SrcBlock		  "Mux3"
 	  SrcPort		  1
-	  Points		  [35, 0]
+	  Points		  [5, 0]
 	  Branch {
 	    Points		    [30, 0]
 	    DstBlock		    "Mux4"
@@ -1350,17 +1443,9 @@ Model {
 	  }
 	}
 	Line {
-	  SrcBlock		  "Mux2"
-	  SrcPort		  1
-	  Points		  [75, 0; 0, -80; 275, 0]
-	  DstBlock		  "Mux4"
-	  DstPort		  2
-	}
-	Line {
-	  Labels		  [2, 0]
+	  Labels		  [1, 0]
 	  SrcBlock		  "Mux1"
 	  SrcPort		  1
-	  Points		  [0, 55]
 	  DstBlock		  "Mux4"
 	  DstPort		  1
 	}
@@ -1380,7 +1465,7 @@ Model {
 	    DstPort		    4
 	  }
 	  Branch {
-	    Points		    [-35, 0]
+	    Points		    [-10, 0]
 	    DstBlock		    "x3"
 	    DstPort		    1
 	  }
@@ -1403,13 +1488,13 @@ Model {
 	Line {
 	  SrcBlock		  "x2"
 	  SrcPort		  1
-	  Points		  [20, 0; 0, 175; -475, 0; 0, -120]
+	  Points		  [20, 0; 0, 175; -430, 0; 0, -120]
 	  Branch {
 	    DstBlock		    "Mux3"
 	    DstPort		    2
 	  }
 	  Branch {
-	    Points		    [0, -20]
+	    Points		    [0, -30]
 	    DstBlock		    "x1"
 	    DstPort		    1
 	  }
@@ -1424,15 +1509,8 @@ Model {
 	  SrcBlock		  "Demux"
 	  SrcPort		  1
 	  Points		  [30, 0; 0, -5]
-	  Branch {
-	    DstBlock		    "x1_out"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [-15, 0]
-	    DstBlock		    "Scope"
-	    DstPort		    1
-	  }
+	  DstBlock		  "x1_out"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Demux"
@@ -1444,16 +1522,8 @@ Model {
 	Line {
 	  SrcBlock		  "Demux"
 	  SrcPort		  3
-	  Points		  [40, 0]
-	  Branch {
-	    DstBlock		    "x3_out"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -115]
-	    DstBlock		    "Scope1"
-	    DstPort		    1
-	  }
+	  DstBlock		  "x3_out"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Demux"
@@ -1471,86 +1541,63 @@ Model {
 	Line {
 	  SrcBlock		  "tau1"
 	  SrcPort		  1
-	  Points		  [0, 10]
+	  Points		  [0, 20]
 	  DstBlock		  "Mux1"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "tau2"
 	  SrcPort		  1
-	  Points		  [0, -10]
 	  DstBlock		  "Mux1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Mux2"
+	  SrcPort		  1
+	  DstBlock		  "Mux4"
 	  DstPort		  2
 	}
       }
     }
     Block {
-      BlockType		      Scope
-      Name		      "Scope1"
-      SID		      "35"
-      Ports		      [1]
-      Position		      [780, 99, 810, 131]
-      Floating		      off
-      Location		      [1288, 213, 1871, 509]
-      Open		      on
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      TimeRange		      "0.09            "
-      YMin		      "0.005125"
-      YMax		      "0.00545"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
+      BlockType		      Fcn
+      Name		      "SS torque"
+      SID		      "60"
+      Position		      [460, 280, 520, 310]
+      Expr		      "2*9.807*1*cos(u(3)*pi/180)"
     }
     Block {
-      BlockType		      Scope
-      Name		      "Scope2"
-      SID		      "37"
-      Ports		      [1]
-      Position		      [780, 39, 810, 71]
-      Floating		      off
-      Location		      [1300, 583, 1864, 898]
-      Open		      on
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      TimeRange		      "0.09            "
-      YMin		      "-44.9962"
-      YMax		      "-44.9957"
-      SaveName		      "ScopeData1"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
+      BlockType		      Sum
+      Name		      "Sum"
+      SID		      "25"
+      Ports		      [2, 1]
+      Position		      [380, 220, 400, 240]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      Scope
-      Name		      "Scope3"
-      SID		      "38"
-      Ports		      [1]
-      Position		      [430, 39, 460, 71]
-      Floating		      off
-      Location		      [720, 90, 1254, 334]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      YMin		      "2.77556e-017"
-      YMax		      "0.5"
-      SaveName		      "ScopeData2"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
+      BlockType		      Sum
+      Name		      "Sum1"
+      SID		      "54"
+      Ports		      [2, 1]
+      Position		      [585, 235, 605, 255]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|++"
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
       BlockType		      SubSystem
-      Name		      "Subsystem"
+      Name		      "scheduler"
       SID		      "64"
       Ports		      [1, 1]
-      Position		      [315, 524, 415, 566]
+      Position		      [305, 79, 405, 121]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1559,9 +1606,9 @@ Model {
       RequestExecContextInheritance off
       MaskHideContents	      off
       System {
-	Name			"Subsystem"
-	Location		[484, 313, 1855, 885]
-	Open			on
+	Name			"scheduler"
+	Location		[444, 351, 1705, 948]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1834,82 +1881,80 @@ Model {
       }
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum"
-      SID		      "25"
-      Ports		      [2, 1]
-      Position		      [205, 175, 225, 195]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|+-"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      Scope
+      Name		      "state 1"
+      SID		      "37"
+      Ports		      [1]
+      Position		      [845, 384, 875, 416]
+      Floating		      off
+      Location		      [1300, 583, 1864, 898]
+      Open		      on
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      TimeRange		      "0.09            "
+      YMin		      "-44.9962"
+      YMax		      "-44.9957"
+      SaveName		      "ScopeData1"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum1"
-      SID		      "54"
-      Ports		      [2, 1]
-      Position		      [410, 190, 430, 210]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|++"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      MATLABFcn
-      Name		      "gain scheduler"
-      SID		      "33"
-      Ports		      [1, 1]
-      Position		      [145, 50, 215, 80]
-      MATLABFcn		      "scheduler(u)"
-      OutputDimensions	      "[2,4]"
-      Output1D		      off
+      BlockType		      Scope
+      Name		      "state 2"
+      SID		      "35"
+      Ports		      [1]
+      Position		      [845, 479, 875, 511]
+      Floating		      off
+      Location		      [1288, 213, 1871, 509]
+      Open		      on
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      TimeRange		      "0.09            "
+      YMin		      "-1"
+      YMax		      "-0.975"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
     }
     Block {
       BlockType		      Constant
       Name		      "theta1 nom"
       SID		      "23"
-      Position		      [40, 95, 70, 125]
-      Value		      "0"
+      Position		      [140, 85, 170, 115]
+      Value		      "10"
     }
     Block {
       BlockType		      Constant
       Name		      "theta1dot nom"
       SID		      "24"
-      Position		      [40, 145, 70, 175]
+      Position		      [215, 190, 245, 220]
       Value		      "0"
     }
     Block {
       BlockType		      Constant
       Name		      "theta2 nom"
       SID		      "26"
-      Position		      [40, 200, 70, 230]
+      Position		      [140, 315, 170, 345]
       Value		      "-45"
     }
     Block {
       BlockType		      Constant
       Name		      "theta2dot nom"
       SID		      "27"
-      Position		      [40, 255, 70, 285]
+      Position		      [215, 300, 245, 330]
       Value		      "0"
     }
     Block {
       BlockType		      Constant
       Name		      "zero1"
       SID		      "58"
-      Position		      [165, 115, 195, 145]
+      Position		      [340, 160, 370, 190]
       Value		      "[1 2.23 0 0; 0 0 1 2.23]"
-    }
-    Line {
-      SrcBlock		      "theta1 nom"
-      SrcPort		      1
-      Points		      [20, 0; 0, 45]
-      DstBlock		      "Mux"
-      DstPort		      1
     }
     Line {
       SrcBlock		      "theta1dot nom"
@@ -1917,21 +1962,6 @@ Model {
       Points		      [10, 0; 0, 15]
       DstBlock		      "Mux"
       DstPort		      2
-    }
-    Line {
-      SrcBlock		      "theta2 nom"
-      SrcPort		      1
-      Points		      [15, 0]
-      Branch {
-	Points			[5, 0; 0, -20]
-	DstBlock		"Mux"
-	DstPort			3
-      }
-      Branch {
-	Points			[5, 0; 0, 115; 95, 0]
-	DstBlock		"Fcn"
-	DstPort			1
-      }
     }
     Line {
       SrcBlock		      "theta2dot nom"
@@ -1943,22 +1973,30 @@ Model {
     Line {
       SrcBlock		      "Mux"
       SrcPort		      1
-      DstBlock		      "Sum"
-      DstPort		      1
+      Points		      [10, 0]
+      Branch {
+	DstBlock		"Demux"
+	DstPort			1
+      }
+      Branch {
+	Points			[5, 0]
+	Branch {
+	  DstBlock		  "Sum"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, 65]
+	  DstBlock		  "SS torque"
+	  DstPort		  1
+	}
+      }
     }
     Line {
       SrcBlock		      "Robot Model"
       SrcPort		      1
-      Points		      [0, -5; 10, 0]
-      Branch {
-	DstBlock		"Mux1"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -25]
-	DstBlock		"Scope1"
-	DstPort			1
-      }
+      Points		      [0, -5]
+      DstBlock		      "Mux1"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "Robot Model"
@@ -1972,21 +2010,13 @@ Model {
       SrcPort		      3
       Points		      [0, -5; 10, 0]
       Branch {
-	Points			[10, 0]
-	Branch {
-	  Points		  [0, -125]
-	  DstBlock		  "Scope2"
-	  DstPort		  1
-	}
-	Branch {
-	  DstBlock		  "Mux1"
-	  DstPort		  3
-	}
+	Points			[-5, 0; 0, -165; -510, 0]
+	DstBlock		"scheduler"
+	DstPort			1
       }
       Branch {
-	Points			[-5, 0; 0, -165; -515, 0; 0, 50]
-	DstBlock		"gain scheduler"
-	DstPort			1
+	DstBlock		"Mux1"
+	DstPort			3
       }
     }
     Line {
@@ -1999,9 +2029,17 @@ Model {
     Line {
       SrcBlock		      "Mux1"
       SrcPort		      1
-      Points		      [10, 0; 0, 130; -465, 0]
-      DstBlock		      "Sum"
-      DstPort		      2
+      Points		      [10, 0; 0, 120; -215, 0]
+      Branch {
+	Points			[-250, 0]
+	DstBlock		"Sum"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, 110]
+	DstBlock		"Demux2"
+	DstPort			1
+      }
     }
     Line {
       SrcBlock		      "Sum1"
@@ -2010,9 +2048,9 @@ Model {
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Fcn"
+      SrcBlock		      "SS torque"
       SrcPort		      1
-      Points		      [150, 0]
+      Points		      [70, 0]
       DstBlock		      "Sum1"
       DstPort		      2
     }
@@ -2038,22 +2076,102 @@ Model {
     Line {
       SrcBlock		      "Demux1"
       SrcPort		      1
-      Points		      [20, 0; 0, 5; 10, 0]
-      Branch {
-	DstBlock		"Robot Model"
-	DstPort			1
-      }
-      Branch {
-	DstBlock		"Scope3"
-	DstPort			1
-      }
+      Points		      [20, 0; 0, 5]
+      DstBlock		      "Robot Model"
+      DstPort		      1
     }
     Line {
-      SrcBlock		      "gain scheduler"
+      SrcBlock		      "Input Trajectory"
+      SrcPort		      2
+      Points		      [70, 0; 0, -5]
+      DstBlock		      "Mux"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Input Trajectory"
       SrcPort		      1
-      Points		      [15, 0; 0, 100]
+      Points		      [40, 0; 0, -40; 105, 0]
+      DstBlock		      "Mux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      3
+      Points		      [50, 0; 0, 55]
+      DstBlock		      "Mux3"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Demux2"
+      SrcPort		      1
+      Points		      [15, 0; 0, -5]
+      DstBlock		      "Mux2"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Mux2"
+      SrcPort		      1
+      DstBlock		      "state 1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      1
+      Points		      [0, -50; 425, 0]
+      DstBlock		      "Mux2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Mux3"
+      SrcPort		      1
+      DstBlock		      "state 2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux2"
+      SrcPort		      3
+      Points		      [25, 0; 0, 30]
+      DstBlock		      "Mux3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "scheduler"
+      SrcPort		      1
+      Points		      [10, 0; 0, 110]
       DstBlock		      "Matrix Gain"
       DstPort		      1
     }
+    Annotation {
+      Name		      "Input"
+      Position		      [346, 495]
+    }
+    Annotation {
+      Name		      "output"
+      Position		      [735, 494]
+    }
+  }
+}
+# Finite State Machines
+#
+#    Stateflow Version 7.5 (R2010a) dated Mar  5 2011, 00:01:50
+#
+#
+
+
+Stateflow {
+  machine {
+    id			    1
+    name		    "controller1"
+    created		    "13-May-2012 16:35:35"
+    isLibrary		    0
+    firstTarget		    2
+    sfVersion		    75014001
+  }
+  target {
+    id			    2
+    name		    "sfun"
+    description		    "Default Simulink S-Function Target."
+    machine		    1
+    linkNode		    [1 0 0]
   }
 }
