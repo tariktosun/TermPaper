@@ -68,9 +68,33 @@ for j=1:8
     %r = int2str(ceil(j/4));
     ylabel(['C' rr cc]);
 end
-%% Create manipulator kinematic chain, and make imitation:
+%% Pull in source data:
+addpath('/home/tarik/MAE_546/TermPaper/');
+addpath('/home/tarik/tarik_retargeter/chainsolver/');
+[rMotion, lMotion] = bothArms3d('/home/tarik/MAE_546/TermPaper/oni/cap0.oni');
+lChain = lMotion.chain;
+LL = sum(lChain.lengths);
+orig = lMotion;
 
-%% T simulink:
+%% cut to size
+nf = 230;
+lMotion.numFrames = nf;
+lMotion.epHist = orig.epHist(1:lMotion.numFrames);
+%% Create manipulator kinematic chain, and make imitation:
+m = twoLinkManipulator(LL);
+m = setJointAngles(m,[0 0]);
+mIm = motionImitation(lMotion, m, 'cost_joints_ee', 'noscale', 1);
+
+%% view:
+figure; view([0 90]); grid on;
+xlabel('x'); ylabel('y'); zlabel('z'); axis equal
+animate(lMotion, mIm);
+
+%% create simulink trajectory:
+fr = 30;    % frame
+
+
+%% Test trajectory for simulink:
 ts = 0;
 te = 10;
 dt = 0.1;

@@ -80,7 +80,8 @@ Results
 \end_layout
 
 \begin_layout Standard
-
+Controller performance was tested using a nominal trajectory from the retargeter.
+ Parameters were varied in order to test their effect on performance.
 \end_layout
 
 \begin_layout Standard
