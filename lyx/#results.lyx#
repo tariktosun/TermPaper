@@ -1306,9 +1306,6 @@ reference "fig:Tracking-results-noise"
 \end_inset
 
  shows the results.
- The controller exhibits some noise rejection, but the overall trajectory
- is still perturbed quite a bit by the sensor noise.
- 
 \end_layout
 
 \begin_layout Standard
@@ -1316,21 +1313,16 @@ reference "fig:Tracking-results-noise"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/t1_noise.png
-
-\end_inset
-
 
 \end_layout
 
@@ -1359,16 +1351,7 @@ status collapsed
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/t2_noise.png
-
-\end_inset
-
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption

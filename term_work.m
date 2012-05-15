@@ -22,7 +22,7 @@ S.x2 = 0;
 S.x4 = 0;
 S.u1 = 0;
 
-Q = [1 0 0 0; 0 0 0 0; 0 0 1 0; 0 0 0 0]*100000;
+Q = [1 0 0 0; 0 1 0 0; 0 0 1 0; 0 0 0 1];
 R = [1 0; 0 1];
 
 Ccell = cell(36,1);
@@ -100,6 +100,18 @@ te = ts+dt*(nf-1);
 t = ts:dt:te;
 traj = mIm.angleHist';
 traj(2,:) = traj(2,:) - 90*ones(size(traj(2,:)));
+
+figure; 
+pl = plot(t,traj);
+set(pl, 'LineWidth',2);
+tit = title('Nominal Joint Angle Trajectory');
+xl = xlabel('time (sec)');
+yl = ylabel('Angle (degrees)');
+leg = legend('theta 1', 'theta 2');
+set(tit, 'FontSize', 14, 'FontWeight', 'bold');
+set(xl, 'FontSize', 14, 'FontWeight', 'bold');
+set(yl, 'FontSize', 14, 'FontWeight', 'bold');
+set(leg, 'FontSize', 14, 'FontWeight', 'bold');
 
 %% Test trajectory for simulink:
 ts = 0;

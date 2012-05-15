@@ -1,4 +1,4 @@
-% This file was created with JabRef 2.7.2.
+% This file was created with JabRef 2.6.
 % Encoding: Cp1252
 
 @BOOK{McKerrow,
@@ -11,6 +11,17 @@
   timestamp = {2012.05.13}
 }
 
+@TECHREPORT{MAE345Assignment3,
+  author = {Robert F. Stengel},
+  title = {MAE 345: Robotics and Intelligent Systems Assignment 3},
+  institution = {Princeton University},
+  year = {2011},
+  type = {Problem Set},
+  month = {October},
+  owner = {Tarik},
+  timestamp = {2012.05.13}
+}
+
 @TECHREPORT{345pset3,
   author = {Tarik Tosun},
   title = {MAE 345 Homework 3},
@@ -19,6 +30,14 @@
   type = {Problem Set},
   owner = {Tarik},
   timestamp = {2012.05.12}
+}
+
+@TECHREPORT{motorSpec,
+  title = {Brushless Electric servo-motor},
+  institution = {Motor Power Company},
+  year = {2012},
+  owner = {tarik},
+  timestamp = {2012.05.15}
 }
 
 @comment{jabref-meta: selector_review:}

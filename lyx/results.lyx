@@ -88,6 +88,358 @@ Controller performance was tested using a nominal trajectory from the retargeter
 Generation of Retargeted Trajectory
 \end_layout
 
+\begin_layout Standard
+Before retargeting solutions could be computed, a kinematic model of the
+ robot had to be formed in Matlab just Denavit-Hartenberg parameters.
+ These DH parameters are listed in Table 
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Denavit-Hartenberg-Parameters"
+
+\end_inset
+
+ below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+l
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+link 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $d_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+link 2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $l_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Denavit-Hartenberg Parameters 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Motion was then retargeted from my own arm to the robot, using the Microsoft
+ Kinect for motion capture.
+ To make the control movements easier to perform, and ninety-degree rotation
+ was applied to the input data before retargeting it to the simulated robot,
+ so that the vector pointing horizontally outward from my right shoulder
+ corresponded to vertical in the robot's frame.
+ This was done purely to make the source motions more comfortable to perform;
+ holding one's arm vertically from the shoulder for any length of time will
+ quickly become taxing.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Snapshots-of-retargeting"
+
+\end_inset
+
+ shows snapshots of the retargeting process.
+ Due to the disparity in workspace size between a human arm and the two-link
+ manipulator retargeted solutions were not perfect, but pose imitations
+ were of reasonable quality over the duration of the motion.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/kinectDataInput.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Source data, captured with the Kinect
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/retargetedSolution.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Source (blue) and retargeted (red)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Snapshots of the retargeting process 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Snapshots-of-retargeting"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
 \begin_layout Itemize
 The robot was modeled using DH parameters in my kinematic chain representation
 \end_layout
@@ -123,17 +475,960 @@ solution retargeted
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Trajectory Following
 \end_layout
 
 \begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Nominal-retargeted-trajectory"
+
+\end_inset
+
+ shows the joint-angle trajectory for the retargeted motion.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+provide some comments on it here.
+\end_layout
+
+\end_inset
+
+ The objective is for the controller to track this trajectory as closely
+ as possible.
+ We test the controller's performance by varying a number of parameters.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+make better?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/nominalTrajectory.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Nominal retargeted trajectory 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Nominal-retargeted-trajectory"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Full-State Feedback with Signal Derivative
+\end_layout
+
+\begin_layout Standard
+As our first test case, we compute the response of a full-state feedback
+ controller designed with
+\begin_inset Formula $\mathbf{Q}=\mathbf{I}_{4}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{R}=\mathbf{I}_{2}$
+\end_inset
+
+.
+ To establish nominal values for 
+\begin_inset Formula $\dot{\theta}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{\theta}_{2}$
+\end_inset
+
+, the input signal was passed through a derivative filter.
+ Tracking results are shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Tracking-results-I4-I2"
+
+\end_inset
+
+.
+ Tracking is fairly accurate, but deviates slightly from the nominal state
+ at times.
+ Since these are deviations of only a few degrees, these results would likely
+ be sufficient for an application such as gesture imitation.
+ If the task at hand requires great accuracy, the LQR cost matrices may
+ be tuned accordingly.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Tracking-results-Q100"
+
+\end_inset
+
+ shows the results of increasing 
+\series bold
+Q
+\series default
+ factor of 100 - tracking is effectively perfect.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/theta1_Q1withderiv.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/theta2Q1withDeriv.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Tracking results for full-state feedback, 
+\begin_inset Formula $\mathbf{Q}=\mathbf{I}_{4}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{R}=\mathbf{I}_{2}$
+\end_inset
+
+ (input yellow, output purple) 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tracking-results-I4-I2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/theta1_Q100.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/theta2_Q100.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Tracking results for full-state feedback, 
+\begin_inset Formula $\mathbf{Q}=100*\mathbf{I}_{4}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{R}=\mathbf{I}_{2}$
+\end_inset
+
+ (input yellow, output purple) 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tracking-results-Q100"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Torque Limiting
+\end_layout
+
+\begin_layout Standard
+Up to this point, the manipulator has been modeled as capable of exerting
+ any torque commanded by the controller.
+ In reality, and the actuators of the manipulator would have a torque maximum,
+ which we model with a flat cutoff.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Tracking-results-Lim60"
+
+\end_inset
+
+ shows system performance after introducing an torque limit of 60 N-m, which
+ is a reasonable actuator limit for a manipulator of this size 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "motorSpec"
+
+\end_inset
+
+.
+ This limitation seriously degrades tracking performance toward the end
+ of the trajectory, and we can see in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lim60-torques"
+
+\end_inset
+
+ that the applied torques clip at the 60 N-m frequently during this part
+ of the trajectory.
+ However, outfitting the manipulator with more powerful motors (with a 100
+ N-m torque limit) yields great performance improvements (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Tracking-results-Lim100"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/theta1_lim60.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/theta2_lim60.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Tracking results with a torque limit of 60 N*m (input yellow, output purple)
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tracking-results-Lim60"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/lim60_torques.png
+	width 5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Plot of torques over time when limited to 60 N*m (
+\begin_inset Formula $\tau_{1}$
+\end_inset
+
+ yellow, 
+\begin_inset Formula $\tau_{2}$
+\end_inset
+
+ purple) 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:lim60-torques"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/theta1_lim100.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/theta2_lim100.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Tracking results with a torque limit of 100 N*m (input yellow, output purple)
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tracking-results-Lim100"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Robustness to Disturbance
+\end_layout
+
+\begin_layout Standard
+Robustness to disturbance is one of the most important measures of any controlle
+r's performance.
+ To test this, we instantaneously applying a constant load of -10 N*m to
+ the arm joint beginning at time t=3 seconds - perhaps this is caused by
+ the weight of an object which the arm has picked up and must carry for
+ the remainder of the motion.
+ To maintain realism, we also include a torque limitation of 100 N-m.
+ We see in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Tracking-results-Disturbance"
+
+\end_inset
+
+ 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ tracking performance is degraded by the applied load, but that the general
+ trajectory shape is still maintained.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/theta1_withLoad.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/theta2_withload.png
+	width 2.5in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Tracking results with -10 N*m load applied at time t=3 (input yellow, output
+ purple) 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tracking-results-Disturbance"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Noise Rejection
+\end_layout
+
+\begin_layout Standard
+Finally, we test the controller's ability to reject sensor noise, another
+ important performance metric for any dynamic controller.
+ We model sensor noise by adding Gaussian white noise independently to each
+ state (variance of 1 and scaled by a gain of 25 in each case).
+ Once again, we include a torque limitation of 100 N-m for realism.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Tracking-results-noise"
+
+\end_inset
+
+ shows the results.
+ The controller exhibits some noise rejection, but the overall trajectory
+ is still perturbed quite a bit by the sensor noise.
+ To improve noise rejection, sensor inputs could be low-pass filtered.
+ Or, a better alternative might be to implement a well-designed Kalman filter
+ for state estimation that uses a model of the dynamic system and statistical
+ characteristics of the process noise to de-noise the sensor measurements.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/t1_noise.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/t2_noise.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Tracking results with Gaussian sensor noise applied (input yellow, output
+ purple, measurements green) 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tracking-results-noise"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 The retargeted trajectory can be seen in the figure (show figure).
  We wish to instruct the robot to follow it.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We're going to consider a bunch of situations here:
 \end_layout
 
@@ -237,6 +1532,11 @@ errythang big
 
 \end_deeper
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Branch refs
 status collapsed

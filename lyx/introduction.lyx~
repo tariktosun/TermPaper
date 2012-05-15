@@ -330,124 +330,53 @@ key "MAE345Assignment3"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Formula $d_{1}$
 \end_inset
 
-
+ = 1.5 m
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1.5m
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Formula $l_{2}$
 \end_inset
 
-
+ = 1 m
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1m
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Formula $m$
 \end_inset
 
-
+ =2 kg
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2kg
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Formula $g$
 \end_inset
 
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-9.807
+ =9.807 
 \begin_inset Formula $m/s^{2}$
 \end_inset
 
 
 \end_layout
 
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\end_inset
+
 
 \end_layout
 
