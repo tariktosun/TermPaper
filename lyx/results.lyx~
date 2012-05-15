@@ -566,7 +566,7 @@ name "fig:Nominal-retargeted-trajectory"
 \end_layout
 
 \begin_layout Subsubsection
-Full-State Feedback with Signal Derivative
+Full-State Feedback
 \end_layout
 
 \begin_layout Standard
@@ -1185,9 +1185,10 @@ reference "fig:Tracking-results-Disturbance"
 \begin_layout Standard
 \align center
 \begin_inset Float figure
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1308,7 +1309,10 @@ reference "fig:Tracking-results-noise"
  shows the results.
  The controller exhibits some noise rejection, but the overall trajectory
  is still perturbed quite a bit by the sensor noise.
- 
+ To improve noise rejection, sensor inputs could be low-pass filtered.
+ Or, a better alternative might be to implement a well-designed Kalman filter
+ for state estimation that uses a model of the dynamic system and statistical
+ characteristics of the process noise to de-noise the sensor measurements.
 \end_layout
 
 \begin_layout Standard
@@ -1316,7 +1320,7 @@ reference "fig:Tracking-results-noise"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1328,6 +1332,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/t1_noise.png
+	width 3in
 
 \end_inset
 
@@ -1352,10 +1357,10 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \enspace{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1364,6 +1369,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/t2_noise.png
+	width 3in
 
 \end_inset
 
@@ -1410,125 +1416,6 @@ name "fig:Tracking-results-noise"
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The retargeted trajectory can be seen in the figure (show figure).
- We wish to instruct the robot to follow it.
- 
-\end_layout
-
-\begin_layout Plain Layout
-We're going to consider a bunch of situations here:
-\end_layout
-
-\begin_layout Itemize
-Start out with q = I4, r = I2, state following only (no derivatives).
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Explore the effect of changing the gain matrices
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Now add derivatives
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-again explore gain matrices
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Now explore the addition of torque limitations
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-this is a serious concern for real robots, and something that I actually
- ran into
-\end_layout
-
-\begin_layout Itemize
-explore a range of values
-\end_layout
-
-\begin_layout Itemize
-how am I going to do this?
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-simply define a ceiling function in matlab which limits the torque inputs.
- If they go above a certain level flatten them off
-\end_layout
-
-\begin_layout Itemize
-Actually it would be dope to do this like a compressor, but that's fancy
- now isn't it?
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-look up some motor voltage responses in the Art of Electronics yeaaaaah
-\end_layout
-
-\end_deeper
-\end_deeper
-\end_deeper
-\begin_layout Itemize
-Put a Kalman filter on that mofo
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-limit state observation
-\end_layout
-
-\begin_layout Itemize
-add some noise.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-There's noise in the kinect data too so this is pretty compelling.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-design with the matlab function.
-\end_layout
-
-\begin_layout Itemize
-Would be fun to see if you can get away with only looking at one limb (the
- top one) and see if you can pull out the other states through coupling
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-oh you fancy huh
-\end_layout
-
-\begin_layout Itemize
-hair real big nails real big
-\end_layout
-
-\begin_layout Itemize
-errythang big
-\end_layout
-
-\end_deeper
-\end_deeper
 \end_inset
 
 

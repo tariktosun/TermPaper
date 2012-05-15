@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.199"
+    ComputedModelVersion    "1.203"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -37,9 +37,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "tarik"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue May 15 12:42:18 2012"
+  LastModifiedDate	  "Tue May 15 13:32:42 2012"
   RTWModifiedTimeStamp	  258977934
-  ModelVersionFormat	  "1.%<AutoIncrement:199>"
+  ModelVersionFormat	  "1.%<AutoIncrement:203>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -994,7 +994,7 @@ Model {
   }
   System {
     Name		    "controller1"
-    Location		    [1, 82, 719, 899]
+    Location		    [1, 107, 1379, 855]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1128,7 +1128,7 @@ Model {
       Name		      "Generate Noise"
       SID		      "140"
       Ports		      [1, 1]
-      Position		      [735, 434, 835, 476]
+      Position		      [310, 549, 410, 591]
       BlockMirror	      on
       NamePlacement	      "alternate"
       LibraryVersion	      "1.225"
@@ -1142,7 +1142,7 @@ Model {
       System {
 	Name			"Generate Noise"
 	Location		[433, 403, 1219, 788]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -2330,7 +2330,7 @@ Model {
       Ports		      [1]
       Position		      [1075, 534, 1105, 566]
       Floating		      off
-      Location		      [782, 500, 1425, 850]
+      Location		      [748, 127, 1391, 477]
       Open		      on
       NumInputPorts	      "1"
       ZoomMode		      "xonly"
@@ -2374,7 +2374,7 @@ Model {
       Ports		      [1]
       Position		      [1075, 594, 1105, 626]
       Floating		      off
-      Location		      [749, 106, 1394, 433]
+      Location		      [749, 556, 1394, 883]
       Open		      on
       NumInputPorts	      "1"
       List {
@@ -2413,7 +2413,7 @@ Model {
       Name		      "Torque Limit"
       SID		      "129"
       Ports		      [1, 1]
-      Position		      [835, 284, 875, 306]
+      Position		      [825, 234, 865, 256]
       LibraryVersion	      "1.31"
       PermitHierarchicalResolution "ExplicitOnly"
       TreatAsAtomicUnit	      on
@@ -2532,7 +2532,7 @@ Model {
       Name		      "Torque Limit1"
       SID		      "130"
       Ports		      [1, 1]
-      Position		      [845, 330, 885, 350]
+      Position		      [850, 365, 890, 385]
       LibraryVersion	      "1.31"
       PermitHierarchicalResolution "ExplicitOnly"
       TreatAsAtomicUnit	      on
@@ -3186,16 +3186,32 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[-30, 0]
-	DstBlock		"Generate Noise"
-	DstPort			1
+	Points			[-30, 0; 0, 20; -140, 0]
+	Branch {
+	  Points		  [-15, 0]
+	  Branch {
+	    Points		    [-65, 0]
+	    DstBlock		    "Sum"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 25]
+	    DstBlock		    "Demux4"
+	    DstPort		    1
+	  }
+	}
+	Branch {
+	  Points		  [0, 250]
+	  DstBlock		  "state 1"
+	  DstPort		  1
+	}
       }
     }
     Line {
       SrcBlock		      "Sum1"
       SrcPort		      1
-      DstBlock		      "Torque Limit1"
-      DstPort		      1
+      DstBlock		      "Sum2"
+      DstPort		      2
     }
     Line {
       SrcBlock		      "SS torque"
@@ -3232,9 +3248,16 @@ Model {
     Line {
       SrcBlock		      "Demux1"
       SrcPort		      1
-      Points		      [40, 0]
-      DstBlock		      "Torque Limit"
-      DstPort		      1
+      Points		      [40, 0; 0, 5; 60, 0; 0, -5; 30, 0]
+      Branch {
+	DstBlock		"Robot Model"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -180]
+	DstBlock		"Mux6"
+	DstPort			1
+      }
     }
     Line {
       SrcBlock		      "Input Trajectory1"
@@ -3389,9 +3412,8 @@ Model {
 	DstPort			3
       }
       Branch {
-	Points			[0, -115; -605, 0]
-	DstBlock		"scheduler"
-	DstPort			1
+	Labels			[2, 0]
+	Points			[0, -115; -605, 0; 0, 40; 10, 0; 0, -20; -10, 0; 0, 20; 10, 0; 0, -55; -15, 0]
       }
     }
     Line {
@@ -3399,26 +3421,6 @@ Model {
       SrcPort		      1
       DstBlock		      "state 3"
       DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Torque Limit"
-      SrcPort		      1
-      Points		      [30, 0]
-      Branch {
-	DstBlock		"Robot Model"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -180]
-	DstBlock		"Mux6"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Torque Limit1"
-      SrcPort		      1
-      DstBlock		      "Sum2"
-      DstPort		      2
     }
     Line {
       SrcBlock		      "Sum2"
@@ -3435,29 +3437,6 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Generate Noise"
-      SrcPort		      1
-      Points		      [-20, 0]
-      Branch {
-	Points			[-15, 0]
-	Branch {
-	  Points		  [-65, 0]
-	  DstBlock		  "Sum"
-	  DstPort		  2
-	}
-	Branch {
-	  Points		  [0, 25]
-	  DstBlock		  "Demux4"
-	  DstPort		  1
-	}
-      }
-      Branch {
-	Points			[0, 250]
-	DstBlock		"state 1"
-	DstPort			1
-      }
-    }
-    Line {
       SrcBlock		      "Demux4"
       SrcPort		      1
       Points		      [40, 0]
@@ -3466,9 +3445,7 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[-140, 0]
-	DstBlock		"Mux2"
-	DstPort			3
+	Points			[-140, 0; 0, 110; 10, 0; 0, 10]
       }
     }
     Line {
@@ -3481,10 +3458,14 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[-130, 0]
-	DstBlock		"Mux3"
-	DstPort			3
+	Points			[-130, 0; 0, 130; 10, 0; 0, 20; -30, 0]
       }
+    }
+    Line {
+      SrcBlock		      "theta1dot nom"
+      SrcPort		      1
+      DstBlock		      "scheduler"
+      DstPort		      1
     }
     Annotation {
       Name		      "Input"

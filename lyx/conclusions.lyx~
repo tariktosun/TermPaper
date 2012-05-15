@@ -3,9 +3,6 @@
 \begin_document
 \begin_header
 \textclass article
-\begin_preamble
-\renewcommand\thesubsection{\thesection.\alph{subsection}}
-\end_preamble
 \use_default_options true
 \begin_modules
 logicalmkup
@@ -31,7 +28,7 @@ logicalmkup
 \bibtex_command default
 \index_command default
 \paperfontsize 12
-\spacing single
+\spacing onehalf
 \use_hyperref false
 \papersize default
 \use_geometry true
@@ -81,12 +78,61 @@ Conclusions and Future Work
 
 \begin_layout Subsection
 Conclusions
+\backslash
+
 \end_layout
 
 \begin_layout Standard
-I built a realistic simulation of a robot and its operating conditions,
- and a controller that controlled it really well.
- 
+The designed LQR controller proved effective in directing a simulated robotic
+ manipulator to follow a trajectory output by the motion retargeter.
+ Controller response was fast enough to capture the details of the retargeted
+ trajectory, especially when the LQR cost matrices were adjusted for closer
+ tracking.
+ Controller disturbance rejection and noise rejection were found to be adequate
+ but imperfect.
+ Noise rejection might be greatly improved through the addition of a Kalman
+ filter.
+ Torque limiting was found to have an adverse effect on tracking, showing
+ that this manipulator would require very powerful actuators to achieve
+ human-like motion.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Add more about why this retargeter is useful.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Future Work
+\end_layout
+
+\begin_layout Standard
+In the future, it would be very interesting to implement a controller such
+ as this on a real robot.
+ The CKbot from the UPenn Modlab would be of particular interest for the
+ purposes of retargeting.
+ Previous experience in retargeting to CKbots resulted in very slow, jerky
+ performance due to poor controller design (the controller used simply implement
+ed servo feedback on position, progressing in discreet steps on a point-to-point
+ basis).
+ Using a more advanced controller such as this one would likely improve
+ motion retargeting performance significantly.
+\end_layout
+
+\begin_layout Standard
+For more complicated robot systems, full state feedback is not feasible;
+ feedback information is provided by a limited number of sensors.
+ It also be advantageous to expand this controller by adding a Kalman filter-bas
+ed observation module, as this would allow for both state estimation and
+ sensor noise rejection.
 \end_layout
 
 \begin_layout Standard

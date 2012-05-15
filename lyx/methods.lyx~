@@ -90,41 +90,21 @@ LQR Design
 
 \begin_layout Standard
 LQR controllers require an LTI system, so an LQR controller could not be
- built directly from this nonlinear system's dynamics.
+ built directly from this system's nonlinear dynamics.
  Instead, the system was linearized at a series of operating points, and
  LQR gain matrices were computed at each operating point to form a gain
  scheduled controller.
 \end_layout
 
-\begin_layout Standard
-Analysis indicated that variation in 
-\begin_inset Formula $\theta_{2}$
-\end_inset
-
- contributed the most nonlinear effects to the system dynamics, so the system
- was linearized about a set of operating points spanning the domain of operation
- for 
-\begin_inset Formula $\theta_{2}$
-\end_inset
-
-.
- LQR state feedback matrices were then computed at each of these points
- to form a gain-scheduled controller.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-maybe take this paragraph out.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
-Analysis of System Dynamics
+Steady-State Operating Points 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "345pset3"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -159,37 +139,14 @@ reference "eq:ss4"
 \begin_inset Formula $\theta_{2}$
 \end_inset
 
- is the most significant 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Finish this section!
-\end_layout
-
-\end_inset
-
-
+ is the most significant, as it causes both the magnitude of the gravitational
+ torque on the second joint and the rotational intertia properties about
+ the first joint to vary.
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Subsubsection
-Steady-State Operating Points 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "345pset3"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Steady-state operating points were computed for different positions of the
- manipulator's horizontal arm.
+To account for this, steady-state operating points were computed for different
+ positions of the manipulator's horizontal arm.
  We desire the required torque as a function of joint angle to keep link
  2 suspended in equilibrium at angles ranging from -90º to 90º.
  Since we are only concerned with the second link under equilibrium conditions,
@@ -215,7 +172,41 @@ Steady-state operating points were computed for different positions of the
 \end_inset
 
  equal to zero.
- A plot of this function is shown in Figure 
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x_{4}=\dot{x}_{3}=-\frac{g}{l}\cos(x_{3})-\frac{x_{2}}{2}\sin(2x_{3})+\frac{u_{2}}{ml^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+cancelling the second term and solving for 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u_{2}(x_{3})=mlg\cos(x_{3})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A plot of this function is shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:1 - equilibrium"
@@ -223,10 +214,24 @@ reference "fig:1 - equilibrium"
 \end_inset
 
 .
+ The shape of this plot agrees with our natural intuitions.
+ As we would expect, the greatest torque is required at 
+\begin_inset Formula $\theta_{2}=0\text{º}$
+\end_inset
+
+, when the arm is horizontal and gravity's moment arm is largest.
+ At 
+\begin_inset Formula $\theta_{2}=\pm90\text{º}$
+\end_inset
+
+, the arm is vertical, and no torque is required.
+ A sinusoidal shape is also consistent with a simple pendulum, which is
+ essentially what this dynamic system represents.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -267,52 +272,6 @@ name "fig:1 - equilibrium"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-x_{4}=\dot{x}_{3}=-\frac{g}{l}\cos(x_{3})-\frac{x_{2}}{2}\sin(2x_{3})+\frac{u_{2}}{ml^{2}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-cancelling the second term and solving for 
-\begin_inset Formula $u_{2}$
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-u_{2}(x_{3})=mlg\cos(x_{3})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The shape of this plot agrees with our natural intuitions.
- As we would expect, the greatest torque is required at 
-\begin_inset Formula $\theta_{2}=0\text{º}$
-\end_inset
-
-, when the arm is horizontal and gravity's moment arm is largest.
- At 
-\begin_inset Formula $\theta_{2}=\pm90\text{º}$
-\end_inset
-
-, the arm is vertical, and no torque is required.
- A sinusoidal shape is also consistent with a simple pendulum, which is
- essentially what this dynamic system represents.
 \end_layout
 
 \begin_layout Subsubsection
@@ -524,6 +483,15 @@ LQR state feedback gain matrices were computed for the linearized system
 \end_inset
 
  were set to zero.
+ Cost matrices 
+\begin_inset Formula $\mathbf{Q}=\mathbf{I}_{4}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{R}=\mathbf{I}_{2}$
+\end_inset
+
+ were used.
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -539,21 +507,12 @@ reference "fig:Plot-of-LQR"
  There is a great deal of variation over the domain for all elements of
  the gain matrix, indicating that linearization of the system at a single
  operating point would likely produce an unsuccessful controller.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-more analysis
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Float figure
+placement H
 wide false
 sideways true
 status collapsed
@@ -597,10 +556,6 @@ name "fig:Plot-of-LQR"
 Simulink Model
 \end_layout
 
-\begin_layout Subsubsection
-Robot Model
-\end_layout
-
 \begin_layout Standard
 The system dynamic models was translated into the SIMULINK block model subsystem
  shown in Figure 
@@ -611,11 +566,29 @@ reference "fig:robotSimulink"
 \end_inset
 
 .
+ The controller was also implemented in SIMULINK, and is show in the block
+ model in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:controllerSimulink"
+
+\end_inset
+
+.
+ The gain scheduler is implemented using a number of linear interpolation
+ table lookup blocks as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:schedulerSimulink"
+
+\end_inset
+
+.
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-talk more here
+talk more here.
 \end_layout
 
 \end_inset
@@ -657,41 +630,6 @@ name "fig:robotSimulink"
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Controller Model
-\end_layout
-
-\begin_layout Standard
-The controller was also implemented in SIMULINK, and is show in the block
- model in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:controllerSimulink"
-
-\end_inset
-
-.
- The gain scheduler is implemented using a number of linear interpolation
- table lookup blocks as shown in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:schedulerSimulink"
-
-\end_inset
-
-.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-talk more here.
 \end_layout
 
 \end_inset

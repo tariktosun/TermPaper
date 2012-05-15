@@ -79,93 +79,63 @@ logicalmkup
 Introduction
 \end_layout
 
-\begin_layout Subsection
-Motivation
-\end_layout
-
 \begin_layout Standard
-For my senior thesis, I designed a kinematic retargeter which instructs
- a target robot to imitate a source robot on a pose-by-pose basis.
+In this project, we aim to develop a robust, high-performance feedback controlle
+r to work in conjunction with a previously developed general kinematic retargeti
+ng system.
+ Given a source pose, the system is capable of generating an optimal imitation
+ pose on an arbitrary target platform.
  Computation is performed in simulation using modeled kinematic chains with
- no dynamics, resulting in a series of poses frames the target is to assume
- at specified times.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-improve/elaborate
-\end_layout
-
+ no dynamics.
+ Motion is retargeted on a frame-by-frame basis, resulting in a series of
+ poses that the target is to assume at specified times.
+ This nominal retargeted trajectory is then 
+\begin_inset Quotes eld
 \end_inset
 
+played back
+\begin_inset Quotes erd
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
-In order to control a robot using these joint-angle instructions, a good
- dynamic controller is required to cause the system to track the specified
- trajectory.
- During actual robot trials, movements were jerky or too slow due to poor
- controller performance.
- For example, movement of the PR2 suffered from serious overshoot problems
- due to low damping
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-elaborate / pic or something
-\end_layout
+ on the robot to produce actual motion 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TarikThesis"
 
 \end_inset
 
 .
- The CKbot, on the other hand, moved in steps using only servo position
- feedback.
- While this resulted in accurate matching on a pose-by-pose basis, the overall
- motion was jerky and extremely slow.
- It would be better if a more advanced controller could be used for higher
- quality tracking
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-rephrase this whole paragraph.
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-what are the CKbot and PR2?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Project Description
 \end_layout
 
 \begin_layout Standard
-For this project, I am going to develop a tracking controller for a simple
- robot model in Simulink in order to demonstrate how such a controller could
- be developed for a real robot.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-elaborate.
-\end_layout
+In order to control a robot using such a nominal trajectory, a good dynamic
+ controller is required.
+ During development of the retargeter, experimental trials with robots were
+ plagued with controller issues.
+ During tests with the PR2 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PR2"
 
 \end_inset
 
+, a large humanoid robot developed at Willow Garage, movement appeared to
+ suffer from serious overshoot problems due to low damping.
+ Motion performed on the CKbot platform 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CKbot"
 
+\end_inset
+
+ from the UPenn ModLab proved jerky and extremely slow, as motion was matched
+ pose-by-pose using only servo position feedback and no interpolation.
+ If a better tracking controller were available for either of these platforms,
+ the retargeted solutions would be of a much higher quality overall.
+ To illustrate how such a tracking can be developed this project aims to
+ develop a gain-scheduled LQR state feedback controller for a simple robot
+ model in Simulink, and then test its performance under a variety of conditions
+ using a nominal trajectory developed with the retargeted system.
 \end_layout
 
 \begin_layout Subsection
@@ -365,12 +335,9 @@ key "MAE345Assignment3"
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \align center
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -426,56 +393,57 @@ Controller Properties
 \end_layout
 
 \begin_layout Standard
-I am going to build a gain-scheduled LQR controller and explore what kind
- of linearization is needed to attain good tracking performance with the
- system
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Definitely need to expand this.
- why LQR as opposed to PID? 
+A gain-scheduled Linear Quadratic Regulator was selected as the controller
+ of choice for this system.
+ LQR state-feedback controller exhibit a number of properties that make
+ them advantageous for the purposes of this project.
+ The LQR controller is designed to minimize the stochastic quadratic cost
+ function:
 \end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J=\frac{1}{2}\left\{ \intop_{0}^{t}\left[\mathbf{x}^{T}(t)\mathbf{Q}\mathbf{x}(t)+\mathbf{u}^{T}(t)\mathbf{Ru}(t)\right]dt\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+subject to the system dynamics.
+ In this equation, 
+\series bold
+Q 
+\series default
+and 
+\series bold
+R
+\series default
+ are positive-definite state and control cost weighting matrices which may
+ be adjusted to prioritize tracking accuracy or economy of control use.
+ The Linear Quadratic Regulator has the additional beneficial quality of
+ global asymptotic stability for any controllable system, regardless of
+ the stability of the open-loop system 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "OptimalControl"
 
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Subsection
-Paper structure
-\end_layout
-
-\begin_layout Itemize
-Introduce everything
-\end_layout
-
-\begin_layout Itemize
-Develop Controller model and structure
-\end_layout
-
-\begin_layout Itemize
-Test controller using output of retargeting solver
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-explain retargeter a little bit
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Analyze the results
-\end_layout
-
 \begin_layout Standard
 \begin_inset Branch refs
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "bibliograpy"
+bibfiles "bibliograpy,/home/tarik/tarik_retargeter/thesis/lyx/bibliography"
 options "plain"
 
 \end_inset

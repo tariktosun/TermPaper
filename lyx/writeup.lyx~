@@ -4,7 +4,7 @@
 \begin_header
 \textclass article
 \begin_preamble
-\renewcommand\thesubsection{\thesection.\alph{subsection}}
+
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -31,7 +31,7 @@ logicalmkup
 \bibtex_command bibtex
 \index_command default
 \paperfontsize 12
-\spacing single
+\spacing onehalf
 \use_hyperref false
 \papersize default
 \use_geometry true
@@ -51,7 +51,7 @@ logicalmkup
 \color #faf0e6
 \end_branch
 \branch Abstract
-\selected 1
+\selected 0
 \filename_suffix 0
 \color #faf0e6
 \end_branch
@@ -61,6 +61,11 @@ logicalmkup
 \color #faf0e6
 \end_branch
 \branch Results
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch Conclusions
 \selected 1
 \filename_suffix 0
 \color #faf0e6
@@ -120,7 +125,7 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset Branch Abstract
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset CommandInset include
@@ -195,6 +200,25 @@ filename "results.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch Conclusions
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "conclusions.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -204,7 +228,7 @@ filename "results.lyx"
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "bibliograpy"
+bibfiles "bibliograpy,/home/tarik/tarik_retargeter/thesis/lyx/bibliography"
 options "bibtotoc,plain"
 
 \end_inset

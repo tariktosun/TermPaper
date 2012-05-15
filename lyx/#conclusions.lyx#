@@ -76,135 +76,75 @@ logicalmkup
 \begin_body
 
 \begin_layout Section
-Results
-\end_layout
-
-\begin_layout Standard
-Controller performance was tested using a nominal trajectory from the retargeter.
- Parameters were varied in order to test their effect on performance.
+Conclusions and Future Work
 \end_layout
 
 \begin_layout Subsection
-Generation of Retargeted Trajectory
+Conclusions
 \end_layout
 
-\begin_layout Itemize
-The robot was modeled using DH parameters in my kinematic chain representation
+\begin_layout Standard
+The designed LQR controller proved effective in directing a simulated robotic
+ manipulator to follow a trajectory output by the motion retargeter.
+ Controller response was fast enough to capture the details of the retargeted
+ trajectory, especially when the LQR cost matrices were adjusted for closer
+ tracking.
+ Controller disturbance rejection and noise rejection were found to be adequate
+ but imperfect.
+ Noise rejection might be greatly improved through the addition of a Kalman
+ filter.
+ Torque limiting was found to have an adverse effect on tracking, showing
+ that this manipulator wouhuman-like motions currently require 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-give DH parameters
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+I built a realistic simulation of a robot and its operating conditions,
+ and a controller that controlled it really well.
+ This is of real practical use to me; it would have been great to use something
+ like this when I did my thesis trials so I could improve the quality of
+ my retargeting solutions.
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-Retargeted motion was taken from my own arm using the Microsoft Kinect
+\begin_layout Plain Layout
+A controller like this is invaluable.
+ What good are my retargeting state/pose solutions if I can't get anything
+ to actually perform them accurately?
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-reference frame was rotated for ease of motion (it's hard to hold arm above
- head
+\end_inset
+
+
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-Show pics:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-microsoft kinect capture
-\end_layout
-
-\begin_layout Itemize
-solution retargeted
-\end_layout
-
-\end_deeper
 \begin_layout Subsection
-Trajectory Following
-\end_layout
-
-\begin_layout Standard
-The retargeted trajectory can be seen in the figure (show figure).
- We wish to instruct the robot to follow it.
- 
-\end_layout
-
-\begin_layout Standard
-We're going to consider a bunch of situations here:
+Future Work
 \end_layout
 
 \begin_layout Itemize
-Start out with q = I4, r = I2, state following only (no derivatives).
+CKbots
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Explore the effect of changing the gain matrices
+The CKbot controller I used at the Upenn ModLab was very poor.
+ It would be excellent if a CKbot model were available in Simulink so that
+ I could build a similar controller and use to control CKbots with my retargeter.
+\end_layout
+
+\begin_layout Itemize
+This is something I may very well actually do since I'll be in the ModLab
+ next year.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Now add derivatives
+Anything that I said I'd get done that I didn't actually get done.
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-again explore gain matrices
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Now explore the addition of torque limitations
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-this is a serious concern for real robots, and something that I actually
- ran into
-\end_layout
-
-\begin_layout Itemize
-explore a range of values
-\end_layout
-
-\begin_layout Itemize
-how am I going to do this?
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-simply define a ceiling function in matlab which limits the torque inputs.
- If they go above a certain level flatten them off
-\end_layout
-
-\begin_layout Itemize
-Actually it would be dope to do this like a compressor, but that's fancy
- now isn't it?
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-look up some motor voltage responses in the Art of Electronics yeaaaaah
-\end_layout
-
-\end_deeper
-\end_deeper
-\end_deeper
-\begin_layout Itemize
-Put a Kalman filter on that mofo
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-limited joint state estimation.
- 
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 \begin_inset Branch refs
 status collapsed
