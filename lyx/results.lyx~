@@ -84,10 +84,153 @@ Controller performance was tested using a nominal trajectory from the retargeter
  Parameters were varied in order to test their effect on performance.
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Subsection
+Generation of Retargeted Trajectory
 \end_layout
 
+\begin_layout Itemize
+The robot was modeled using DH parameters in my kinematic chain representation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+give DH parameters
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Retargeted motion was taken from my own arm using the Microsoft Kinect
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+reference frame was rotated for ease of motion (it's hard to hold arm above
+ head
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Show pics:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+microsoft kinect capture
+\end_layout
+
+\begin_layout Itemize
+solution retargeted
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Trajectory Following
+\end_layout
+
+\begin_layout Standard
+The retargeted trajectory can be seen in the figure (show figure).
+ We wish to instruct the robot to follow it.
+ 
+\end_layout
+
+\begin_layout Standard
+We're going to consider a bunch of situations here:
+\end_layout
+
+\begin_layout Itemize
+Start out with q = I4, r = I2, state following only (no derivatives).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Explore the effect of changing the gain matrices
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Now add derivatives
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+again explore gain matrices
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Now explore the addition of torque limitations
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+this is a serious concern for real robots, and something that I actually
+ ran into
+\end_layout
+
+\begin_layout Itemize
+explore a range of values
+\end_layout
+
+\begin_layout Itemize
+how am I going to do this?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+simply define a ceiling function in matlab which limits the torque inputs.
+ If they go above a certain level flatten them off
+\end_layout
+
+\begin_layout Itemize
+Actually it would be dope to do this like a compressor, but that's fancy
+ now isn't it?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+look up some motor voltage responses in the Art of Electronics yeaaaaah
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Put a Kalman filter on that mofo
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+limit state observation
+\end_layout
+
+\begin_layout Itemize
+add some noise.
+\end_layout
+
+\begin_layout Itemize
+design with the matlab function.
+\end_layout
+
+\begin_layout Itemize
+Would be fun to see if you can get away with only looking at one limb (the
+ top one) and see if you can pull out the other states through coupling
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+oh you fancy huh
+\end_layout
+
+\begin_layout Itemize
+hair real big nails real big
+\end_layout
+
+\begin_layout Itemize
+errythang big
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Branch refs
 status collapsed

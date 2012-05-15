@@ -81,26 +81,7 @@ Methods
 
 \begin_layout Standard
 A robust linear quadratic controller was designed for the system.
- A model of the robot was built in Simulink for analysis.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-more.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-LQR controllers require an LTI system, so an LQR controller could not be
- built directly from this nonlinear system's dynamics.
- Instead, the system was linearized at a series of operating points.
- LQR gain matrices were computed at each operating point to form a gain
- scheduled controller.
+ Simulink was used to build both the robot model and controller.
 \end_layout
 
 \begin_layout Subsection
@@ -108,8 +89,15 @@ LQR Design
 \end_layout
 
 \begin_layout Standard
-An LQR controller was designed to stabilize and control the system.
- Analysis indicated that variation in 
+LQR controllers require an LTI system, so an LQR controller could not be
+ built directly from this nonlinear system's dynamics.
+ Instead, the system was linearized at a series of operating points, and
+ LQR gain matrices were computed at each operating point to form a gain
+ scheduled controller.
+\end_layout
+
+\begin_layout Standard
+Analysis indicated that variation in 
 \begin_inset Formula $\theta_{2}$
 \end_inset
 
@@ -122,6 +110,17 @@ An LQR controller was designed to stabilize and control the system.
 .
  LQR state feedback matrices were then computed at each of these points
  to form a gain-scheduled controller.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+maybe take this paragraph out.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -165,7 +164,7 @@ reference "eq:ss4"
 status open
 
 \begin_layout Plain Layout
-Finish this section!
+Finish this section, or maybe combine with next section.
 \end_layout
 
 \end_inset

@@ -212,5 +212,18 @@ options "bibtotoc,plain"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+I pledge my honor this paper represents my own work in accordance with Universit
+y regulations.
+\end_layout
+
 \end_body
 \end_document

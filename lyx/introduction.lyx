@@ -135,6 +135,16 @@ rephrase this whole paragraph.
 \end_inset
 
 .
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+what are the CKbot and PR2?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -146,6 +156,16 @@ For this project, I am going to develop a tracking controller for a simple
  robot model in Simulink in order to demonstrate how such a controller could
  be developed for a real robot.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+elaborate.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -153,15 +173,16 @@ Robot Model
 \end_layout
 
 \begin_layout Standard
-The robot model is shown in Figure 
+The robot model used is a simple two-link manipulator, shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:robotMcKerrow"
 
 \end_inset
 
- below, which is Fig.
- 4.7 in 
+ below, which is able to rotate its first link about its vertical axis and
+ pitch its second link up and down.
+ The model is taken from 
 \begin_inset Flex Emph
 status collapsed
 
@@ -309,21 +330,6 @@ key "MAE345Assignment3"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status collapsed
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
 \begin_inset Formula $d_{1}$
 \end_inset
 
@@ -353,11 +359,6 @@ status collapsed
 
  =9.807 
 \begin_inset Formula $m/s^{2}$
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 
